@@ -4,9 +4,15 @@ public class Player : MonoBehaviour
 {
     public enum PlayerStatus
     {
-        None,
-        Speed,//スピード
-        jump　//ジャンプ
+        Idle,      // 待機
+        Run,       // 移動
+        Jump,      // ジャンプ
+        Fall,      // 落下
+        Attack,    // 通常攻撃
+        Dash,      // 体当たり
+        Slide,     // スライディング
+        Damage,    // 被弾
+        Dead       // 死亡
     }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -19,5 +25,10 @@ public class Player : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void PlayerRun()
+    {
+
     }
 }
