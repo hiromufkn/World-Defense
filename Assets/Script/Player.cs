@@ -40,6 +40,8 @@ public class Player : MonoBehaviour
     // 入力
     private Vector2 moveInput;
 
+    [SerializeField] private Transform cameraTransform;
+
     void Start()
     {
         attackPower = baseAttack;
@@ -55,6 +57,7 @@ public class Player : MonoBehaviour
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
+        Debug.Log("OnMove呼ばれた：" + moveInput);
     }
 
     // 移動処理
@@ -63,33 +66,38 @@ public class Player : MonoBehaviour
         float horizontal = moveInput.x;
         float vertical = moveInput.y;
 
-        Vector3 move = Vector3.zero;
+        // カメラ基準の前方向
+        Vector3 cameraForward = cameraTransform.forward;
+        Vector3 cameraRight = cameraTransform.right;
 
-        // 前進
-        if (vertical > 0)
+        // 上下の傾きを消す
+        cameraForward.y = 0;
+        cameraRight.y = 0;
+
+        cameraForward.Normalize();
+        cameraRight.Normalize();
+
+        // 入力方向
+        Vector3 moveDirection =
+            cameraForward * vertical +
+            cameraRight * horizontal;
+
+        if (moveDirection.magnitude > 0)
         {
             status = PlayerStatus.Run;
 
+            // 加速
             speed += acceleration * Time.deltaTime;
             speed = Mathf.Clamp(speed, 0, maxSpeed);
 
-            move += Vector3.forward * speed * Time.deltaTime;
-        }
+            // プレイヤーを進行方向へ向ける
+            transform.forward = moveDirection.normalized;
 
-        // 減速
-        if (vertical < 0)
-        {
-            speed -= acceleration * Time.deltaTime;
-            speed = Mathf.Clamp(speed, 0, maxSpeed);
+            // 移動
+            transform.Translate(
+                Vector3.forward * speed * Time.deltaTime
+            );
         }
-
-        // 横移動
-        if (horizontal != 0)
-        {
-            move += Vector3.right * horizontal * moveSpeed * Time.deltaTime;
-        }
-
-        transform.Translate(move);
     }
 
     public void Jump()
