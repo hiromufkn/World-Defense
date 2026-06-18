@@ -242,6 +242,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5684598435134414698, guid: 85ce8845980018c4e883bd830a7f5416, type: 3}
   m_PrefabInstance: {fileID: 8733453103839598216}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1119288521 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6518850586902676667, guid: 85ce8845980018c4e883bd830a7f5416, type: 3}
+  m_PrefabInstance: {fileID: 8733453103839598216}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0137dda0c7ebc4783788d85cc5ce87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
 --- !u!1 &1777114195
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,6 +401,10 @@ PrefabInstance:
       propertyPath: cameraTransform
       value: 
       objectReference: {fileID: 931050730}
+    - target: {fileID: 3949231399565194899, guid: b21e2efa7a3dab642a8c115c3ac8d554, type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 1119288521}
     - target: {fileID: 4373017067771394932, guid: b21e2efa7a3dab642a8c115c3ac8d554, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -495,7 +510,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 1917778587}
-    m_RemovedComponents: []
+    - target: {fileID: 6518850586902676667, guid: 85ce8845980018c4e883bd830a7f5416, type: 3}
+      propertyPath: mouseSensitivity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236648078656641964, guid: 85ce8845980018c4e883bd830a7f5416, type: 3}
+      propertyPath: m_DefaultControlScheme
+      value: 
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 8236648078656641964, guid: 85ce8845980018c4e883bd830a7f5416, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []

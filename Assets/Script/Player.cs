@@ -42,6 +42,8 @@ public class Player : MonoBehaviour
 
     [SerializeField] private Transform cameraTransform;
 
+    [SerializeField] private CameraController cameraController;
+
     void Start()
     {
         attackPower = baseAttack;
@@ -58,6 +60,11 @@ public class Player : MonoBehaviour
     {
         moveInput = value.Get<Vector2>();
         Debug.Log("OnMoveŒÄ‚Î‚ê‚½F" + moveInput);
+    }
+
+    public void OnLook(InputValue value)
+    {
+        cameraController.SetLookInput(value.Get<Vector2>());
     }
 
     // ˆÚ“®ˆ—

@@ -12,9 +12,9 @@ public class CameraController : MonoBehaviour
 
     private Vector2 lookInput;
 
-    public void OnLook(InputValue value)
+    public void SetLookInput(Vector2 input)
     {
-        lookInput = value.Get<Vector2>();
+        lookInput = input;
     }
 
     private void LateUpdate()
