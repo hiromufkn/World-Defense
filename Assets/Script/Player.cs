@@ -63,27 +63,33 @@ public class Player : MonoBehaviour
         float horizontal = moveInput.x;
         float vertical = moveInput.y;
 
+        Vector3 move = Vector3.zero;
+
+        // ‘Oi
         if (vertical > 0)
         {
             status = PlayerStatus.Run;
 
             speed += acceleration * Time.deltaTime;
             speed = Mathf.Clamp(speed, 0, maxSpeed);
+
+            move += Vector3.forward * speed * Time.deltaTime;
         }
 
+        // Œ¸‘¬
         if (vertical < 0)
         {
             speed -= acceleration * Time.deltaTime;
             speed = Mathf.Clamp(speed, 0, maxSpeed);
         }
 
-        Vector3 sideMove =
-            Vector3.right * horizontal * moveSpeed * Time.deltaTime;
+        // ‰¡ˆÚ“®
+        if (horizontal != 0)
+        {
+            move += Vector3.right * horizontal * moveSpeed * Time.deltaTime;
+        }
 
-        Vector3 forwardMove =
-            Vector3.forward * speed * Time.deltaTime;
-
-        transform.Translate(sideMove + forwardMove);
+        transform.Translate(move);
     }
 
     public void Jump()
