@@ -21,6 +21,7 @@ public class EnemyGroup : MonoBehaviour
                     nextGroup,
                     transform.position,
                     Quaternion.identity
+                    //transform.rotation
 
                     );
 

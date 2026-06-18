@@ -5,6 +5,8 @@ public class Enemy : MonoBehaviour
 {
     public float Speed = 3f;
     public float moveRange = 3f;
+    public Transform Player;
+    public Transform model;
 
     //private EnemySpawner spawner;
     //public GameObject nextEnemy;
@@ -27,27 +29,43 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Keyboard.current.kKey.wasPressedThisFrame)
+   
 
+        if (Player != null)
         {
-           
+
+
+            Vector3 targetPos = Player.position;
+            targetPos.y = model.position.y;
+
+            model.LookAt(targetPos);
+
+            Debug.Log(model.eulerAngles);
+
+
+
+            if (Keyboard.current.kKey.wasPressedThisFrame)
+
+            {
+
                 Destroy(gameObject);
 
                 //spawner.SpawnEnemy();
+            }
         }
         
 
-        transform.Translate(Vector3.right * Speed * direction * Time.deltaTime);
+    //    transform.Translate(Vector3.right * Speed * direction * Time.deltaTime);
 
-        if (transform.position.x > StartPos.x + moveRange)
-        {
-            direction = -1;
-        }
+    //    if (transform.position.x > StartPos.x + moveRange)
+    //    {
+    //        direction = -1;
+    //    }
 
-        if(transform.position.x<StartPos.x-moveRange)
-        {
-            direction = 1;
-        }
+    //    if(transform.position.x<StartPos.x-moveRange)
+    //    {
+    //        direction = 1;
+    //    }
 
     }
 }
