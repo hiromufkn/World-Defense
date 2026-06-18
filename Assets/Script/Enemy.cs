@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
     public float moveRange = 3f;
 
     //private EnemySpawner spawner;
-    public GameObject nextEnemy;
+    //public GameObject nextEnemy;
 
     private int direction=1;
     private Vector3 StartPos;
@@ -30,19 +30,11 @@ public class Enemy : MonoBehaviour
         if (Keyboard.current.kKey.wasPressedThisFrame)
 
         {
-            if (nextEnemy != null)
-            {
-                Instantiate(
-                    nextEnemy,
-                    transform.position,
-                    Quaternion.identity
-
-                    );
-            }
+           
                 Destroy(gameObject);
 
                 //spawner.SpawnEnemy();
-            }
+        }
         
 
         transform.Translate(Vector3.right * Speed * direction * Time.deltaTime);
