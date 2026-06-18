@@ -19,6 +19,8 @@ public class Player : MonoBehaviour
 
     public PlayerStatus status = PlayerStatus.Idle;
 
+    private Rigidbody rb;
+
     // スピード
     public float speed = 0f;
     public float maxSpeed = 30f;
@@ -29,6 +31,7 @@ public class Player : MonoBehaviour
 
     // ジャンプ
     public float jumpPower = 8f;
+    public bool isGrounded = true;
 
     // 攻撃
     public float baseAttack = 10f;
@@ -47,6 +50,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         attackPower = baseAttack;
+
+        rb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -65,6 +70,11 @@ public class Player : MonoBehaviour
     public void OnLook(InputValue value)
     {
         cameraController.SetLookInput(value.Get<Vector2>());
+    }
+
+    public void OnJump()
+    {
+        Jump();
     }
 
     // 移動処理
@@ -109,13 +119,18 @@ public class Player : MonoBehaviour
 
     public void Jump()
     {
+        if (!isGrounded) return;
+
         status = PlayerStatus.Jump;
 
-        float verticalPower = jumpPower;
-        float forwardPower = speed;
+        // 上方向へジャンプ
+        rb.linearVelocity = new Vector3(
+            rb.linearVelocity.x,
+            jumpPower,
+            rb.linearVelocity.z
+        );
 
-        Debug.Log("ジャンプ 高さ:" + verticalPower +
-                  " 飛距離:" + forwardPower);
+        isGrounded = false;
     }
 
     public void WallKick()
@@ -147,5 +162,15 @@ public class Player : MonoBehaviour
         float slideDamage = attackPower + speed;
 
         Debug.Log("スライディング ダメージ:" + slideDamage);
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            isGrounded = true;
+
+            status = PlayerStatus.Run;
+        }
     }
 }
