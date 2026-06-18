@@ -1,34 +1,36 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class CameraController : MonoBehaviour
 {
-    [Header("追尾するプレイヤー")]
     [SerializeField] private Transform player;
+    [SerializeField] private float distance = 7f;
+    [SerializeField] private float mouseSensitivity = 3f;
 
-    [Header("カメラ位置設定")]
-    [SerializeField] private Vector3 offset = new Vector3(0, 3, -7);
+    private float pitch = 20f;
+    private float yaw = 0f;
 
-    [Header("追従速度")]
-    [SerializeField] private float followSpeed = 5f;
+    private Vector2 lookInput;
+
+    public void OnLook(InputValue value)
+    {
+        lookInput = value.Get<Vector2>();
+    }
 
     private void LateUpdate()
     {
-        FollowPlayer();
-    }
+        yaw += lookInput.x * mouseSensitivity;
+        pitch -= lookInput.y * mouseSensitivity;
 
-    private void FollowPlayer()
-    {
-        // プレイヤーを基準にしたカメラの目標位置
-        Vector3 targetPosition = player.position + player.rotation * offset;
+        pitch = Mathf.Clamp(pitch, -30f, 60f);
 
-        // なめらかに移動
-        transform.position = Vector3.Lerp(
-            transform.position,
-            targetPosition,
-            followSpeed * Time.deltaTime
-        );
+        Quaternion rotation = Quaternion.Euler(pitch, yaw, 0);
 
-        // プレイヤーを見る
+        Vector3 targetPosition =
+            player.position - rotation * Vector3.forward * distance;
+
+        transform.position = targetPosition;
+
         transform.LookAt(player.position + Vector3.up * 1.5f);
     }
 }

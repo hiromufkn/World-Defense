@@ -245,6 +245,7 @@ GameObject:
   - component: {fileID: 931050728}
   - component: {fileID: 931050731}
   - component: {fileID: 931050732}
+  - component: {fileID: 931050733}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -383,8 +384,38 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraController
   player: {fileID: 1917778587}
-  offset: {x: 0, y: 3, z: -7}
-  followSpeed: 5
+  distance: 7
+  mouseSensitivity: 1
+--- !u!114 &931050733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 931050727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
+  m_Actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultActionMap: 
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 931050729}
 --- !u!1 &1777114195
 GameObject:
   m_ObjectHideFlags: 0
@@ -677,6 +708,7 @@ MonoBehaviour:
   baseAttack: 10
   attackPower: 0
   attackRate: 0.5
+  cameraTransform: {fileID: 931050730}
 --- !u!114 &1917778590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -703,7 +735,7 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard&Mouse
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 931050729}
