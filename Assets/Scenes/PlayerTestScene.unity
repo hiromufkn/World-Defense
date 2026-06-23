@@ -119,6 +119,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &637380841 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5765069901235042461, guid: b21e2efa7a3dab642a8c115c3ac8d554, type: 3}
+  m_PrefabInstance: {fileID: 6311641284048128505}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &915149157
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,6 +390,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4373017067771394932, guid: b21e2efa7a3dab642a8c115c3ac8d554, type: 3}
   m_PrefabInstance: {fileID: 6311641284048128505}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1917778594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637380841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52135219dfe62e34db2358207c26c773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
+  cameraTransform: {fileID: 931050730}
+  cameraController: {fileID: 1119288521}
+--- !u!114 &1917778595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 637380841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1fae604a5e26a43be1475e69d195f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
 --- !u!1001 &6311641284048128505
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -456,7 +487,13 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5765069901235042461, guid: b21e2efa7a3dab642a8c115c3ac8d554, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1917778595}
+    - targetCorrespondingSourceObject: {fileID: 5765069901235042461, guid: b21e2efa7a3dab642a8c115c3ac8d554, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1917778594}
   m_SourcePrefab: {fileID: 100100000, guid: b21e2efa7a3dab642a8c115c3ac8d554, type: 3}
 --- !u!1001 &8733453103839598216
 PrefabInstance:
