@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
@@ -19,12 +20,17 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+    }
+
+    void FixedUpdate()
+    {
         PlayerRun();
     }
 
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
+        player.ChangeStatus(Player.PlayerStatus.Run);
     }
 
     public void OnLook(InputValue value)
@@ -57,9 +63,7 @@ public class PlayerMove : MonoBehaviour
 
         if (moveDirection.magnitude > 0)
         {
-            player.ChangeStatus(Player.PlayerStatus.Run);
-
-            player.speed += player.acceleration * Time.deltaTime;
+            player.speed += player.acceleration * Time.fixedDeltaTime;
             player.speed = Mathf.Clamp(
                 player.speed,
                 0,
@@ -68,8 +72,10 @@ public class PlayerMove : MonoBehaviour
 
             transform.forward = moveDirection.normalized;
 
-            transform.Translate(
-                Vector3.forward * player.speed * Time.deltaTime
+            player.rb.linearVelocity = new Vector3(
+                moveDirection.normalized.x * player.speed,
+                player.rb.linearVelocity.y,
+                moveDirection.normalized.z * player.speed
             );
         }
     }
@@ -94,7 +100,7 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             player.isGrounded = true;
-            player.ChangeStatus(Player.PlayerStatus.Run);
+            player.ChangeStatus(Player.PlayerStatus.Idle);
         }
     }
 }
