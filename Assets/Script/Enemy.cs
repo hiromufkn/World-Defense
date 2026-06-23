@@ -5,6 +5,7 @@ public class Enemy : MonoBehaviour
 {
     public float Speed = 3f;
     public float moveRange = 3f;
+    public float Hp = 500f;
     public Transform Player;
     public Transform model;
 
@@ -34,6 +35,15 @@ public class Enemy : MonoBehaviour
 
     }
 
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Player"))
+        {
+            Debug.Log("“–‚½‚Á‚½");
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -48,7 +58,7 @@ public class Enemy : MonoBehaviour
 
             model.LookAt(targetPos);
 
-            Debug.Log(model.eulerAngles);
+            //Debug.Log(model.eulerAngles);
 
 
 
@@ -75,5 +85,15 @@ public class Enemy : MonoBehaviour
     //        direction = 1;
     //    }
 
+    }
+
+    public void TakeDamage(float  damage=1f)
+    {
+        Hp -= damage;
+
+        if (Hp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }
