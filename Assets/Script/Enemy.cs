@@ -22,8 +22,16 @@ public class Enemy : MonoBehaviour
         StartPos = transform.position;
 
         //spawner = FindFirstObjectByType<EnemySpawner>();
-
         direction = 1;
+
+        Player = GameObject.FindWithTag("Player").transform;
+
+        if (model == null)
+        {
+            //model = transform.GetChild(0);
+            model = transform.Find("Model");
+        }
+
     }
 
     // Update is called once per frame
