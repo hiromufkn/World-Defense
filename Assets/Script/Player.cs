@@ -51,22 +51,21 @@ public class Player : MonoBehaviour
     void Update()
     {
         attackPower = baseAttack + speed * attackRate;
-
-        CheckStatusChange();
     }
 
-    private void CheckStatusChange()
+    public void ChangeStatus(PlayerStatus newStatus)
     {
-        if (status != previousStatus)
-        {
-            Debug.Log(
-                "ó‘Ô•ÏX : " +
-                previousStatus +
-                " ¨ " +
-                status
-            );
+        // “¯‚¶ó‘Ô‚È‚ç‰½‚à‚µ‚È‚¢
+        if (status == newStatus) return;
 
-            previousStatus = status;
-        }
+        Debug.Log(
+            "ó‘Ô•ÏX : " +
+            status +
+            " ¨ " +
+            newStatus
+        );
+
+        previousStatus = status;
+        status = newStatus;
     }
 }

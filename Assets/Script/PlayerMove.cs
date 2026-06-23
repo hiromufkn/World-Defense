@@ -57,7 +57,7 @@ public class PlayerMove : MonoBehaviour
 
         if (moveDirection.magnitude > 0)
         {
-            player.status = Player.PlayerStatus.Run;
+            player.ChangeStatus(Player.PlayerStatus.Run);
 
             player.speed += player.acceleration * Time.deltaTime;
             player.speed = Mathf.Clamp(
@@ -78,7 +78,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (!player.isGrounded) return;
 
-        player.status = Player.PlayerStatus.Jump;
+        player.ChangeStatus(Player.PlayerStatus.Jump);
 
         player.rb.linearVelocity = new Vector3(
             player.rb.linearVelocity.x,
@@ -94,7 +94,7 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             player.isGrounded = true;
-            player.status = Player.PlayerStatus.Run;
+            player.ChangeStatus(Player.PlayerStatus.Run);
         }
     }
 }
