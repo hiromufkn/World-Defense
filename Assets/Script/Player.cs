@@ -55,8 +55,29 @@ public class Player : MonoBehaviour
 
     public void ChangeStatus(PlayerStatus newStatus)
     {
-        // “¯‚¶ó‘Ô‚È‚ç‰½‚à‚µ‚È‚¢
+        // “¯‚¶ó‘Ô‚È‚ç–³‹
         if (status == newStatus) return;
+
+        // €–S’†‚Í‰½‚àã‘‚«‚Å‚«‚È‚¢
+        if (status == PlayerStatus.Dead) return;
+
+        // ƒ_ƒ[ƒW’†‚à—Dæ
+        if (status == PlayerStatus.Damage &&
+            newStatus != PlayerStatus.Dead)
+            return;
+
+        // UŒ‚’†‚ÍRun‚Åã‘‚«‹Ö~
+        if ((status == PlayerStatus.Slide ||
+             status == PlayerStatus.Punch ||
+             status == PlayerStatus.Kick) &&
+             newStatus == PlayerStatus.Run)
+            return;
+
+        // Jump’†‚ÍRun‹Ö~
+        if ((status == PlayerStatus.Jump ||
+             status == PlayerStatus.Fall) &&
+             newStatus == PlayerStatus.Run)
+            return;
 
         Debug.Log(
             "ó‘Ô•ÏX : " +
