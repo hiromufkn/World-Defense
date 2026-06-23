@@ -4,11 +4,11 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private Player core;
+    private Player Player;
 
     void Start()
     {
-        core = GetComponent<Player>();
+        Player = GetComponent<Player>();
     }
 
     public void OnSlide()
@@ -18,39 +18,39 @@ public class PlayerAttack : MonoBehaviour
 
     public void Punch()
     {
-        core.status = Player.PlayerStatus.Punch;
+        Player.status = Player.PlayerStatus.Punch;
 
-        Debug.Log("パンチ ダメージ:" + core.attackPower);
+        Debug.Log("パンチ ダメージ:" + Player.attackPower);
     }
 
     public void Kick()
     {
-        core.status = Player.PlayerStatus.Kick;
+        Player.status = Player.PlayerStatus.Kick;
 
         Debug.Log(
             "キック ダメージ:" +
-            (core.attackPower * 1.5f)
+            (Player.attackPower * 1.5f)
         );
     }
 
     public void Slide()
     {
-        if (!core.isGrounded) return;
+        if (!Player.isGrounded) return;
 
-        core.status = Player.PlayerStatus.Slide;
+        Player.status = Player.PlayerStatus.Slide;
 
-        core.speed *= 0.8f;
+        Player.speed *= 0.8f;
 
-        core.rb.linearVelocity = new Vector3(
-            transform.forward.x * core.speed,
-            core.rb.linearVelocity.y,
-            transform.forward.z * core.speed
+        Player.rb.linearVelocity = new Vector3(
+            transform.forward.x * Player.speed,
+            Player.rb.linearVelocity.y,
+            transform.forward.z * Player.speed
         );
 
         transform.rotation *= Quaternion.Euler(0, 0, 45f);
 
         float slideDamage =
-            core.attackPower + core.speed;
+            Player.attackPower + Player.speed;
 
         StartCoroutine(ResetSlideRotation());
 
@@ -70,6 +70,6 @@ public class PlayerAttack : MonoBehaviour
             0
         );
 
-        core.status = Player.PlayerStatus.Run;
+        Player.status = Player.PlayerStatus.Run;
     }
 }
