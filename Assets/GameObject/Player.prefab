@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5969763642865783208}
   - component: {fileID: 3949231399565194899}
   - component: {fileID: 2758805843411495420}
+  - component: {fileID: 1193716024629138634}
+  - component: {fileID: 2779449508239861304}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -162,10 +164,11 @@ MonoBehaviour:
   acceleration: 5
   moveSpeed: 10
   jumpPower: 8
+  isGrounded: 1
   baseAttack: 10
   attackPower: 0
   attackRate: 0.5
-  cameraTransform: {fileID: 0}
+  rb: {fileID: 0}
 --- !u!114 &2758805843411495420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,3 +199,29 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &1193716024629138634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765069901235042461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d1fae604a5e26a43be1475e69d195f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerAttack
+--- !u!114 &2779449508239861304
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5765069901235042461}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52135219dfe62e34db2358207c26c773, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerMove
+  cameraTransform: {fileID: 0}
+  cameraController: {fileID: 0}
