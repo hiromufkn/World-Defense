@@ -7,12 +7,14 @@ public class PlayerMove : MonoBehaviour
 
     private Vector2 moveInput;
 
-    [SerializeField] private Transform cameraTransform;
-    [SerializeField] private CameraController cameraController;
+    public Transform cameraTransform;
+    public CameraController cameraController;
 
     void Start()
     {
         player = GetComponent<Player>();
+        cameraTransform = Camera.main.transform;
+        cameraController = Camera.main.GetComponent<CameraController>();
     }
 
     void Update()
