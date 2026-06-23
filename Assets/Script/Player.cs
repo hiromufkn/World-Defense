@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -75,6 +76,13 @@ public class Player : MonoBehaviour
     public void OnJump()
     {
         Jump();
+        Debug.Log("OnJump呼ばれた");
+    }
+
+    public void OnSlide()
+    {
+        Slide();
+        Debug.Log("OnSlide呼ばれた");
     }
 
     // 移動処理
@@ -157,9 +165,24 @@ public class Player : MonoBehaviour
 
     public void Slide()
     {
+        if (!isGrounded) return;
+
         status = PlayerStatus.Slide;
 
+        // スピード少し減少
+        speed *= 0.8f;
+
+        // 前方へ滑る
+        rb.linearVelocity = new Vector3(
+            transform.forward.x * speed,
+            rb.linearVelocity.y,
+            transform.forward.z * speed
+        );
+
+        // 今の向きを基準に45度傾ける（Z軸）
+        transform.rotation *= Quaternion.Euler(0, 0, 45f);
         float slideDamage = attackPower + speed;
+        StartCoroutine(ResetSlideRotation());
 
         Debug.Log("スライディング ダメージ:" + slideDamage);
     }
@@ -172,5 +195,17 @@ public class Player : MonoBehaviour
 
             status = PlayerStatus.Run;
         }
+    }
+    private IEnumerator ResetSlideRotation()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        transform.rotation = Quaternion.Euler(
+            0,
+            transform.eulerAngles.y,
+            0
+        );
+
+        status = PlayerStatus.Run;
     }
 }
