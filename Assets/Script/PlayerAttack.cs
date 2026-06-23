@@ -4,11 +4,11 @@ using System.Collections;
 
 public class PlayerAttack : MonoBehaviour
 {
-    private Player Player;
+    private Player player;
 
     void Start()
     {
-        Player = GetComponent<Player>();
+        player = GetComponent<Player>();
     }
 
     public void OnSlide()
@@ -18,39 +18,39 @@ public class PlayerAttack : MonoBehaviour
 
     public void Punch()
     {
-        Player.status = Player.PlayerStatus.Punch;
+        player.ChangeStatus(Player.PlayerStatus.Punch);
 
-        Debug.Log("パンチ ダメージ:" + Player.attackPower);
+        Debug.Log("パンチ ダメージ:" + player.attackPower);
     }
 
     public void Kick()
     {
-        Player.status = Player.PlayerStatus.Kick;
+        player.ChangeStatus(Player.PlayerStatus.Kick);
 
         Debug.Log(
             "キック ダメージ:" +
-            (Player.attackPower * 1.5f)
+            (player.attackPower * 1.5f)
         );
     }
 
     public void Slide()
     {
-        if (!Player.isGrounded) return;
+        if (!player.isGrounded) return;
 
-        Player.status = Player.PlayerStatus.Slide;
+        player.ChangeStatus(Player.PlayerStatus.Slide);
 
-        Player.speed *= 0.8f;
+        player.speed *= 0.8f;
 
-        Player.rb.linearVelocity = new Vector3(
-            transform.forward.x * Player.speed,
-            Player.rb.linearVelocity.y,
-            transform.forward.z * Player.speed
+        player.rb.linearVelocity = new Vector3(
+            transform.forward.x * player.speed,
+            player.rb.linearVelocity.y,
+            transform.forward.z * player.speed
         );
 
-        transform.rotation *= Quaternion.Euler(0, 0, 45f);
+        transform.rotation *= Quaternion.Euler(-45, 0, 0f);
 
         float slideDamage =
-            Player.attackPower + Player.speed;
+            player.attackPower + player.speed;
 
         StartCoroutine(ResetSlideRotation());
 
@@ -70,6 +70,6 @@ public class PlayerAttack : MonoBehaviour
             0
         );
 
-        Player.status = Player.PlayerStatus.Run;
+        player.status = Player.PlayerStatus.Run;
     }
 }
