@@ -1,5 +1,98 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1361666210755895372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7773930994227907004}
+  m_Layer: 0
+  m_Name: firePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7773930994227907004
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1361666210755895372}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1536826590176866}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1393031823734949934
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5796428892224377634}
+  m_Layer: 0
+  m_Name: firePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5796428892224377634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393031823734949934}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.07, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6777541827573125380}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &4644072457970867945
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1889433680324469923}
+  m_Layer: 0
+  m_Name: firePoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1889433680324469923
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4644072457970867945}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.08, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7870005246917391736}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6046704640095405483
 GameObject:
   m_ObjectHideFlags: 0
@@ -118,7 +211,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6383400248017034018, guid: ab39f97befcc5a844bc016bb3e642496, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1889433680324469923}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 2980474220712747679, guid: ab39f97befcc5a844bc016bb3e642496, type: 3}
       insertIndex: -1
@@ -152,6 +248,8 @@ MonoBehaviour:
   Hp: 500
   Player: {fileID: 0}
   model: {fileID: 7870005246917391736}
+  firePoint: {fileID: 1889433680324469923}
+  attackRange: 45
 --- !u!135 &4292904958074943682
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -358,7 +456,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 7773930994227907004}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 3066471997038087000, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
       insertIndex: -1
@@ -397,6 +498,8 @@ MonoBehaviour:
   Hp: 500
   Player: {fileID: 0}
   model: {fileID: 1536826590176866}
+  firePoint: {fileID: 7773930994227907004}
+  attackRange: 45
 --- !u!135 &4958649597835915220
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -598,7 +701,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4316728274283434182, guid: 20bd19a9fa161d94b9f7a59f71f96e2c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5796428892224377634}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4865687445414284598, guid: 20bd19a9fa161d94b9f7a59f71f96e2c, type: 3}
       insertIndex: -1
@@ -632,6 +738,8 @@ MonoBehaviour:
   Hp: 500
   Player: {fileID: 0}
   model: {fileID: 6777541827573125380}
+  firePoint: {fileID: 5796428892224377634}
+  attackRange: 45
 --- !u!135 &7162579875028460836
 SphereCollider:
   m_ObjectHideFlags: 0
