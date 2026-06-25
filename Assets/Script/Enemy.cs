@@ -12,13 +12,19 @@ public class Enemy : MonoBehaviour
     public Transform firePoint;
     Vector3 Distance;
     public float attackRange = 10f;
-
+    public float fireInterval = 2f;
+    public float laserTime = 0.5f;
+    
     //private EnemySpawner spawner;
     //public GameObject nextEnemy;
 
     private int direction = 1;
     private Vector3 StartPos;
     private LineRenderer line;
+    private Vector3 targetPosition;
+    private bool isFiring = false;
+    private float timer;
+    private float laserTimer;
 
 
 
@@ -58,7 +64,7 @@ public class Enemy : MonoBehaviour
     void FeirLaser()
     {
         line.SetPosition(0, firePoint.position);
-        line.SetPosition(1, Player.position);
+        line.SetPosition(1, targetPosition);
     }
     void Update()
     {
@@ -71,12 +77,37 @@ public class Enemy : MonoBehaviour
 
             bool isAttacking = distance <= attackRange;
 
+            if(!isAttacking)
+            {
+                line.enabled = false;
+                return;
+            }
+
+            timer += Time.deltaTime;
+
+            if(!isFiring&&timer>=fireInterval)
+            {
+                isFiring = true;
+                laserTimer = laserTime;
+                targetPosition = Player.position;
+                FeirLaser();
+            }
+
+
             line.enabled = isAttacking;
 
-            if (isAttacking)
+            if (isFiring)
             {
+                laserTimer -= Time.deltaTime;
+
                 FeirLaser();
                 LaserHitCheck();
+
+                if(laserTimer<=0)
+                {
+                    isFiring = false;
+                    timer = 0f;
+                }
             }
 
             Vector3 targetPos = Player.position;
@@ -126,7 +157,7 @@ public class Enemy : MonoBehaviour
     void LaserHitCheck()
     {
         Vector3 start = firePoint.position;
-        Vector3 end = Player.position;
+        Vector3 end = targetPosition;
 
         Vector3 dir = (end - start).normalized;
         float distance = Vector3.Distance(start, end);
