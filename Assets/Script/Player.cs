@@ -36,6 +36,7 @@ public class Player : MonoBehaviour
     public float baseAttack = 10f;
     public float attackPower;
     public float attackRate = 0.5f;
+    public bool isAttack = false;
 
     [HideInInspector] public Rigidbody rb;
 
