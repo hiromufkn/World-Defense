@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float Hp = 500f;
     public Transform Player;
     public Transform model;
+    public Transform firePoint;
 
     //private EnemySpawner spawner;
     //public GameObject nextEnemy;
@@ -53,7 +54,7 @@ public class Enemy : MonoBehaviour
 
     void FeirLaser()
     {
-        line.SetPosition(0,model.position);
+        line.SetPosition(0,firePoint.position);
         line.SetPosition(1, Player.position);
     }
     void Update()
