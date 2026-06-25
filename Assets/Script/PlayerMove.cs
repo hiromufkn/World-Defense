@@ -45,9 +45,11 @@ public class PlayerMove : MonoBehaviour
 
     public void PlayerRun()
     {
-        player.isAttack = false;
+        if (player.status == Player.PlayerStatus.Slide)
+        {
+            return;
+        }
 
-        player.ChangeStatus(Player.PlayerStatus.Run);
         float horizontal = moveInput.x;
         float vertical = moveInput.y;
 
@@ -64,23 +66,30 @@ public class PlayerMove : MonoBehaviour
             cameraForward * vertical +
             cameraRight * horizontal;
 
-        if (moveDirection.magnitude > 0)
+        // “ü—Í‚ª‚È‚¢‚È‚çIdle
+        if (moveDirection.magnitude <= 0)
         {
-            player.speed += player.acceleration * Time.fixedDeltaTime;
-            player.speed = Mathf.Clamp(
-                player.speed,
-                0,
-                player.maxSpeed
-            );
-
-            transform.forward = moveDirection.normalized;
-
-            player.rb.linearVelocity = new Vector3(
-                moveDirection.normalized.x * player.speed,
-                player.rb.linearVelocity.y,
-                moveDirection.normalized.z * player.speed
-            );
+            player.ChangeStatus(Player.PlayerStatus.Idle);
+            return;
         }
+
+        // “ü—Í‚ª‚ ‚é‚È‚çRun
+        player.ChangeStatus(Player.PlayerStatus.Run);
+
+        player.speed += player.acceleration * Time.fixedDeltaTime;
+        player.speed = Mathf.Clamp(
+            player.speed,
+            0,
+            player.maxSpeed
+        );
+
+        transform.forward = moveDirection.normalized;
+
+        player.rb.linearVelocity = new Vector3(
+            moveDirection.normalized.x * player.speed,
+            player.rb.linearVelocity.y,
+            moveDirection.normalized.z * player.speed
+        );
     }
 
     public void Jump()
