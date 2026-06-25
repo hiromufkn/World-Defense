@@ -35,14 +35,14 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
-        {
-            Debug.Log("“–‚½‚Á‚½");
-            Destroy(gameObject);
-        }
-    }
+    //void OnTriggerEnter(Collider other)
+    //{
+    //    if (other.CompareTag("Player"))
+    //    {
+    //        Debug.Log("“–‚½‚Á‚½");
+    //        Destroy(gameObject);
+    //    }
+    //}
 
     // Update is called once per frame
     void Update()
