@@ -45,6 +45,7 @@ public class PlayerMove : MonoBehaviour
 
     public void PlayerRun()
     {
+        player.ChangeStatus(Player.PlayerStatus.Run);
         float horizontal = moveInput.x;
         float vertical = moveInput.y;
 

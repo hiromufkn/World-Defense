@@ -6,6 +6,8 @@ public class PlayerAttack : MonoBehaviour
 {
     private Player player;
 
+    private float SlideMAX = -45;
+
     void Start()
     {
         player = GetComponent<Player>();
@@ -47,7 +49,9 @@ public class PlayerAttack : MonoBehaviour
             transform.forward.z * player.speed
         );
 
-        transform.rotation *= Quaternion.Euler(-45, 0, 0f);
+            transform.rotation = Quaternion.Euler(SlideMAX, transform.eulerAngles.y, 0f);
+        
+       
 
         float slideDamage =
             player.attackPower + player.speed;
