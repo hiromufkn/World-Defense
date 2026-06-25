@@ -406,6 +406,10 @@ PrefabInstance:
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 5969763642865783208, guid: b21e2efa7a3dab642a8c115c3ac8d554, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5969763642865783208, guid: b21e2efa7a3dab642a8c115c3ac8d554, type: 3}
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}

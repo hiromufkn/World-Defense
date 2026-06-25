@@ -66,31 +66,60 @@ public class PlayerMove : MonoBehaviour
             cameraForward * vertical +
             cameraRight * horizontal;
 
-        // 入力がないならIdle
-        if (moveDirection.magnitude <= 0)
+        if (moveDirection.magnitude > 0)
         {
-            player.ChangeStatus(Player.PlayerStatus.Idle);
-            return;
+            float angle = Vector3.Angle(
+                transform.forward,
+                moveDirection.normalized
+            );
+
+            // 真逆入力だけブレーキ
+            if (angle > 150f && player.speed > 0)
+            {
+                player.speed -=
+                    player.brakePower * Time.fixedDeltaTime;
+            }
+            else
+            {
+                // 向き変更は即許可
+                transform.forward =
+                    moveDirection.normalized;
+
+                player.speed +=
+                    player.acceleration * Time.fixedDeltaTime;
+            }
+
+            player.ChangeStatus(Player.PlayerStatus.Run);
+        }
+        else
+        {
+            player.speed -=
+                player.deceleration * Time.fixedDeltaTime;
+
+            if (player.speed <= 0)
+            {
+                player.speed = 0;
+                player.ChangeStatus(Player.PlayerStatus.Idle);
+            }
         }
 
-        // 入力があるならRun
-        player.ChangeStatus(Player.PlayerStatus.Run);
-
-        player.speed += player.acceleration * Time.fixedDeltaTime;
         player.speed = Mathf.Clamp(
             player.speed,
             0,
             player.maxSpeed
         );
 
-        transform.forward = moveDirection.normalized;
-
-        player.rb.linearVelocity = new Vector3(
-            moveDirection.normalized.x * player.speed,
-            player.rb.linearVelocity.y,
-            moveDirection.normalized.z * player.speed
-        );
+        if (player.speed > 0)
+        {
+            player.rb.linearVelocity = new Vector3(
+                transform.forward.x * player.speed,
+                player.rb.linearVelocity.y,
+                transform.forward.z * player.speed
+            );
+        }
     }
+
+
 
     public void Jump()
     {
@@ -113,6 +142,22 @@ public class PlayerMove : MonoBehaviour
         {
             player.isGrounded = true;
             player.ChangeStatus(Player.PlayerStatus.Idle);
+        }
+    }
+    private void OnCollisionStay(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            Vector3 normal = collision.contacts[0].normal;
+
+            Vector3 velocity = player.rb.linearVelocity;
+
+            velocity = Vector3.ProjectOnPlane(
+                velocity,
+                normal
+            );
+
+            player.rb.linearVelocity = velocity;
         }
     }
 }
