@@ -10,6 +10,8 @@ public class PlayerAttack : MonoBehaviour
 
     private float SlideMAX = -45;
 
+    public float slideDamage;
+
     void Start()
     {
         player = GetComponent<Player>();
@@ -55,13 +57,8 @@ public class PlayerAttack : MonoBehaviour
         
        
 
-        float slideDamage =
+        slideDamage =
             player.attackPower + player.speed;
-
-        if (player.isAttack)
-        {
-            enemy.TakeDamage(slideDamage);
-        }
 
         StartCoroutine(ResetSlideRotation());
 
@@ -85,12 +82,19 @@ public class PlayerAttack : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-            if(player.status == Player.PlayerStatus.Slide)
+        if (player.status == Player.PlayerStatus.Slide)
+        {
+            if (collision.gameObject.CompareTag("Enemy"))
             {
-                if (collision.gameObject.CompareTag("Enemy"))
+                Enemy enemy =
+                    collision.gameObject.GetComponent<Enemy>();
+
+                if (enemy != null)
                 {
-                    player.isAttack = true;
+                    Debug.Log("Enemyê⁄êG");
+                    enemy.TakeDamage(slideDamage);
                 }
             }
+        }
     }
 }
