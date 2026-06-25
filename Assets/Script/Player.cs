@@ -109,7 +109,7 @@ public class Player : MonoBehaviour
 
         if (playerHp <= 0)
         {
-            Destroy(gameObject);
+            Debug.Log("Ž€–S");
         }
     }
 }
