@@ -686,6 +686,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   model: {fileID: 4431084561937826}
   firePoint: {fileID: 1863786690}
+  attackRange: 45
 --- !u!135 &4431084561937830
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -861,6 +862,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   model: {fileID: 4431084951305002}
   firePoint: {fileID: 293943277}
+  attackRange: 45
 --- !u!120 &4431084951305012
 LineRenderer:
   serializedVersion: 3
@@ -994,6 +996,7 @@ MonoBehaviour:
   Player: {fileID: 0}
   model: {fileID: 4431085216340413}
   firePoint: {fileID: 678156876}
+  attackRange: 45
 --- !u!135 &4431085216340417
 SphereCollider:
   m_ObjectHideFlags: 0
