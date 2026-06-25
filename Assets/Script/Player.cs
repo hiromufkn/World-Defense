@@ -80,6 +80,14 @@ public class Player : MonoBehaviour
              newStatus == PlayerStatus.Run)
             return;
 
+        // UŒ‚’†‚ÍIdle‚Å‚àã‘‚«‹Ö~
+        if ((status == PlayerStatus.Slide ||
+             status == PlayerStatus.Punch ||
+             status == PlayerStatus.Kick) &&
+            (newStatus == PlayerStatus.Run ||
+             newStatus == PlayerStatus.Idle))
+            return;
+
         Debug.Log(
             "ó‘Ô•ÏX : " +
             status +

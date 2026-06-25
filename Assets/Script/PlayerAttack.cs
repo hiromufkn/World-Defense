@@ -6,8 +6,6 @@ public class PlayerAttack : MonoBehaviour
 {
     private Player player;
 
-    private Enemy enemy;
-
     private float SlideMAX = -45;
 
     public float slideDamage;
@@ -70,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator ResetSlideRotation()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.5f);
 
         transform.rotation = Quaternion.Euler(
             0,
@@ -79,8 +77,11 @@ public class PlayerAttack : MonoBehaviour
         );
 
         player.status = Player.PlayerStatus.Run;
+        Debug.Log(
+            "èÛë‘ïœçX : Slide Å® RUN"
+        );
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
         if (player.status == Player.PlayerStatus.Slide)
         {
