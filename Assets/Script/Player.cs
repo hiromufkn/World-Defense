@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     public float speed = 0f;
     public float maxSpeed = 30f;
     public float acceleration = 5f;
+    public float deceleration = 8f;
+    public float brakePower = 35f;
 
     [Header("Move")]
     public float moveSpeed = 10f;
@@ -37,6 +39,9 @@ public class Player : MonoBehaviour
     public float attackPower;
     public float attackRate = 0.5f;
     public bool isAttack = false;
+
+    [Header("Status")]
+    public float playerHp = 100f;
 
     [HideInInspector] public Rigidbody rb;
 
@@ -97,5 +102,14 @@ public class Player : MonoBehaviour
 
         previousStatus = status;
         status = newStatus;
+    }
+    public void TakeDamage(float damage = 1f)
+    {
+        playerHp -= damage;
+
+        if (playerHp <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

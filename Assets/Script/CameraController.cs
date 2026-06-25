@@ -19,8 +19,8 @@ public class CameraController : MonoBehaviour
 
     private void LateUpdate()
     {
-        yaw += lookInput.x * mouseSensitivity;
-        pitch -= lookInput.y * mouseSensitivity;
+        yaw += lookInput.x * mouseSensitivity * Time.deltaTime; ;
+        pitch -= lookInput.y * mouseSensitivity * Time.deltaTime; ;
 
         pitch = Mathf.Clamp(pitch, -30f, 60f);
 
