@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
 
     private int direction=1;
     private Vector3 StartPos;
+    private LineRenderer line;
 
 
 
@@ -33,6 +34,10 @@ public class Enemy : MonoBehaviour
             model = transform.Find("Model");
         }
 
+        line = GetComponent<LineRenderer>();
+
+        line.positionCount = 2;
+
     }
 
     //void OnTriggerEnter(Collider other)
@@ -45,13 +50,19 @@ public class Enemy : MonoBehaviour
     //}
 
     // Update is called once per frame
+
+    void FeirLaser()
+    {
+        line.SetPosition(0,model.position);
+        line.SetPosition(1, Player.position);
+    }
     void Update()
     {
    
 
         if (Player != null)
         {
-
+             FeirLaser();
 
             Vector3 targetPos = Player.position;
             targetPos.y = model.position.y;
