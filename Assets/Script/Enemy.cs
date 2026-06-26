@@ -1,3 +1,4 @@
+using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
@@ -14,6 +15,7 @@ public class Enemy : MonoBehaviour
     public float attackRange = 10f;
     public float fireInterval = 2f;
     public float laserTime = 0.5f;
+    public float InvincibleTime = 1f;
     
     //private EnemySpawner spawner;
     //public GameObject nextEnemy;
@@ -25,6 +27,8 @@ public class Enemy : MonoBehaviour
     private bool isFiring = false;
     private float timer;
     private float laserTimer;
+    private bool isInvincible = false;
+    private Renderer[] renderers; 
 
 
 
@@ -49,6 +53,8 @@ public class Enemy : MonoBehaviour
         line.positionCount = 2;
 
         line.enabled = false;
+
+        renderers = GetComponentsInChildren<Renderer>();
 
     }
 
@@ -149,12 +155,20 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage = 1f)
     {
+        if(isInvincible)
+        {
+            return;
+        }
+
         Hp -= damage;
 
         if (Hp <= 0)
         {
             Destroy(gameObject);
+            return;
         }
+
+        StartCoroutine(Invincible());
     }
 
     void LaserHitCheck()
@@ -172,5 +186,37 @@ public class Enemy : MonoBehaviour
                 hit.transform.GetComponent<Player>().TakeDamage(10f * Time.deltaTime);
             }
         }
+    }
+
+    System.Collections.IEnumerator Invincible()
+    {
+        isInvincible = true;
+
+        float timer = 0f;
+
+        while(timer<InvincibleTime)
+        {
+            foreach(Renderer r in renderers)
+            {
+                r.enabled = false;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+
+            foreach(Renderer r in renderers)
+            {
+                r.enabled = true;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+            timer += 0.2f;
+        }
+
+        foreach(Renderer r in renderers)
+        {
+            r.enabled = true;
+        }
+
+        isInvincible = false;
     }
 }
