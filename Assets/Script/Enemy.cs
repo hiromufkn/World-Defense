@@ -48,6 +48,8 @@ public class Enemy : MonoBehaviour
 
         line.positionCount = 2;
 
+        line.enabled = false;
+
     }
 
     //void OnTriggerEnter(Collider other)
@@ -90,11 +92,11 @@ public class Enemy : MonoBehaviour
                 isFiring = true;
                 laserTimer = laserTime;
                 targetPosition = Player.position;
+                line.enabled = true;
                 FeirLaser();
             }
 
 
-            line.enabled = isAttacking;
 
             if (isFiring)
             {
@@ -107,6 +109,7 @@ public class Enemy : MonoBehaviour
                 {
                     isFiring = false;
                     timer = 0f;
+                    line.enabled = false;
                 }
             }
 
