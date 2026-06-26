@@ -92,12 +92,12 @@ public class Player : MonoBehaviour
             return;
 
         // UŒ‚’†‚ÍIdle‚Å‚àã‘‚«‹Ö~
-        if ((status == PlayerStatus.Slide ||
-             status == PlayerStatus.Punch ||
-             status == PlayerStatus.Kick) &&
-            (newStatus == PlayerStatus.Run ||
-             newStatus == PlayerStatus.Idle))
-            return;
+        // Slide’†‚ÍJumpˆÈŠO‹Ö~
+        if (status == PlayerStatus.Slide)
+        {
+            if (newStatus != PlayerStatus.Jump)
+                return;
+        }
 
         Debug.Log(
             "ó‘Ô•ÏX : " +
