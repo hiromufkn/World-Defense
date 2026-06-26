@@ -232,22 +232,34 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            isWallRunning = false;
+            if (player.status == Player.PlayerStatus.WallRun)
+                return;
 
-            transform.rotation = Quaternion.Euler(
-                0,
-                transform.eulerAngles.y,
-                0
-            );
+            if (player.status != Player.PlayerStatus.Slide)
+            {
+                transform.rotation = Quaternion.Euler(
+                    0,
+                    transform.eulerAngles.y,
+                    0
+                );
+            }
 
             player.isGrounded = true;
-            player.ChangeStatus(Player.PlayerStatus.Idle);
+
+            // Slide’†‚ÍIdle‚É‚µ‚È‚¢
+            if (player.status != Player.PlayerStatus.Slide)
+            {
+                player.ChangeStatus(Player.PlayerStatus.Idle);
+            }
         }
     }
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
+            if (player.status == Player.PlayerStatus.Slide)
+                return;
+
             if (player.speed >= player.midSpeed)
             {
                 wallNormal = collision.contacts[0].normal;
