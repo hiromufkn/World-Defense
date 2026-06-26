@@ -11,6 +11,10 @@ public class PlayerMove : MonoBehaviour
     public Transform cameraTransform;
     public CameraController cameraController;
 
+    // 壁ダッシュ用
+    private bool isWallRunning = false;
+    private Vector3 wallNormal;
+
     void Start()
     {
         player = GetComponent<Player>();
@@ -45,7 +49,8 @@ public class PlayerMove : MonoBehaviour
 
     public void PlayerRun()
     {
-        if (player.status == Player.PlayerStatus.Slide)
+        if (player.status == Player.PlayerStatus.Slide ||
+    player.status == Player.PlayerStatus.WallRun)
         {
             return;
         }
@@ -119,10 +124,83 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    // 壁ダッシュ
+    private void StartWallRun()
+    {
+        isWallRunning = true;
+
+        player.ChangeStatus(Player.PlayerStatus.WallRun);
+
+        // 壁に沿う方向
+        Vector3 wallForward =
+            Vector3.Cross(Vector3.up, wallNormal);
+
+        // 今の向きと逆なら反転
+        if (Vector3.Dot(wallForward, transform.forward) < 0)
+        {
+            wallForward = -wallForward;
+        }
+
+        // 向きを壁走り方向へ
+        transform.forward = wallForward;
+
+        // 左右どちらの壁かで傾きを変える
+        float tilt = Vector3.Dot(transform.right, wallNormal) > 0
+            ? -45f
+            : 45f;
+
+        transform.rotation = Quaternion.Euler(
+            transform.eulerAngles.x,
+            transform.eulerAngles.y,
+            tilt
+        );
+
+        if (player.speed >= player.highSpeed)
+        {
+            player.rb.linearVelocity =
+                wallForward * player.speed;
+        }
+        else
+        {
+            player.rb.linearVelocity =
+                wallForward * player.speed +
+                Vector3.down * 2f;
+        }
+    }
+
+    private void MaintainWallRun()
+    {
+        Vector3 wallForward =
+            Vector3.Cross(Vector3.up, wallNormal);
+
+        if (Vector3.Dot(wallForward, transform.forward) < 0)
+        {
+            wallForward = -wallForward;
+        }
+
+        if (player.speed >= player.highSpeed)
+        {
+            player.rb.linearVelocity =
+                wallForward * player.speed;
+        }
+        else
+        {
+            player.rb.linearVelocity =
+                wallForward * player.speed +
+                Vector3.down * 2f;
+        }
+    }
+
 
 
     public void Jump()
     {
+        if (isWallRunning)
+        {
+            WallJump();
+            return;
+        }
+
         if (!player.isGrounded) return;
 
         player.ChangeStatus(Player.PlayerStatus.Jump);
@@ -136,10 +214,32 @@ public class PlayerMove : MonoBehaviour
         player.isGrounded = false;
     }
 
+    // 壁からの飛び移り
+    private void WallJump()
+    {
+        isWallRunning = false;
+
+        player.ChangeStatus(Player.PlayerStatus.Jump);
+
+        Vector3 jumpDir =
+            wallNormal + Vector3.up;
+
+        player.rb.linearVelocity =
+            jumpDir.normalized * player.jumpPower;
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
+            isWallRunning = false;
+
+            transform.rotation = Quaternion.Euler(
+                0,
+                transform.eulerAngles.y,
+                0
+            );
+
             player.isGrounded = true;
             player.ChangeStatus(Player.PlayerStatus.Idle);
         }
@@ -148,16 +248,30 @@ public class PlayerMove : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
-            Vector3 normal = collision.contacts[0].normal;
+            if (player.speed >= player.midSpeed)
+            {
+                wallNormal = collision.contacts[0].normal;
 
-            Vector3 velocity = player.rb.linearVelocity;
+                if (!isWallRunning)
+                {
+                    StartWallRun();
+                }
 
-            velocity = Vector3.ProjectOnPlane(
-                velocity,
-                normal
+                MaintainWallRun();
+            }
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            isWallRunning = false;
+
+            transform.rotation = Quaternion.Euler(
+                0,
+                transform.eulerAngles.y,
+                0
             );
-
-            player.rb.linearVelocity = velocity;
         }
     }
 }
