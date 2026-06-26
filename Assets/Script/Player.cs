@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     {
         Idle,
         Run,
+        WallRun,
         Jump,
         Fall,
         Punch,
@@ -26,6 +27,11 @@ public class Player : MonoBehaviour
     public float acceleration = 5f;
     public float deceleration = 8f;
     public float brakePower = 35f;
+
+    [Header("Speed Level")]
+    public float lowSpeed = 10f;
+    public float midSpeed = 20f;
+    public float highSpeed = 30f;
 
     [Header("Move")]
     public float moveSpeed = 10f;
@@ -111,5 +117,16 @@ public class Player : MonoBehaviour
         {
             Debug.Log("死亡");
         }
+    }
+
+    // スピードの現在の段階
+    public bool IsMidSpeed()
+    {
+        return speed >= midSpeed;
+    }
+
+    public bool IsHighSpeed()
+    {
+        return speed >= highSpeed;
     }
 }
