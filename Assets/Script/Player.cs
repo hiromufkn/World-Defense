@@ -47,16 +47,18 @@ public class Player : MonoBehaviour
     public bool isAttack = false;
 
     [Header("Status")]
-    public float playerHp = 100f;
+    public float maxHp = 100f;
+    public float playerHp;
 
     [HideInInspector] public Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+
+        playerHp = maxHp;
         attackPower = baseAttack;
 
-        // ‰Šúó‘Ô•Û‘¶
         previousStatus = status;
     }
 
