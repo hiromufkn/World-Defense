@@ -1,29 +1,24 @@
 using UnityEngine;
-using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
     private Player player;
-
     private Vector2 moveInput;
 
     public Transform cameraTransform;
     public CameraController cameraController;
 
-    // 壁ダッシュ用
     private bool isWallRunning = false;
     private Vector3 wallNormal;
 
     void Start()
     {
         player = GetComponent<Player>();
-        cameraTransform = Camera.main.transform;
-        cameraController = Camera.main.GetComponent<CameraController>();
-    }
 
-    void Update()
-    {
+        cameraTransform = Camera.main.transform;
+        cameraController =
+            Camera.main.GetComponent<CameraController>();
     }
 
     void FixedUpdate()
@@ -34,7 +29,6 @@ public class PlayerMove : MonoBehaviour
     public void OnMove(InputValue value)
     {
         moveInput = value.Get<Vector2>();
-        player.ChangeStatus(Player.PlayerStatus.Run);
     }
 
     public void OnLook(InputValue value)
@@ -49,8 +43,9 @@ public class PlayerMove : MonoBehaviour
 
     public void PlayerRun()
     {
+        // SlideとWallRun中は通常移動停止
         if (player.status == Player.PlayerStatus.Slide ||
-    player.status == Player.PlayerStatus.WallRun)
+            player.status == Player.PlayerStatus.WallRun)
         {
             return;
         }
@@ -71,6 +66,7 @@ public class PlayerMove : MonoBehaviour
             cameraForward * vertical +
             cameraRight * horizontal;
 
+        // 入力あり
         if (moveDirection.magnitude > 0)
         {
             float angle = Vector3.Angle(
@@ -78,33 +74,41 @@ public class PlayerMove : MonoBehaviour
                 moveDirection.normalized
             );
 
-            // 真逆入力だけブレーキ
+            // 真逆だけブレーキ
             if (angle > 150f && player.speed > 0)
             {
                 player.speed -=
-                    player.brakePower * Time.fixedDeltaTime;
+                    player.brakePower *
+                    Time.fixedDeltaTime;
             }
             else
             {
-                // 向き変更は即許可
                 transform.forward =
                     moveDirection.normalized;
 
                 player.speed +=
-                    player.acceleration * Time.fixedDeltaTime;
+                    player.acceleration *
+                    Time.fixedDeltaTime;
             }
 
-            player.ChangeStatus(Player.PlayerStatus.Run);
+            player.ChangeStatus(
+                Player.PlayerStatus.Run
+            );
         }
         else
         {
+            // 減速
             player.speed -=
-                player.deceleration * Time.fixedDeltaTime;
+                player.deceleration *
+                Time.fixedDeltaTime;
 
             if (player.speed <= 0)
             {
                 player.speed = 0;
-                player.ChangeStatus(Player.PlayerStatus.Idle);
+
+                player.ChangeStatus(
+                    Player.PlayerStatus.Idle
+                );
             }
         }
 
@@ -114,85 +118,30 @@ public class PlayerMove : MonoBehaviour
             player.maxSpeed
         );
 
+        // 実移動
         if (player.speed > 0)
         {
-            player.rb.linearVelocity = new Vector3(
-                transform.forward.x * player.speed,
-                player.rb.linearVelocity.y,
-                transform.forward.z * player.speed
-            );
+            float yVelocity =
+                player.rb.linearVelocity.y;
+
+            // 地面にいるなら軽く押し付ける
+            if (player.isGrounded)
+            {
+                yVelocity = -2f;
+            }
+
+            player.rb.linearVelocity =
+                new Vector3(
+                    transform.forward.x *
+                    player.speed,
+                    yVelocity,
+                    transform.forward.z *
+                    player.speed
+                );
         }
     }
 
-    // 壁ダッシュ
-    private void StartWallRun()
-    {
-        isWallRunning = true;
-
-        player.ChangeStatus(Player.PlayerStatus.WallRun);
-
-        // 壁に沿う方向
-        Vector3 wallForward =
-            Vector3.Cross(Vector3.up, wallNormal);
-
-        // 今の向きと逆なら反転
-        if (Vector3.Dot(wallForward, transform.forward) < 0)
-        {
-            wallForward = -wallForward;
-        }
-
-        // 向きを壁走り方向へ
-        transform.forward = wallForward;
-
-        // 左右どちらの壁かで傾きを変える
-        float tilt = Vector3.Dot(transform.right, wallNormal) > 0
-            ? -45f
-            : 45f;
-
-        transform.rotation = Quaternion.Euler(
-            transform.eulerAngles.x,
-            transform.eulerAngles.y,
-            tilt
-        );
-
-        if (player.speed >= player.highSpeed)
-        {
-            player.rb.linearVelocity =
-                wallForward * player.speed;
-        }
-        else
-        {
-            player.rb.linearVelocity =
-                wallForward * player.speed +
-                Vector3.down * 2f;
-        }
-    }
-
-    private void MaintainWallRun()
-    {
-        Vector3 wallForward =
-            Vector3.Cross(Vector3.up, wallNormal);
-
-        if (Vector3.Dot(wallForward, transform.forward) < 0)
-        {
-            wallForward = -wallForward;
-        }
-
-        if (player.speed >= player.highSpeed)
-        {
-            player.rb.linearVelocity =
-                wallForward * player.speed;
-        }
-        else
-        {
-            player.rb.linearVelocity =
-                wallForward * player.speed +
-                Vector3.down * 2f;
-        }
-    }
-
-
-
+    // ジャンプ
     public void Jump()
     {
         if (isWallRunning)
@@ -203,56 +152,139 @@ public class PlayerMove : MonoBehaviour
 
         if (!player.isGrounded) return;
 
-        player.ChangeStatus(Player.PlayerStatus.Jump);
-
-        player.rb.linearVelocity = new Vector3(
-            player.rb.linearVelocity.x,
-            player.jumpPower,
-            player.rb.linearVelocity.z
+        player.ChangeStatus(
+            Player.PlayerStatus.Jump
         );
+
+        player.rb.linearVelocity =
+            new Vector3(
+                player.rb.linearVelocity.x,
+                player.jumpPower,
+                player.rb.linearVelocity.z
+            );
 
         player.isGrounded = false;
     }
 
-    // 壁からの飛び移り
+    // 壁ジャンプ
     private void WallJump()
     {
         isWallRunning = false;
 
-        player.ChangeStatus(Player.PlayerStatus.Jump);
+        player.ChangeStatus(
+            Player.PlayerStatus.Jump
+        );
 
         Vector3 jumpDir =
             wallNormal + Vector3.up;
 
         player.rb.linearVelocity =
-            jumpDir.normalized * player.jumpPower;
+            jumpDir.normalized *
+            player.jumpPower;
     }
 
+    // 壁走り開始
+    private void StartWallRun()
+    {
+        isWallRunning = true;
+
+        player.ChangeStatus(
+            Player.PlayerStatus.WallRun
+        );
+
+        Vector3 wallForward =
+            Vector3.Cross(
+                Vector3.up,
+                wallNormal
+            );
+
+        if (Vector3.Dot(
+            wallForward,
+            transform.forward) < 0)
+        {
+            wallForward = -wallForward;
+        }
+
+        transform.forward = wallForward;
+
+        float tilt =
+            Vector3.Dot(
+                transform.right,
+                wallNormal) > 0
+            ? -45f
+            : 45f;
+
+        transform.rotation =
+            Quaternion.Euler(
+                0,
+                transform.eulerAngles.y,
+                tilt
+            );
+    }
+
+    // 壁走り維持
+    private void MaintainWallRun()
+    {
+        Vector3 wallForward =
+            Vector3.Cross(
+                Vector3.up,
+                wallNormal
+            );
+
+        if (Vector3.Dot(
+            wallForward,
+            transform.forward) < 0)
+        {
+            wallForward = -wallForward;
+        }
+
+        if (player.IsHighSpeed())
+        {
+            player.rb.linearVelocity =
+                wallForward * player.speed;
+        }
+        else
+        {
+            player.rb.linearVelocity =
+                wallForward * player.speed +
+                Vector3.down * 2f;
+        }
+    }
+
+    // 地面接触
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Ground"))
         {
-            if (player.status == Player.PlayerStatus.WallRun)
-                return;
-
-            if (player.status != Player.PlayerStatus.Slide)
+            foreach (ContactPoint contact in collision.contacts)
             {
-                transform.rotation = Quaternion.Euler(
-                    0,
-                    transform.eulerAngles.y,
-                    0
-                );
-            }
+                if (contact.normal.y > 0.5f)
+                {
+                    isWallRunning = false;
+                    player.isGrounded = true;
 
-            player.isGrounded = true;
+                    // Slide中は回転も状態も触らない
+                    if (player.status != Player.PlayerStatus.Slide)
+                    {
+                        transform.rotation =
+                            Quaternion.Euler(
+                                0,
+                                transform.eulerAngles.y,
+                                0
+                            );
 
-            // Slide中はIdleにしない
-            if (player.status != Player.PlayerStatus.Slide)
-            {
-                player.ChangeStatus(Player.PlayerStatus.Idle);
+                        player.ChangeStatus(
+                            Player.PlayerStatus.Idle
+                        );
+                    }
+
+                    break;
+                }
             }
         }
     }
+
+    // 壁接触中
     private void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
@@ -260,9 +292,10 @@ public class PlayerMove : MonoBehaviour
             if (player.status == Player.PlayerStatus.Slide)
                 return;
 
-            if (player.speed >= player.midSpeed)
+            if (player.IsMidSpeed())
             {
-                wallNormal = collision.contacts[0].normal;
+                wallNormal =
+                    collision.contacts[0].normal;
 
                 if (!isWallRunning)
                 {
@@ -273,17 +306,29 @@ public class PlayerMove : MonoBehaviour
             }
         }
     }
+
+    // 壁離脱
     private void OnCollisionExit(Collision collision)
     {
         if (collision.gameObject.CompareTag("Wall"))
         {
             isWallRunning = false;
 
-            transform.rotation = Quaternion.Euler(
-                0,
-                transform.eulerAngles.y,
-                0
-            );
+            transform.rotation =
+                Quaternion.Euler(
+                    0,
+                    transform.eulerAngles.y,
+                    0
+                );
+
+            if (player.status != Player.PlayerStatus.Slide)
+            {
+                transform.rotation = Quaternion.Euler(
+                    0,
+                    transform.eulerAngles.y,
+                    0
+                );
+            }
         }
     }
 }
