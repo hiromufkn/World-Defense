@@ -1,5 +1,6 @@
 using System.IO;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
@@ -7,7 +8,9 @@ public class Enemy : MonoBehaviour
 {
     public float Speed = 3f;
     public float moveRange = 3f;
-    public float Hp = 500f;
+    public float Hp = 500;
+    public float MaxHp = 500f;
+    public Slider hpSlider;
     public Transform Player;
     public Transform model;
     public Transform firePoint;
@@ -36,6 +39,10 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         StartPos = transform.position;
+
+        Hp = MaxHp;
+        hpSlider.maxValue = MaxHp;
+        hpSlider.value = Hp;
 
         //spawner = FindFirstObjectByType<EnemySpawner>();
         direction = 1;
@@ -161,6 +168,8 @@ public class Enemy : MonoBehaviour
         }
 
         Hp -= damage;
+
+        hpSlider.value = Hp;
 
         if (Hp <= 0)
         {
