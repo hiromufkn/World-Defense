@@ -11,6 +11,9 @@ public class PlayerMove : MonoBehaviour
 
     private bool isWallRunning = false;
     private Vector3 wallNormal;
+    private int wallSide = 1;   // âEï«=-1 ç∂ï«=1
+
+    public Transform model;
 
     void Start()
     {
@@ -171,16 +174,15 @@ public class PlayerMove : MonoBehaviour
     {
         isWallRunning = false;
 
-        player.ChangeStatus(
-            Player.PlayerStatus.Jump
-        );
+        model.localRotation = Quaternion.identity;
+
+        player.ChangeStatus(Player.PlayerStatus.Jump);
 
         Vector3 jumpDir =
-            wallNormal + Vector3.up;
+            (wallNormal + Vector3.up).normalized;
 
         player.rb.linearVelocity =
-            jumpDir.normalized *
-            player.jumpPower;
+            jumpDir * player.jumpPower;
     }
 
     // ï«ëñÇËäJén
@@ -188,55 +190,48 @@ public class PlayerMove : MonoBehaviour
     {
         isWallRunning = true;
 
-        player.ChangeStatus(
-            Player.PlayerStatus.WallRun
-        );
+        player.ChangeStatus(Player.PlayerStatus.WallRun);
 
         Vector3 wallForward =
-            Vector3.Cross(
-                Vector3.up,
-                wallNormal
-            );
+            Vector3.Cross(Vector3.up, wallNormal);
 
-        if (Vector3.Dot(
-            wallForward,
-            transform.forward) < 0)
+        if (Vector3.Dot(wallForward, transform.forward) < 0)
         {
             wallForward = -wallForward;
         }
 
         transform.forward = wallForward;
 
-        float tilt =
-            Vector3.Dot(
-                transform.right,
-                wallNormal) > 0
-            ? -45f
-            : 45f;
+        // äJénéûÇæÇØï«ÇÃç∂âEÇï€ë∂
+        wallSide =
+            Vector3.Dot(transform.right, wallNormal) > 0
+            ? -1
+            : 1;
 
-        transform.rotation =
-            Quaternion.Euler(
-                0,
-                transform.eulerAngles.y,
-                tilt
-            );
+        model.localRotation = Quaternion.Euler(
+    0,
+    0,
+    wallSide * 45
+);
     }
 
     // ï«ëñÇËà€éù
     private void MaintainWallRun()
     {
         Vector3 wallForward =
-            Vector3.Cross(
-                Vector3.up,
-                wallNormal
-            );
+            Vector3.Cross(Vector3.up, wallNormal);
 
-        if (Vector3.Dot(
-            wallForward,
-            transform.forward) < 0)
+        if (Vector3.Dot(wallForward, transform.forward) < 0)
         {
             wallForward = -wallForward;
         }
+
+        // ñàÉtÉåÅ[ÉÄåXÇ´Çå≈íË
+        model.localRotation = Quaternion.Euler(
+    0,
+    0,
+    wallSide * 45
+);
 
         if (player.IsHighSpeed())
         {
@@ -266,12 +261,7 @@ public class PlayerMove : MonoBehaviour
                     // SlideíÜÇÕâÒì]Ç‡èÛë‘Ç‡êGÇÁÇ»Ç¢
                     if (player.status != Player.PlayerStatus.Slide)
                     {
-                        transform.rotation =
-                            Quaternion.Euler(
-                                0,
-                                transform.eulerAngles.y,
-                                0
-                            );
+                        model.localRotation = Quaternion.identity;
 
                         player.ChangeStatus(
                             Player.PlayerStatus.Idle
@@ -287,48 +277,33 @@ public class PlayerMove : MonoBehaviour
     // ï«ê⁄êGíÜ
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
+        if (!collision.gameObject.CompareTag("Wall"))
+            return;
+
+        if (player.status == Player.PlayerStatus.Slide)
+            return;
+
+        if (!player.IsMidSpeed())
+            return;
+
+        // ï«Ç…ì¸Ç¡ÇΩèuä‘ÇæÇØñ@ê¸éÊìæ
+        if (!isWallRunning)
         {
-            if (player.status == Player.PlayerStatus.Slide)
-                return;
-
-            if (player.IsMidSpeed())
-            {
-                wallNormal =
-                    collision.contacts[0].normal;
-
-                if (!isWallRunning)
-                {
-                    StartWallRun();
-                }
-
-                MaintainWallRun();
-            }
+            wallNormal = collision.contacts[0].normal;
+            StartWallRun();
         }
+
+        MaintainWallRun();
     }
 
     // ï«ó£íE
     private void OnCollisionExit(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            isWallRunning = false;
+        if (!collision.gameObject.CompareTag("Wall"))
+            return;
 
-            transform.rotation =
-                Quaternion.Euler(
-                    0,
-                    transform.eulerAngles.y,
-                    0
-                );
+        isWallRunning = false;
 
-            if (player.status != Player.PlayerStatus.Slide)
-            {
-                transform.rotation = Quaternion.Euler(
-                    0,
-                    transform.eulerAngles.y,
-                    0
-                );
-            }
-        }
+        model.localRotation = Quaternion.identity;
     }
 }
