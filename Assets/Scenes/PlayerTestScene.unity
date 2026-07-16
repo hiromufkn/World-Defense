@@ -192,6 +192,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd13cebea75eca14e960e5130282519a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
+--- !u!1001 &1211542525
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8484657787206133341, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -80.88488
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484657787206133341, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.1627
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484657787206133341, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 214.58363
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484657787206133341, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484657787206133341, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484657787206133341, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484657787206133341, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484657787206133341, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484657787206133341, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8484657787206133341, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9148042164639120615, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
+      propertyPath: m_Name
+      value: SK_SciFiTrooperManV3
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 1d867b1b06bc8d1448f74e49f1a6294c, type: 3}
 --- !u!1001 &1234849061
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -834,3 +891,4 @@ SceneRoots:
   - {fileID: 83623597}
   - {fileID: 6238644710590510924}
   - {fileID: 1964611855}
+  - {fileID: 1211542525}
