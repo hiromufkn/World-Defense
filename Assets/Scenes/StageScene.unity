@@ -8690,6 +8690,14 @@ PrefabInstance:
       propertyPath: playerHp
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      propertyPath: jumpPower
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      propertyPath: turnSpeedThreshold
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1818791354616737922, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: m_Name
       value: Player 1
