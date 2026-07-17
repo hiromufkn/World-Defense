@@ -27,6 +27,7 @@ public class Player : MonoBehaviour
     public float acceleration = 5f;
     public float deceleration = 8f;
     public float brakePower = 35f;
+    public float turnSpeedThreshold = 15f;
 
     [Header("Speed Level")]
     public float lowSpeed = 10f;
@@ -37,7 +38,7 @@ public class Player : MonoBehaviour
     public float moveSpeed = 10f;
 
     [Header("Jump")]
-    public float jumpPower = 8f;
+    public float jumpPower = 16f;
     public bool isGrounded = true;
 
     [Header("Attack")]
