@@ -5571,7 +5571,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 108.5, y: 71, z: 36.8}
-  m_Center: {x: 54, y: 0, z: 16}
+  m_Center: {x: 54, y: 0, z: 18}
 --- !u!4 &1034318282 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5316609513351239561, guid: 4db940c31d61ac149801c850fc645d68, type: 3}
@@ -11941,6 +11941,18 @@ PrefabInstance:
     - target: {fileID: 474216503340171547, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747975351476056219, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: nextGroup
+      value: 
+      objectReference: {fileID: 3066471997038087000, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+    - target: {fileID: 1747975351476056219, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: nextSpawnPosition.x
+      value: 440
+      objectReference: {fileID: 0}
+    - target: {fileID: 1747975351476056219, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: nextSpawnPosition.z
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1906559961731576149, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: m_AnchorMax.y
