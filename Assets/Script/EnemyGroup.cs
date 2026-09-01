@@ -3,6 +3,8 @@ using UnityEngine;
 public class EnemyGroup : MonoBehaviour
 {
 
+    public Vector3 nextSpawnPosition;
+
     public GameObject nextGroup;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,7 +21,7 @@ public class EnemyGroup : MonoBehaviour
             {
                 Instantiate(
                     nextGroup,
-                    transform.position,
+                    nextSpawnPosition,
                     Quaternion.identity
                     //transform.rotation
 
