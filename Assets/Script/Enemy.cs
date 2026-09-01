@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
     public Transform model;
     public Transform firePoint;
     Vector3 Distance;
-    public float attackRange = 10f;
+    public float attackRange = 5f;
     public float fireInterval = 2f;
     public float laserTime = 0.5f;
     public float InvincibleTime = 1f;
