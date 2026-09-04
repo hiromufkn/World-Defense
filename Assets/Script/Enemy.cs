@@ -6,6 +6,15 @@ using UnityEngine.InputSystem.Controls;
 
 public class Enemy : MonoBehaviour
 {
+    public enum EnemyState
+    {
+        alive,
+
+        dead
+    }
+
+    public EnemyState state;
+    public BossManager bossManager;
     public float Speed = 3f;
     public float moveRange = 3f;
     public float Hp = 500;
@@ -23,7 +32,7 @@ public class Enemy : MonoBehaviour
     //private EnemySpawner spawner;
     //public GameObject nextEnemy;
 
-    private int direction = 1;
+    //private int direction = 1;
     private Vector3 StartPos;
     private LineRenderer line;
     private Vector3 targetPosition;
@@ -38,6 +47,8 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        state = EnemyState.alive;
+
         StartPos = transform.position;
 
         Hp = MaxHp;
@@ -45,7 +56,7 @@ public class Enemy : MonoBehaviour
         hpSlider.value = Hp;
 
         //spawner = FindFirstObjectByType<EnemySpawner>();
-        direction = 1;
+        //direction = 1;
 
         Player = GameObject.FindWithTag("Player").transform;
 
@@ -62,6 +73,8 @@ public class Enemy : MonoBehaviour
         line.enabled = false;
 
         renderers = GetComponentsInChildren<Renderer>();
+
+        bossManager = FindAnyObjectByType<BossManager>();
 
     }
 
@@ -138,7 +151,9 @@ public class Enemy : MonoBehaviour
         if (Keyboard.current.kKey.wasPressedThisFrame)
 
         {
-
+            state = EnemyState.dead;
+            bossManager.EnemyDied();
+            Debug.Log("KÉLÅ[Ç≈ìGéÄñS:");
             Destroy(gameObject);
 
             //spawner.SpawnEnemy();
@@ -173,6 +188,8 @@ public class Enemy : MonoBehaviour
 
         if (Hp <= 0)
         {
+            state = EnemyState.dead;
+            bossManager.EnemyDied();
             Destroy(gameObject);
             return;
         }
