@@ -41,6 +41,10 @@ public class PlayerMove : MonoBehaviour
 
     private float wallRunCooldown = 0f;
 
+    // L字などで別の壁に近づいたときの検出距離
+    [SerializeField]
+    private float cornerCheckDistance = 0.5f;
+
     // 見た目だけ傾けるモデル
     [SerializeField]
     private Transform model;
@@ -295,9 +299,18 @@ public class PlayerMove : MonoBehaviour
     defaultModelRotation *
     Quaternion.Euler(0, 0, wallSide * 45);
     }
+    
 
     private void MaintainWallRun()
     {
+
+        // L字の内側などで、進行方向に別の壁があるか確認
+        if (IsApproachingAnotherWall())
+        {
+            EndWallRun();
+            return;
+        }
+
         // 高速なら落ちない
         if (player.IsHighSpeed())
         {
@@ -363,6 +376,43 @@ public class PlayerMove : MonoBehaviour
                player.status != Player.PlayerStatus.WallRun;
     }
 
+    
+
+    private bool IsApproachingAnotherWall()
+    {
+        Vector3 origin =
+            transform.position;
+
+        Vector3 direction =
+            wallForward;
+
+        if (Physics.Raycast(
+            origin,
+            direction,
+            out RaycastHit hit,
+            cornerCheckDistance))
+        {
+            // 現在走っている壁とは別の壁にぶつかりそう
+            if (hit.collider.CompareTag("Wall"))
+            {
+                // 現在の壁かどうか確認
+                float normalDot =
+                    Vector3.Dot(
+                        hit.normal,
+                        wallNormal
+                    );
+
+                // 法線が違うなら別の壁
+                if (normalDot < 0.9f)
+                {
+                    return true;
+                }
+            }
+        }
+
+        return false;
+    }
+
     //==============================
     // 壁走りできるか
     //==============================
@@ -404,6 +454,8 @@ public class PlayerMove : MonoBehaviour
         if (!CanWallRun())
             return;
 
+        // まだ壁走りしていない場合だけ
+        // 壁の法線を取得する
         if (!isWallRunning)
         {
             wallNormal =
