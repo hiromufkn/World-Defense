@@ -856,6 +856,10 @@ PrefabInstance:
       propertyPath: wallMinDistance
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 3673731368470252357, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      propertyPath: cornerCheckDistance
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4032583852168460248, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

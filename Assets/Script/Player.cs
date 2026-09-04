@@ -103,6 +103,12 @@ public class Player : MonoBehaviour
                 return;
         }
 
+        // ノックバック中は通常状態に変更しない
+        if (status == PlayerStatus.KnockBack &&
+            newStatus != PlayerStatus.Run &&
+            newStatus != PlayerStatus.Dead)
+            return;
+
         Debug.Log(
             "状態変更 : " +
             status +
