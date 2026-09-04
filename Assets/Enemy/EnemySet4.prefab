@@ -1041,7 +1041,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 474216503340171547}
-  - component: {fileID: 1747975351476056219}
   m_Layer: 0
   m_Name: EnemySet4
   m_TagString: Untagged
@@ -1067,20 +1066,6 @@ Transform:
   - {fileID: 838782743584309719}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1747975351476056219
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9109171818220250500}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 46bf003a3f09b9343ad5508d40d1ae5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::EnemyGroup
-  nextSpawnPosition: {x: 0, y: 0, z: 0}
-  nextGroup: {fileID: 6046704640095405483, guid: 6f3b3787bc05d984ab2c31e9262aa58d, type: 3}
 --- !u!1 &9188445743609264789
 GameObject:
   m_ObjectHideFlags: 0
