@@ -52,7 +52,7 @@ public class PlayerMove : MonoBehaviour
     private Quaternion defaultModelRotation;
 
     // ノックバックに使う
-    private float knockBackTime = 10f;
+    private float knockBackTime = 1.7f;
     private float knockBackTimer = 0f;
 
     //==============================
@@ -466,7 +466,7 @@ public class PlayerMove : MonoBehaviour
 
         // 少し上に飛ばす
         player.rb.linearVelocity +=
-            Vector3.up * 10f;
+            Vector3.up * 7f;
     }
 
     //==============================
@@ -480,8 +480,11 @@ public class PlayerMove : MonoBehaviour
             EndWallRun();
         }
 
-        player.isGrounded = true;
-
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            player.isGrounded = true;
+        }
+        
         if (player.status != Player.PlayerStatus.Slide)
         {
             player.ChangeStatus(Player.PlayerStatus.Idle);
@@ -492,6 +495,7 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("衝突");
             PlayerKnockBack(collision.transform, 10f);
+            player.isGrounded = false;
         }
     }
 
