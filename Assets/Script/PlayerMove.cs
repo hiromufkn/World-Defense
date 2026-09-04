@@ -51,6 +51,10 @@ public class PlayerMove : MonoBehaviour
 
     private Quaternion defaultModelRotation;
 
+    // ノックバックに使う
+    private float knockBackTime = 10f;
+    private float knockBackTimer = 0f;
+
     //==============================
     // 初期化
     //==============================
@@ -75,6 +79,20 @@ public class PlayerMove : MonoBehaviour
         if (wallRunCooldown > 0f)
         {
             wallRunCooldown -= Time.fixedDeltaTime;
+        }
+
+        // ノックバック中は移動をなくす
+        if(player.status == Player.PlayerStatus.KnockBack)
+        {
+            knockBackTimer -= Time.fixedDeltaTime;
+
+            if (knockBackTimer <= 0f)
+            {
+                player.ChangeStatus(
+                    Player.PlayerStatus.Run
+                );
+            }
+            return;
         }
 
         PlayerRun();
@@ -424,15 +442,39 @@ public class PlayerMove : MonoBehaviour
             player.status != Player.PlayerStatus.Slide;
     }
 
+    // 障害物衝突時ノックバック
+    private void PlayerKnockBack(Transform objectPos, float knockBackPower)
+    {
+        // ノックバック中
+        player.ChangeStatus(Player.PlayerStatus.KnockBack);
+
+        // タイマー開始
+        knockBackTimer = knockBackTime;
+
+        // 障害物からプレイヤーに向かう方向
+        Vector3 knockBackDirection =
+            transform.position - objectPos.position;
+
+        // 水平方向だけにする
+        knockBackDirection.y = 0;
+
+        knockBackDirection.Normalize();
+
+        // ノックバック
+        player.rb.linearVelocity =
+            knockBackDirection * knockBackPower;
+
+        // 少し上に飛ばす
+        player.rb.linearVelocity +=
+            Vector3.up * 10f;
+    }
+
     //==============================
     // 地面判定
     //==============================
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (!collision.gameObject.CompareTag("Ground"))
-            return;
-
         if (isWallRunning)
         {
             EndWallRun();
@@ -443,6 +485,13 @@ public class PlayerMove : MonoBehaviour
         if (player.status != Player.PlayerStatus.Slide)
         {
             player.ChangeStatus(Player.PlayerStatus.Idle);
+        }
+
+        // 障害物との衝突時
+        if (collision.gameObject.CompareTag("Object"))
+        {
+            Debug.Log("衝突");
+            PlayerKnockBack(collision.transform, 10f);
         }
     }
 

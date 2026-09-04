@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
         Slide,
         Dash,
         Damage,
+        KnockBack,
         Dead
     }
 
