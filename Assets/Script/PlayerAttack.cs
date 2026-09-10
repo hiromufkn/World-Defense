@@ -96,6 +96,16 @@ public class PlayerAttack : MonoBehaviour
                     enemy.TakeDamage(slideDamage);
                 }
             }
+
+            if (collision.gameObject.CompareTag("Boss"))
+            {
+                Boss boss = collision.gameObject.GetComponent<Boss>();
+
+                if(boss!=null)
+                {
+                    boss.TakeDamage(slideDamage);
+                }
+            }
         }
     }
 }
