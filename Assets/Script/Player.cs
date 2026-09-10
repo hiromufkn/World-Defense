@@ -54,6 +54,8 @@ public class Player : MonoBehaviour
 
     [HideInInspector] public Rigidbody rb;
 
+    public Animator animator;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -118,6 +120,8 @@ public class Player : MonoBehaviour
 
         previousStatus = status;
         status = newStatus;
+
+        UpdateAnimation();
     }
     public void TakeDamage(float damage = 1f)
     {
@@ -138,5 +142,48 @@ public class Player : MonoBehaviour
     public bool IsHighSpeed()
     {
         return speed >= highSpeed;
+    }
+
+    // playeranimation
+    private void UpdateAnimation()
+    {
+        switch (status)
+        {
+            case PlayerStatus.Idle:
+                animator.Play("idle");
+                break;
+
+            case PlayerStatus.Run:
+                animator.Play("run");
+                break;
+
+            case PlayerStatus.WallRun:
+                animator.Play("wallRun");
+                break;
+
+            case PlayerStatus.Jump:
+                animator.Play("jump");
+                break;
+
+            case PlayerStatus.Fall:
+                animator.Play("fall");
+                break;
+
+            case PlayerStatus.Slide:
+                animator.Play("slide");
+                break;
+
+            case PlayerStatus.Damage:
+                animator.Play("damage");
+                break;
+
+            case PlayerStatus.KnockBack:
+                animator.Play("knockBack");
+                break;
+
+            case PlayerStatus.Dead:
+                animator.Play("dead");
+                break;
+        }
     }
 }
