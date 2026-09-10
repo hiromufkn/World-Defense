@@ -3,10 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using static Enemy;
+using Unity.VisualScripting;
 
 public class Boss : MonoBehaviour
 {
-
+ 
     public Transform Player;
     public Transform model;
     public Transform firePoint;
@@ -15,6 +17,10 @@ public class Boss : MonoBehaviour
     public float fireInterval = 2f;
     public float laserTime = 0.5f;
     public float InvincibleTime = 1f;
+    public float Hp = 1000;
+    public float MaxHp = 1000;
+    
+
 
     //private EnemySpawner spawner;
     //public GameObject nextEnemy;
@@ -26,14 +32,22 @@ public class Boss : MonoBehaviour
     private bool isFiring = false;
     private float timer;
     private float laserTimer;
-
-
+    private bool isInvincible = false;
+    private Renderer[] renderers;
+    private Slider hpSlider;
 
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        Hp = MaxHp;
 
+        hpSlider = GetComponentInChildren<Slider>();
+
+        hpSlider.maxValue = MaxHp;
+        hpSlider.value = Hp;
+
+        renderers = GetComponentsInChildren<Renderer>();
 
         //spawner = FindFirstObjectByType<EnemySpawner>();
         //direction = 1;
@@ -149,6 +163,26 @@ public class Boss : MonoBehaviour
 
     }
 
+    public void TakeDamage(float damage = 1f)
+    {
+        if (isInvincible)
+        {
+            return;
+        }
+
+        Hp -= damage;
+
+        hpSlider.value = Hp;
+
+        if (Hp <= 0)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        StartCoroutine(Invincible());
+    }
+
     void LaserHitCheck()
     {
         Vector3 start = firePoint.position;
@@ -164,6 +198,38 @@ public class Boss : MonoBehaviour
                 hit.transform.GetComponent<Player>().TakeDamage(10f * Time.deltaTime);
             }
         }
+    }
+
+    System.Collections.IEnumerator Invincible()
+    {
+        isInvincible = true;
+
+        float timer = 0f;
+
+        while (timer < InvincibleTime)
+        {
+            foreach (Renderer r in renderers)
+            {
+                r.enabled = false;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+
+            foreach (Renderer r in renderers)
+            {
+                r.enabled = true;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+            timer += 0.2f;
+        }
+
+        foreach (Renderer r in renderers)
+        {
+            r.enabled = true;
+        }
+
+        isInvincible = false;
     }
 }
 
