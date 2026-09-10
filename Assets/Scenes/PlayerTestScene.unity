@@ -876,6 +876,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      propertyPath: animator
+      value: 
+      objectReference: {fileID: 1077994833}
+    - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: jumpPower
       value: 16
       objectReference: {fileID: 0}
