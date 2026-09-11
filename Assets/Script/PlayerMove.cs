@@ -55,6 +55,9 @@ public class PlayerMove : MonoBehaviour
     private float knockBackTime = 1.7f;
     private float knockBackTimer = 0f;
 
+    // playerのアニメーション
+    private Animator animator;
+
     //==============================
     // 初期化
     //==============================
@@ -81,8 +84,8 @@ public class PlayerMove : MonoBehaviour
             wallRunCooldown -= Time.fixedDeltaTime;
         }
 
-        // ノックバック中は移動をなくす
-        if(player.status == Player.PlayerStatus.KnockBack)
+        // ノックバック中
+        if (player.status == Player.PlayerStatus.KnockBack)
         {
             knockBackTimer -= Time.fixedDeltaTime;
 
@@ -92,7 +95,24 @@ public class PlayerMove : MonoBehaviour
                     Player.PlayerStatus.Run
                 );
             }
+
             return;
+        }
+
+        //================================
+        // ジャンプ中の上昇 / 落下判定
+        //================================
+
+        if (!player.isGrounded)
+        {
+            // 上昇が終わって落下に入った
+            if (player.rb.linearVelocity.y < 0f &&
+                player.status == Player.PlayerStatus.Jump)
+            {
+                player.ChangeStatus(
+                    Player.PlayerStatus.Fall
+                );
+            }
         }
 
         PlayerRun();
@@ -269,8 +289,10 @@ public class PlayerMove : MonoBehaviour
         if (!player.isGrounded)
             return;
 
+        // ジャンプ開始
         player.ChangeStatus(
-            Player.PlayerStatus.Jump);
+            Player.PlayerStatus.Jump
+        );
 
         Vector3 velocity =
             player.rb.linearVelocity;
@@ -480,21 +502,44 @@ public class PlayerMove : MonoBehaviour
             EndWallRun();
         }
 
+        //================================
+        // 地面に着地
+        //================================
+
         if (collision.gameObject.CompareTag("Ground"))
         {
-            player.isGrounded = true;
-        }
-        
-        if (player.status != Player.PlayerStatus.Slide)
-        {
-            player.ChangeStatus(Player.PlayerStatus.Idle);
+            if (player.status == Player.PlayerStatus.Jump ||
+                player.status == Player.PlayerStatus.Fall)
+            {
+                // JumpEndを再生
+                player.Land();
+            }
+            else
+            {
+                player.isGrounded = true;
+
+                if (player.status != Player.PlayerStatus.Slide)
+                {
+                    player.ChangeStatus(
+                        Player.PlayerStatus.Idle
+                    );
+                }
+            }
         }
 
-        // 障害物との衝突時
+        //================================
+        // 障害物との衝突
+        //================================
+
         if (collision.gameObject.CompareTag("Object"))
         {
             Debug.Log("衝突");
-            PlayerKnockBack(collision.transform, 10f);
+
+            PlayerKnockBack(
+                collision.transform,
+                10f
+            );
+
             player.isGrounded = false;
         }
     }
