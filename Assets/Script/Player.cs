@@ -184,8 +184,6 @@ public class Player : MonoBehaviour
                 break;
 
             case PlayerStatus.Fall:
-                // ‹ó’†
-                animator.Play("JumpAir");
                 break;
 
             case PlayerStatus.Slide:
