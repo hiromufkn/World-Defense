@@ -76,6 +76,16 @@ public class Enemy : MonoBehaviour
 
         bossManager = FindAnyObjectByType<BossManager>();
 
+        Collider[] enemyColliders = GetComponentsInChildren<Collider>();
+        Collider[] playerColliders = Player.GetComponentsInChildren<Collider>();
+
+        foreach(Collider enemyCollider in enemyColliders)
+        {
+            foreach(Collider playerCollider in playerColliders)
+            {
+                Physics.IgnoreCollision(enemyCollider, playerCollider);
+            }
+        }
     }
 
     //void OnTriggerEnter(Collider other)
@@ -218,6 +228,8 @@ public class Enemy : MonoBehaviour
     {
         isInvincible = true;
 
+        gameObject.layer = LayerMask.NameToLayer("Enemy");
+
         float timer = 0f;
 
         while(timer<InvincibleTime)
@@ -242,6 +254,8 @@ public class Enemy : MonoBehaviour
         {
             r.enabled = true;
         }
+
+        gameObject.layer = LayerMask.NameToLayer("Default");
 
         isInvincible = false;
     }
