@@ -12100,6 +12100,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 393051f55b8023349abb9a2cb9bdcfef, type: 2}
+    - target: {fileID: 2726253949682962435, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3673731368470252357, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: cornerCheckDistance
       value: 3
