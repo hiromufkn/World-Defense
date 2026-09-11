@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 
 public class Player : MonoBehaviour
 {
@@ -52,9 +53,13 @@ public class Player : MonoBehaviour
     public float maxHp = 100f;
     public float playerHp;
 
-    [HideInInspector] public Rigidbody rb;
+    [HideInInspector]
+    public Rigidbody rb;
 
     public Animator animator;
+
+    // 着地処理中か
+    private bool isLanding = false;
 
     void Start()
     {
@@ -64,6 +69,12 @@ public class Player : MonoBehaviour
         attackPower = baseAttack;
 
         previousStatus = status;
+
+        // AnimatorがInspectorで設定されていない場合の保険
+        if (animator == null)
+        {
+            animator = GetComponentInChildren<Animator>();
+        }
     }
 
     void Update()
@@ -91,13 +102,12 @@ public class Player : MonoBehaviour
              newStatus == PlayerStatus.Run)
             return;
 
-        // Jump中はRun禁止
+        // Jump / Fall中はRun禁止
         if ((status == PlayerStatus.Jump ||
              status == PlayerStatus.Fall) &&
              newStatus == PlayerStatus.Run)
             return;
 
-        // 攻撃中はIdleでも上書き禁止
         // Slide中はJump以外禁止
         if (status == PlayerStatus.Slide)
         {
@@ -123,6 +133,7 @@ public class Player : MonoBehaviour
 
         UpdateAnimation();
     }
+
     public void TakeDamage(float damage = 1f)
     {
         playerHp -= damage;
@@ -144,9 +155,15 @@ public class Player : MonoBehaviour
         return speed >= highSpeed;
     }
 
-    // playeranimation
+    //========================================
+    // アニメーション
+    //========================================
+
     private void UpdateAnimation()
     {
+        if (animator == null)
+            return;
+
         switch (status)
         {
             case PlayerStatus.Idle:
@@ -162,11 +179,13 @@ public class Player : MonoBehaviour
                 break;
 
             case PlayerStatus.Jump:
-                animator.Play("jump");
+                // ジャンプ開始
+                animator.Play("JumpStart");
                 break;
 
             case PlayerStatus.Fall:
-                animator.Play("fall");
+                // 空中
+                animator.Play("JumpAir");
                 break;
 
             case PlayerStatus.Slide:
@@ -185,5 +204,59 @@ public class Player : MonoBehaviour
                 animator.Play("dead");
                 break;
         }
+    }
+
+    //========================================
+    // 着地
+    //========================================
+
+    public void Land()
+    {
+        // すでに着地処理中なら何もしない
+        if (isLanding)
+            return;
+
+        // Jump / Fall以外での通常の接触なら何もしない
+        if (status != PlayerStatus.Jump &&
+            status != PlayerStatus.Fall)
+            return;
+
+        isGrounded = true;
+        isLanding = true;
+
+        // 着地アニメーション
+        if (animator != null)
+        {
+            animator.Play("JumpEnd");
+        }
+
+        StartCoroutine(LandAnimationCoroutine());
+    }
+
+    private IEnumerator LandAnimationCoroutine()
+    {
+        // JumpEndのアニメーションを取得
+        yield return null;
+
+        float landLength = 0.27f;
+
+        if (animator != null)
+        {
+            AnimatorStateInfo stateInfo =
+                animator.GetCurrentAnimatorStateInfo(0);
+
+            if (stateInfo.IsName("JumpEnd"))
+            {
+                landLength = stateInfo.length;
+            }
+        }
+
+        // 着地アニメーションが終わるまで待つ
+        yield return new WaitForSeconds(landLength);
+
+        isLanding = false;
+
+        // Idleへ戻る
+        ChangeStatus(PlayerStatus.Idle);
     }
 }
