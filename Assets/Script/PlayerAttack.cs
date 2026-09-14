@@ -93,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
                 if (enemy != null)
                 {
                     Debug.Log("EnemyÚG");
-                    enemy.TakeDamage(slideDamage);
+                    enemy.TakeDamage(slideDamage * 2);
                 }
             }
 
