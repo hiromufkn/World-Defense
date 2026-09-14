@@ -3,6 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEditor.Experimental.GraphView;
 
 public class Enemy : MonoBehaviour
 {
@@ -28,13 +29,15 @@ public class Enemy : MonoBehaviour
     public float fireInterval = 2f;
     public float laserTime = 0.5f;
     public float InvincibleTime = 1f;
-    
+    public float beamWidth = 0.1f;
+    public float beamLengthScale = 0.2f;
+    public ParticleSystem beamEffect;
+
     //private EnemySpawner spawner;
     //public GameObject nextEnemy;
 
     //private int direction = 1;
     private Vector3 StartPos;
-    private LineRenderer line;
     private Vector3 targetPosition;
     private bool isFiring = false;
     private float timer;
@@ -66,11 +69,12 @@ public class Enemy : MonoBehaviour
             model = transform.Find("Model");
         }
 
-        line = GetComponent<LineRenderer>();
+        //beamEffect = GetComponentInChildren<ParticleSystem>();
 
-        line.positionCount = 2;
-
-        line.enabled = false;
+        if (beamEffect != null)
+        {
+            beamEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
 
         renderers = GetComponentsInChildren<Renderer>();
 
@@ -99,11 +103,11 @@ public class Enemy : MonoBehaviour
 
     // Update is called once per frame
 
-    void FeirLaser()
-    {
-        line.SetPosition(0, firePoint.position);
-        line.SetPosition(1, targetPosition);
-    }
+    //void FeirLaser()
+    //{
+    //    line.SetPosition(0, firePoint.position);
+    //    line.SetPosition(1, targetPosition);
+    //}
     void Update()
     {
 
@@ -117,7 +121,12 @@ public class Enemy : MonoBehaviour
 
             if(!isAttacking)
             {
-                line.enabled = false;
+                //line.enabled = false;
+                if(beamEffect!=null)
+                {
+                    beamEffect.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
+                }
+                isFiring = false;
                 return;
             }
 
@@ -128,8 +137,20 @@ public class Enemy : MonoBehaviour
                 isFiring = true;
                 laserTimer = laserTime;
                 targetPosition = Player.position;
-                line.enabled = true;
-                FeirLaser();
+                //line.enabled = true;
+                //FeirLaser();
+                if(beamEffect!=null)
+                {
+                    Vector3 direction= targetPosition - firePoint.position;
+                    float beamDistance = direction.magnitude;
+
+                    beamEffect.transform.rotation = Quaternion.LookRotation(direction);
+
+                    beamEffect.transform.localScale = new Vector3(beamWidth, beamWidth, beamDistance/10*beamLengthScale);
+
+                    beamEffect.Play(true);
+                }
+               
             }
 
 
@@ -138,14 +159,24 @@ public class Enemy : MonoBehaviour
             {
                 laserTimer -= Time.deltaTime;
 
-                FeirLaser();
+                //FeirLaser();
                 LaserHitCheck();
 
                 if(laserTimer<=0)
                 {
                     isFiring = false;
                     timer = 0f;
-                    line.enabled = false;
+                    //line.enabled = false;
+                    if (beamEffect != null)
+                    {
+                        beamEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+                        beamEffect.transform.localPosition = Vector3.zero;
+
+                        beamEffect.transform.localRotation = Quaternion.identity;
+
+                        beamEffect.transform.localScale = Vector3.one;
+                    }
                 }
             }
 
