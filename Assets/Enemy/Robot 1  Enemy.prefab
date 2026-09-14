@@ -3312,7 +3312,6 @@ GameObject:
   - component: {fileID: 7140523149925593716}
   - component: {fileID: 2739868809135218145}
   - component: {fileID: 6364437202146520445}
-  - component: {fileID: 8644939328736189266}
   - component: {fileID: 5298578456240582928}
   - component: {fileID: 79039159787342034}
   - component: {fileID: 6904146816657948803}
@@ -3398,25 +3397,6 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.05
   m_Center: {x: 0, y: 0.045, z: 0}
---- !u!114 &8644939328736189266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5346316404397343243}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f81a6cb0aa9dcb642906937b73b51435, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Boss
-  Player: {fileID: 0}
-  model: {fileID: 4113285120281065893}
-  firePoint: {fileID: 3694595823143143167}
-  attackRange: 45
-  fireInterval: 2
-  laserTime: 0.5
-  InvincibleTime: 1
 --- !u!114 &5298578456240582928
 MonoBehaviour:
   m_ObjectHideFlags: 0
