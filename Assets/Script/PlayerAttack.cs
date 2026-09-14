@@ -56,7 +56,7 @@ public class PlayerAttack : MonoBehaviour
        
 
         slideDamage =
-            player.attackPower + player.speed;
+            (player.attackPower + player.speed) * 2;
 
         StartCoroutine(ResetSlideRotation());
 
@@ -81,7 +81,7 @@ public class PlayerAttack : MonoBehaviour
             "èÛë‘ïœçX : Slide Å® RUN"
         );
     }
-    private void OnCollisionStay(Collision collision)
+    private void OnCollisionEnter(Collision collision)
     {
         if (player.status == Player.PlayerStatus.Slide)
         {
@@ -93,7 +93,7 @@ public class PlayerAttack : MonoBehaviour
                 if (enemy != null)
                 {
                     Debug.Log("Enemyê⁄êG");
-                    enemy.TakeDamage(slideDamage * 2);
+                    enemy.TakeDamage(slideDamage);
                 }
             }
 
