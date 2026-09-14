@@ -175,7 +175,7 @@ public class Player : MonoBehaviour
                 break;
 
             case PlayerStatus.WallRun:
-                animator.Play("wallRun");
+                animator.Play("run");
                 break;
 
             case PlayerStatus.Jump:
