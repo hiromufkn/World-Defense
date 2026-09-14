@@ -5253,6 +5253,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5298578456240582928, guid: ede610452c42f3f419b29b04610d9521, type: 3}
+      propertyPath: Hp
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5298578456240582928, guid: ede610452c42f3f419b29b04610d9521, type: 3}
       propertyPath: hpSlider
       value: 
       objectReference: {fileID: 133504578}
@@ -26288,6 +26292,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1409921498614561777, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: Hp
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 1409921498614561777, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: hpSlider
       value: 
       objectReference: {fileID: 669747737}
@@ -26358,6 +26366,10 @@ PrefabInstance:
     - target: {fileID: 6554150994087564498, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: Hp
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: attackRange
@@ -27176,6 +27188,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7039545939260409500, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: Hp
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039545939260409500, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: attackRange
       value: 30
       objectReference: {fileID: 0}
@@ -27206,6 +27222,10 @@ PrefabInstance:
     - target: {fileID: 7255712509003341544, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: m_Layer
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7266468444142317545, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: Hp
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 7266468444142317545, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: attackRange
@@ -28302,6 +28322,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2305058895410977861, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: Hp
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 2305058895410977861, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: hpSlider
       value: 
       objectReference: {fileID: 1731310562}
@@ -28368,6 +28392,10 @@ PrefabInstance:
     - target: {fileID: 6119962097799160545, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: Hp
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: attackRange
@@ -28599,6 +28627,10 @@ PrefabInstance:
     - target: {fileID: 1906559961731576149, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: Hp
+      value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: attackRange
