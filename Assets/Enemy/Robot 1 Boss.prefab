@@ -1362,6 +1362,7 @@ MonoBehaviour:
   Hp: 1000
   MaxHp: 1000
   beamEffect: {fileID: 83865574019533226}
+  deathEffect: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
   beamWidth: 0.03
   beamLengthScale: 0.05
 --- !u!1 &3184954143953596344

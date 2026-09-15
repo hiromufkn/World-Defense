@@ -20,6 +20,7 @@ public class Boss : MonoBehaviour
     public float Hp = 1000;
     public float MaxHp = 1000;
     public ParticleSystem beamEffect;
+　　public ParticleSystem deathEffect;
     public float beamWidth = 0.1f;
     public float beamLengthScale = 0.2f;
 
@@ -178,6 +179,13 @@ public class Boss : MonoBehaviour
 
         {
             Debug.Log("Kキーで敵死亡:");
+            if(deathEffect!=null)
+            {
+                ParticleSystem effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+                effect.Play();
+                Destroy(effect.gameObject, 2f);
+            }
+            
             Destroy(gameObject);
 
             //spawner.SpawnEnemy();
@@ -212,6 +220,12 @@ public class Boss : MonoBehaviour
 
         if (Hp <= 0)
         {
+            if(deathEffect!=null)
+            {
+                ParticleSystem effect = Instantiate(deathEffect, transform.position,Quaternion.identity);
+                effect.Play();
+                Destroy(effect.gameObject, 2f);
+            }
             Destroy(gameObject);
             return;
         }
