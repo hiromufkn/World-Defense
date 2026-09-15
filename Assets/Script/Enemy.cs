@@ -32,6 +32,7 @@ public class Enemy : MonoBehaviour
     public float beamWidth = 0.1f;
     public float beamLengthScale = 0.2f;
     public ParticleSystem beamEffect;
+    public ParticleSystem deathEffect;
 
     //private EnemySpawner spawner;
     //public GameObject nextEnemy;
@@ -197,6 +198,20 @@ public class Enemy : MonoBehaviour
             state = EnemyState.dead;
             bossManager.EnemyDied();
             Debug.Log("KÉLÅ[Ç≈ìGéÄñS:");
+
+            if (deathEffect != null)
+            {
+                ParticleSystem effect = Instantiate(
+                    deathEffect,
+                    transform.position,
+                    Quaternion.identity
+                );
+
+                effect.Play();
+
+                Destroy(effect.gameObject, 2f);
+            }
+
             Destroy(gameObject);
 
             //spawner.SpawnEnemy();
@@ -233,6 +248,19 @@ public class Enemy : MonoBehaviour
         {
             state = EnemyState.dead;
             bossManager.EnemyDied();
+
+            if (deathEffect != null)
+            {
+                ParticleSystem effect = Instantiate(
+                    deathEffect,
+                    transform.position,
+                    Quaternion.identity
+                );
+
+                effect.Play();
+
+                Destroy(effect.gameObject, 2f);
+            }
             Destroy(gameObject);
             return;
         }

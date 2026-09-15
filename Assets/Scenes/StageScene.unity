@@ -3339,6 +3339,7 @@ MonoBehaviour:
   beamWidth: 0.03
   beamLengthScale: 0.05
   beamEffect: {fileID: 546555009}
+  deathEffect: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
 --- !u!4 &239838136 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e25a74f6c6b0c7247a22727a743e649d, type: 3}
@@ -4499,6 +4500,7 @@ MonoBehaviour:
   beamWidth: 0.03
   beamLengthScale: 0.05
   beamEffect: {fileID: 277006210}
+  deathEffect: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
 --- !u!1001 &328745014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21852,6 +21854,7 @@ MonoBehaviour:
   beamWidth: 0.03
   beamLengthScale: 0.05
   beamEffect: {fileID: 532919062}
+  deathEffect: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
 --- !u!1001 &1647142232
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23545,6 +23548,10 @@ PrefabInstance:
     - target: {fileID: 100008, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
       propertyPath: m_Name
       value: ppfxBeamElectric
+      objectReference: {fileID: 0}
+    - target: {fileID: 100008, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
       propertyPath: m_LocalScale.x
@@ -29708,6 +29715,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
+    - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
       objectReference: {fileID: 0}
@@ -29727,6 +29738,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
     - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
@@ -30486,6 +30501,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6235201705485938709, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
+    - target: {fileID: 6235201705485938709, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
       objectReference: {fileID: 0}
@@ -30594,6 +30613,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7039545939260409500, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
+    - target: {fileID: 7039545939260409500, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
       objectReference: {fileID: 0}
@@ -30645,6 +30668,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7266468444142317545, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
     - target: {fileID: 7266468444142317545, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
@@ -31539,6 +31566,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3413112868642085761, guid: 8f6bcc7fb7f3ad64f8f7a85cbf573e95, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3383633f0fadd8748b5761f8dcf431da, type: 2}
     - target: {fileID: 4248440924767073295, guid: 8f6bcc7fb7f3ad64f8f7a85cbf573e95, type: 3}
       propertyPath: m_LocalScale.y
       value: 0
@@ -31765,6 +31796,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2289065153786549582, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
+    - target: {fileID: 2289065153786549582, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
       objectReference: {fileID: 0}
@@ -31864,6 +31899,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
     - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
@@ -32126,6 +32165,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
+    - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
       objectReference: {fileID: 0}
@@ -32161,6 +32204,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7178640097879311891, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
     - target: {fileID: 7178640097879311891, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
