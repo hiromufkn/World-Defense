@@ -280,7 +280,7 @@ public class Enemy : MonoBehaviour
         {
             if (hit.transform.CompareTag("Player"))
             {
-                hit.transform.GetComponent<Player>().TakeDamage(10f * Time.deltaTime);
+                hit.transform.GetComponent<Player>().TakeDamage(5f * Time.deltaTime);
             }
         }
     }
