@@ -247,10 +247,12 @@ public class PlayerMove : MonoBehaviour
             if (player.speed <= 0)
             {
                 player.speed = 0;
-
-                player.ChangeStatus(
+                if (player.isGrounded)
+                {
+                    player.ChangeStatus(
                     Player.PlayerStatus.Idle
-                );
+                    );
+                }
             }
         }
 
