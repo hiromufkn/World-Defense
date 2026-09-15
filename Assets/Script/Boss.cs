@@ -19,7 +19,10 @@ public class Boss : MonoBehaviour
     public float InvincibleTime = 1f;
     public float Hp = 1000;
     public float MaxHp = 1000;
-    
+    public ParticleSystem beamEffect;
+    public float beamWidth = 0.1f;
+    public float beamLengthScale = 0.2f;
+
 
 
     //private EnemySpawner spawner;
@@ -60,11 +63,16 @@ public class Boss : MonoBehaviour
             model = transform.Find("Model");
         }
 
-        line = GetComponent<LineRenderer>();
+        if (beamEffect != null)
+        {
+            beamEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+        }
 
-        line.positionCount = 2;
+        //line = GetComponent<LineRenderer>();
 
-        line.enabled = false;
+        //line.positionCount = 2;
+
+        //line.enabled = false;
 
     }
 
@@ -97,7 +105,12 @@ public class Boss : MonoBehaviour
 
             if (!isAttacking)
             {
-                line.enabled = false;
+                //line.enabled = false;
+                if (beamEffect != null)
+                {
+                    beamEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+                }
+                isFiring = false;
                 return;
             }
 
@@ -108,8 +121,19 @@ public class Boss : MonoBehaviour
                 isFiring = true;
                 laserTimer = laserTime;
                 targetPosition = Player.position;
-                line.enabled = true;
-                FeirLaser();
+                //line.enabled = true;
+                //FeirLaser();
+                if (beamEffect != null)
+                {
+                    Vector3 direction = targetPosition - firePoint.position;
+                    float beamDistance = direction.magnitude;
+
+                    beamEffect.transform.rotation = Quaternion.LookRotation(direction);
+
+                    beamEffect.transform.localScale = new Vector3(beamWidth, beamWidth, beamDistance / 10 * beamLengthScale);
+
+                    beamEffect.Play(true);
+                }
             }
 
 
@@ -118,14 +142,24 @@ public class Boss : MonoBehaviour
             {
                 laserTimer -= Time.deltaTime;
 
-                FeirLaser();
+                //FeirLaser();
                 LaserHitCheck();
 
                 if (laserTimer <= 0)
                 {
                     isFiring = false;
                     timer = 0f;
-                    line.enabled = false;
+                    //line.enabled = false;
+                    if (beamEffect != null)
+                    {
+                        beamEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
+
+                        beamEffect.transform.localPosition = Vector3.zero;
+
+                        beamEffect.transform.localRotation = Quaternion.identity;
+
+                        beamEffect.transform.localScale = Vector3.one;
+                    }
                 }
             }
 
