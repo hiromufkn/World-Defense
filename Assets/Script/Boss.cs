@@ -128,6 +128,8 @@ public class Boss : MonoBehaviour
                     Vector3 direction = targetPosition - firePoint.position;
                     float beamDistance = direction.magnitude;
 
+                    beamEffect.transform.position = firePoint.position;
+
                     beamEffect.transform.rotation = Quaternion.LookRotation(direction);
 
                     beamEffect.transform.localScale = new Vector3(beamWidth, beamWidth, beamDistance / 10 * beamLengthScale);
