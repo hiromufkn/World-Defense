@@ -1867,8 +1867,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100002, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100004, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100006, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
@@ -3324,8 +3336,8 @@ MonoBehaviour:
   fireInterval: 2
   laserTime: 0.5
   InvincibleTime: 1
-  beamWidth: 0.1
-  beamLengthScale: 0.2
+  beamWidth: 0.03
+  beamLengthScale: 0.05
   beamEffect: {fileID: 546555009}
 --- !u!4 &239838136 stripped
 Transform:
@@ -4076,8 +4088,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100002, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100004, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100006, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
@@ -4472,8 +4496,8 @@ MonoBehaviour:
   fireInterval: 2
   laserTime: 0.5
   InvincibleTime: 1
-  beamWidth: 0.1
-  beamLengthScale: 0.2
+  beamWidth: 0.03
+  beamLengthScale: 0.05
   beamEffect: {fileID: 277006210}
 --- !u!1001 &328745014
 PrefabInstance:
@@ -8674,8 +8698,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100002, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100004, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100006, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
@@ -10914,8 +10950,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100002, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100004, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100006, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
@@ -18203,8 +18251,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100006, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100004, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100002, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
@@ -18286,8 +18346,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100002, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100004, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100006, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
@@ -21777,8 +21849,8 @@ MonoBehaviour:
   fireInterval: 2
   laserTime: 0.5
   InvincibleTime: 1
-  beamWidth: 0.1
-  beamLengthScale: 0.2
+  beamWidth: 0.03
+  beamLengthScale: 0.05
   beamEffect: {fileID: 532919062}
 --- !u!1001 &1647142232
 PrefabInstance:
@@ -22389,8 +22461,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100006, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100004, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100002, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
@@ -22446,8 +22530,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100006, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100004, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100002, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
@@ -26028,8 +26124,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationX.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 19800000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+      propertyPath: InitialModule.startRotationY.minMaxState
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 100006, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100004, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100002, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
+    - {fileID: 100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 18f9adde5c2124e44ab25bd2375fc08a, type: 3}
@@ -29588,6 +29696,10 @@ PrefabInstance:
       value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: beamWidth
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: beamEffect
       value: 
       objectReference: {fileID: 1985042708}
@@ -29595,9 +29707,17 @@ PrefabInstance:
       propertyPath: attackRange
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: beamLengthScale
+      value: 0.05
+      objectReference: {fileID: 0}
     - target: {fileID: 7876885829038420031, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: beamWidth
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: beamEffect
@@ -29606,6 +29726,10 @@ PrefabInstance:
     - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: attackRange
       value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: beamLengthScale
+      value: 0.05
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 3306107968017486259, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
@@ -31629,12 +31753,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2289065153786549582, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: beamWidth
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2289065153786549582, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: beamEffect
       value: 
       objectReference: {fileID: 1093237541}
     - target: {fileID: 2289065153786549582, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: attackRange
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2289065153786549582, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: beamLengthScale
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 2305058895410977861, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: Hp
@@ -31721,12 +31853,20 @@ PrefabInstance:
       value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: beamWidth
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: beamEffect
       value: 
       objectReference: {fileID: 1257091540}
     - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: attackRange
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: beamLengthScale
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 8219631568984278161, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: m_AnchorMax.y
@@ -31974,12 +32114,20 @@ PrefabInstance:
       value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: beamWidth
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: beamEffect
       value: 
       objectReference: {fileID: 1242655813}
     - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: attackRange
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: beamLengthScale
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 3383090925536024648, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: attackRange
@@ -32002,12 +32150,20 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7178640097879311891, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: beamWidth
+      value: 0.03
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178640097879311891, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: beamEffect
       value: 
       objectReference: {fileID: 534692890}
     - target: {fileID: 7178640097879311891, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: attackRange
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 7178640097879311891, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: beamLengthScale
+      value: 0.05
       objectReference: {fileID: 0}
     - target: {fileID: 7731085465120123524, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: m_AnchorMax.y
