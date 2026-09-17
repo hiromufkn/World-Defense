@@ -6,7 +6,7 @@ public class PlayerAttack : MonoBehaviour
 {
     private Player player;
 
-    private float SlideMAX = -45;
+    private float SlideMAX = 0;//-45;
 
     public float slideDamage;
 
