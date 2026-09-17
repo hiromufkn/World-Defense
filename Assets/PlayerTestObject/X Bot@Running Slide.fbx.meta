@@ -1,12 +1,5 @@
 fileFormatVersion: 2
-guid: 24ba8414b74b745459245cced68cbbab
-AssetOrigin:
-  serializedVersion: 1
-  productId: 318132
-  packageName: Free Those Who Fighter Animations
-  packageVersion: 1.0
-  assetPath: Assets/EEJANAI_Team/FreeFighterAnimations/FBX/low kick.fbx
-  uploadId: 751279
+guid: a55d00a87e0a68c4bb062bb38e4fd67c
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
@@ -101,7 +94,7 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
