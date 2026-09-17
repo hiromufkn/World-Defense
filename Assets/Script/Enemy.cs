@@ -44,7 +44,9 @@ public class Enemy : MonoBehaviour
     private float timer;
     private float laserTimer;
     private bool isInvincible = false;
-    private Renderer[] renderers; 
+    private Renderer[] renderers;
+    private Collider[] enemyColliders;
+    private Collider[] playerColliders;
 
 
 
@@ -81,14 +83,14 @@ public class Enemy : MonoBehaviour
 
         bossManager = FindAnyObjectByType<BossManager>();
 
-        Collider[] enemyColliders = GetComponentsInChildren<Collider>();
-        Collider[] playerColliders = Player.GetComponentsInChildren<Collider>();
+        enemyColliders = GetComponentsInChildren<Collider>();
+        playerColliders = Player.GetComponentsInChildren<Collider>();
 
-        foreach(Collider enemyCollider in enemyColliders)
+        foreach (Collider enemyCollider in enemyColliders)
         {
-            foreach(Collider playerCollider in playerColliders)
+            foreach (Collider playerCollider in playerColliders)
             {
-                Physics.IgnoreCollision(enemyCollider, playerCollider);
+                Physics.IgnoreCollision(enemyCollider, playerCollider, true);
             }
         }
     }
@@ -120,12 +122,12 @@ public class Enemy : MonoBehaviour
 
             bool isAttacking = distance <= attackRange;
 
-            if(!isAttacking)
+            if (!isAttacking)
             {
                 //line.enabled = false;
-                if(beamEffect!=null)
+                if (beamEffect != null)
                 {
-                    beamEffect.Stop(true,ParticleSystemStopBehavior.StopEmittingAndClear);
+                    beamEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
                 }
                 isFiring = false;
                 return;
@@ -133,27 +135,27 @@ public class Enemy : MonoBehaviour
 
             timer += Time.deltaTime;
 
-            if(!isFiring&&timer>=fireInterval)
+            if (!isFiring && timer >= fireInterval)
             {
                 isFiring = true;
                 laserTimer = laserTime;
                 targetPosition = Player.position;
                 //line.enabled = true;
                 //FeirLaser();
-                if(beamEffect!=null)
+                if (beamEffect != null)
                 {
-                    Vector3 direction= targetPosition - firePoint.position;
+                    Vector3 direction = targetPosition - firePoint.position;
                     float beamDistance = direction.magnitude;
 
                     beamEffect.transform.position = firePoint.position;
 
                     beamEffect.transform.rotation = Quaternion.LookRotation(direction);
 
-                    beamEffect.transform.localScale = new Vector3(beamWidth, beamWidth, beamDistance/10*beamLengthScale);
+                    beamEffect.transform.localScale = new Vector3(beamWidth, beamWidth, beamDistance / 10 * beamLengthScale);
 
                     beamEffect.Play(true);
                 }
-               
+
             }
 
 
@@ -165,7 +167,7 @@ public class Enemy : MonoBehaviour
                 //FeirLaser();
                 LaserHitCheck();
 
-                if(laserTimer<=0)
+                if (laserTimer <= 0)
                 {
                     isFiring = false;
                     timer = 0f;
@@ -235,7 +237,7 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(float damage = 1f)
     {
-        if(isInvincible)
+        if (isInvincible)
         {
             return;
         }
@@ -265,6 +267,8 @@ public class Enemy : MonoBehaviour
             return;
         }
 
+        IgnorePlayerCollision(true);
+
         StartCoroutine(Invincible());
     }
 
@@ -289,20 +293,21 @@ public class Enemy : MonoBehaviour
     {
         isInvincible = true;
 
+
         gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         float timer = 0f;
 
-        while(timer<InvincibleTime)
+        while (timer < InvincibleTime)
         {
-            foreach(Renderer r in renderers)
+            foreach (Renderer r in renderers)
             {
                 r.enabled = false;
             }
 
             yield return new WaitForSeconds(0.1f);
 
-            foreach(Renderer r in renderers)
+            foreach (Renderer r in renderers)
             {
                 r.enabled = true;
             }
@@ -311,13 +316,34 @@ public class Enemy : MonoBehaviour
             timer += 0.2f;
         }
 
-        foreach(Renderer r in renderers)
+        foreach (Renderer r in renderers)
         {
             r.enabled = true;
         }
+
 
         gameObject.layer = LayerMask.NameToLayer("Default");
 
         isInvincible = false;
     }
+
+    void IgnorePlayerCollision(bool ignore)
+    {
+        foreach (Collider enemyCollider in enemyColliders)
+        {
+            foreach (Collider playerCollider in playerColliders)
+            {
+                if (enemyCollider != null && playerCollider != null)
+                {
+                    Physics.IgnoreCollision(
+                        enemyCollider,
+                        playerCollider,
+                        ignore
+                    );
+                }
+            }
+        }
+    }
 }
+
+   
