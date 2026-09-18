@@ -58,6 +58,12 @@ public class PlayerMove : MonoBehaviour
     // playerのアニメーション
     private Animator animator;
 
+    [SerializeField] private GameObject isWallUI;
+    private void Update()
+    {
+        isWallUI.SetActive(isWallRunning);
+    }
+
     //==============================
     // 初期化
     //==============================
