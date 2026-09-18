@@ -3343,7 +3343,7 @@ MonoBehaviour:
   model: {fileID: 239646925}
   firePoint: {fileID: 1921518435}
   attackRange: 30
-  fireInterval: 2
+  fireInterval: 4
   laserTime: 0.5
   InvincibleTime: 1
   beamWidth: 0.01
@@ -4561,7 +4561,7 @@ MonoBehaviour:
   model: {fileID: 327754568}
   firePoint: {fileID: 651779317}
   attackRange: 30
-  fireInterval: 2
+  fireInterval: 4
   laserTime: 0.5
   InvincibleTime: 1
   beamWidth: 0.01
@@ -22410,7 +22410,7 @@ MonoBehaviour:
   model: {fileID: 1641260770}
   firePoint: {fileID: 161104130}
   attackRange: 20
-  fireInterval: 2
+  fireInterval: 4
   laserTime: 0.5
   InvincibleTime: 1
   beamWidth: 0.01
@@ -30285,6 +30285,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
     - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: fireInterval
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
       objectReference: {fileID: 0}
@@ -31183,6 +31187,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
     - target: {fileID: 7039545939260409500, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: fireInterval
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7039545939260409500, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
       objectReference: {fileID: 0}
@@ -31238,6 +31246,10 @@ PrefabInstance:
       propertyPath: deathEffect
       value: 
       objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
+    - target: {fileID: 7266468444142317545, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: fireInterval
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 7266468444142317545, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
@@ -32478,6 +32490,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
     - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: fireInterval
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: beamLengthScale
       value: 0.05
       objectReference: {fileID: 0}
@@ -32742,6 +32758,10 @@ PrefabInstance:
       propertyPath: deathEffect
       value: 
       objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
+    - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: fireInterval
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: beamLengthScale
       value: 0.05

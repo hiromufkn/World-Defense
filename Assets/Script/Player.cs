@@ -61,6 +61,8 @@ public class Player : MonoBehaviour
     // ’…’nˆ—’†‚©
     private bool isLanding = false;
 
+    [SerializeField] private GameObject isGroundUI;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -79,6 +81,8 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        isGroundUI.SetActive(isGrounded);
+
         attackPower = baseAttack + speed * attackRate;
     }
 
