@@ -54,6 +54,8 @@ public class PlayerMove : MonoBehaviour
     // ノックバックに使う
     private float knockBackTime = 1.7f;
     private float knockBackTimer = 0f;
+    private bool AttachWall=false;
+    private bool AttachGround=false;
 
     // playerのアニメーション
     private Animator animator;
@@ -537,6 +539,7 @@ public class PlayerMove : MonoBehaviour
                     );
                 }
             }
+
         }
 
         //================================
