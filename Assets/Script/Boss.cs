@@ -8,7 +8,7 @@ using Unity.VisualScripting;
 
 public class Boss : MonoBehaviour
 {
- 
+
     public Transform Player;
     public Transform model;
     public Transform firePoint;
@@ -20,7 +20,7 @@ public class Boss : MonoBehaviour
     public float Hp = 1000;
     public float MaxHp = 1000;
     public ParticleSystem beamEffect;
-Å@Å@public ParticleSystem deathEffect;
+    public ParticleSystem deathEffect;
     public float beamWidth = 0.1f;
     public float beamLengthScale = 0.2f;
 
@@ -39,7 +39,8 @@ public class Boss : MonoBehaviour
     private bool isInvincible = false;
     private Renderer[] renderers;
     private Slider hpSlider;
-
+    private Collider[] enemyColliders;
+    private Collider[] playerColliders;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -69,13 +70,17 @@ public class Boss : MonoBehaviour
             beamEffect.Stop(true, ParticleSystemStopBehavior.StopEmittingAndClear);
         }
 
-        //line = GetComponent<LineRenderer>();
+        enemyColliders = GetComponentsInChildren<Collider>();
+        playerColliders = Player.GetComponentsInChildren<Collider>();
 
-        //line.positionCount = 2;
-
-        //line.enabled = false;
-
-    }
+        foreach (Collider enemyCollider in enemyColliders)
+        {
+            foreach (Collider playerCollider in playerColliders)
+            {
+                Physics.IgnoreCollision(enemyCollider, playerCollider, true);
+            }
+        }
+}
 
     //void OnTriggerEnter(Collider other)
     //{
@@ -179,13 +184,13 @@ public class Boss : MonoBehaviour
 
         {
             Debug.Log("KÉLÅ[Ç≈ìGéÄñS:");
-            if(deathEffect!=null)
+            if (deathEffect != null)
             {
                 ParticleSystem effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
                 effect.Play();
                 Destroy(effect.gameObject, 2f);
             }
-            
+
             Destroy(gameObject);
 
             //spawner.SpawnEnemy();
@@ -220,9 +225,9 @@ public class Boss : MonoBehaviour
 
         if (Hp <= 0)
         {
-            if(deathEffect!=null)
+            if (deathEffect != null)
             {
-                ParticleSystem effect = Instantiate(deathEffect, transform.position,Quaternion.identity);
+                ParticleSystem effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
                 effect.Play();
                 Destroy(effect.gameObject, 2f);
             }
@@ -230,6 +235,7 @@ public class Boss : MonoBehaviour
             return;
         }
 
+        IgnorePlayerCollision(true);
         StartCoroutine(Invincible());
     }
 
@@ -253,6 +259,8 @@ public class Boss : MonoBehaviour
     System.Collections.IEnumerator Invincible()
     {
         isInvincible = true;
+
+        gameObject.layer = LayerMask.NameToLayer("Enemy");
 
         float timer = 0f;
 
@@ -279,8 +287,27 @@ public class Boss : MonoBehaviour
             r.enabled = true;
         }
 
+        gameObject.layer = LayerMask.NameToLayer("Default");
         isInvincible = false;
     }
-}
+
+    void IgnorePlayerCollision(bool ignore)
+    {
+        foreach (Collider enemyCollider in enemyColliders)
+        {
+            foreach (Collider playerCollider in playerColliders)
+            {
+                if (enemyCollider != null && playerCollider != null)
+                {
+                    Physics.IgnoreCollision(
+                        enemyCollider,
+                        playerCollider,
+                        ignore
+                    );
+                }
+            }
+        }
+    }
+  }
 
     
