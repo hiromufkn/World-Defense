@@ -63,10 +63,27 @@ public class Player : MonoBehaviour
 
     [SerializeField] private GameObject isGroundUI;
 
-    void Start()
+
+    [SerializeField] private float fallGravity = 2.5f;
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
 
+    private void FixedUpdate()
+    {
+        if (rb.linearVelocity.y < 0)
+        {
+            rb.AddForce(
+                Physics.gravity * (fallGravity - 1f),
+                ForceMode.Acceleration
+            );
+        }
+    }
+
+    void Start()
+    {
         playerHp = maxHp;
         attackPower = baseAttack;
 
