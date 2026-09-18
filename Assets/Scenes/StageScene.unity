@@ -14152,12 +14152,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: jumpPower
-      value: 16
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: isGroundUI
       value: 
       objectReference: {fileID: 484357506}
+    - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      propertyPath: fallGravity
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: turnSpeedThreshold
       value: 5
