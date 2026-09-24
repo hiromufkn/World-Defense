@@ -33,29 +33,46 @@ public class EnemyPositionIndicator : MonoBehaviour
         Transform nearestEnemy = null;
         float nearestDistance = Mathf.Infinity;
 
-        foreach (Transform enemy in enemies)
+        foreach (Transform enemySet in enemies)
         {
-            if (enemy == null)
+            if (enemySet == null)
             {
                 continue;
             }
 
-            float distance = Vector3.Distance(
-                Player.position,
-                enemy.position
-            );
+            Enemy[] enemyList = enemySet.GetComponentsInChildren<Enemy>();
 
-            if (distance < nearestDistance)
+            foreach (Enemy enemyScript in enemyList)
             {
-                nearestDistance = distance;
-                nearestEnemy = enemy;
+                if (enemyScript == null)
+                {
+                    continue;
+                }
+
+                Transform enemy = enemyScript.transform;
+
+
+                float distance = Vector3.Distance(
+                    Player.position,
+                    enemy.position
+                );
+
+                if (distance < nearestDistance)
+                {
+                    nearestDistance = distance;
+                    nearestEnemy = enemy;
+                }
             }
         }
 
         if (nearestEnemy == null)
         {
+            rect.gameObject.SetActive(false);
             return;
         }
+
+        //“G‚ªŽc‚Á‚Ä‚¢‚éê‡–îˆó•\Ž¦
+        rect.gameObject.SetActive(true);
 
         // ˆê”Ô‹ß‚¢“G‚ÌˆÊ’u‚ðŽæ“¾
         Vector3 enemyPosition =
