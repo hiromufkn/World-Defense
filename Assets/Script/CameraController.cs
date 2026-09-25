@@ -13,6 +13,7 @@ public class CameraController : MonoBehaviour
 
     [SerializeField] private float cameraRadius = 0.8f;
     [SerializeField] private float minCameraDistance = 1.0f;
+    //[SerializeField] private float playerWallCheckRadius = 1.0f;
 
     // 壁に当たったときの横移動量
     // [SerializeField] private float sideMoveAmount = 0.5f;
@@ -57,12 +58,19 @@ public class CameraController : MonoBehaviour
             cameraDistance = hit.distance - cameraRadius - cameraOffset - 0.2f;
         }
 
+        // プレイヤーが壁に近い場合
+        //bool playerNearWall = Physics.CheckSphere(player.position,playerWallCheckRadius,cameraCollisionLayer
+        //);
+
+        //if (playerNearWall)
+        //{
+        //    cameraDistance = Mathf.Min(cameraDistance,minCameraDistance);
+        //}
+
+        //cameraDistance = Mathf.Clamp(cameraDistance,minCameraDistance,distance);
+
         // 最終的なカメラ位置
         Vector3 targetPosition = lookPosition + direction * cameraDistance;
-
-
-        
-        
 
         cameraDistance = Mathf.Clamp(cameraDistance, minCameraDistance, distance);
 
