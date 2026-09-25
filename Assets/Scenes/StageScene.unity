@@ -14770,6 +14770,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 1665016586525466306, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1818791354616737922, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: m_Name
       value: Player 1
