@@ -68,7 +68,7 @@ public class PlayerAttack : MonoBehaviour
 
     private IEnumerator ResetSlideRotation()
     {
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1.2f);
 
         transform.rotation = Quaternion.Euler(
             0,
@@ -76,7 +76,7 @@ public class PlayerAttack : MonoBehaviour
             0
         );
 
-        player.status = Player.PlayerStatus.Run;
+        player.ChangeStatus(Player.PlayerStatus.Run);
         Debug.Log(
             "èÛë‘ïœçX : Slide Å® RUN"
         );
