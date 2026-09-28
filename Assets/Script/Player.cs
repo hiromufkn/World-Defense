@@ -116,12 +116,12 @@ public class Player : MonoBehaviour
             newStatus != PlayerStatus.Dead)
             return;
 
-        // UŒ‚’†‚ÍRun‚Åã‘‚«‹Ö~
-        if ((status == PlayerStatus.Slide ||
-             status == PlayerStatus.Punch ||
-             status == PlayerStatus.Kick) &&
-             newStatus == PlayerStatus.Run)
-            return;
+        //// UŒ‚’†‚ÍRun‚Åã‘‚«‹Ö~
+        //if ((status == PlayerStatus.Slide ||
+        //     status == PlayerStatus.Punch ||
+        //     status == PlayerStatus.Kick) &&
+        //     newStatus == PlayerStatus.Run)
+        //    return;
 
         // Jump / Fall’†‚ÍRun‹Ö~
         if ((status == PlayerStatus.Jump ||
@@ -132,7 +132,8 @@ public class Player : MonoBehaviour
         // Slide’†‚ÍJumpˆÈŠO‹Ö~
         if (status == PlayerStatus.Slide)
         {
-            if (newStatus != PlayerStatus.Jump)
+            if (newStatus != PlayerStatus.Jump &&
+                newStatus != PlayerStatus.Run)
                 return;
         }
 
