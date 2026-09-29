@@ -509,6 +509,8 @@ public class PlayerMove : MonoBehaviour
         // è≠Çµè„Ç…îÚÇŒÇ∑
         player.rb.linearVelocity +=
             Vector3.up * 7f;
+
+        player.speed = 0f;
     }
 
     //==============================
