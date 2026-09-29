@@ -142,7 +142,7 @@ public class Enemy : MonoBehaviour
             {
                 isFiring = true;
                 laserTimer = laserTime;
-                targetPosition = Player.position;
+                targetPosition = Player.position + Vector3.up * 1.5f;
                 //line.enabled = true;
                 //FeirLaser();
                 if (beamEffect != null)

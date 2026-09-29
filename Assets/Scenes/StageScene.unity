@@ -173,6 +173,37 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4510274538456433033, guid: 80ec9d4b1fe521f4d92830bd743a27d5, type: 3}
+--- !u!1 &6765498
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6765499}
+  m_Layer: 0
+  m_Name: BeamTarget
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6765499
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6765498}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1262627598}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9859615 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5092007780053248061, guid: 9b709d8b6f123fe45a0a78db46db118f, type: 3}
@@ -3569,7 +3600,7 @@ MonoBehaviour:
   Hp: 250
   MaxHp: 250
   hpSlider: {fileID: 1289688227}
-  Player: {fileID: 0}
+  Player: {fileID: 6765499}
   model: {fileID: 239646925}
   firePoint: {fileID: 1921518435}
   attackRange: 30
@@ -4972,7 +5003,7 @@ MonoBehaviour:
   Hp: 250
   MaxHp: 250
   hpSlider: {fileID: 1153042988}
-  Player: {fileID: 0}
+  Player: {fileID: 6765499}
   model: {fileID: 327754568}
   firePoint: {fileID: 651779317}
   attackRange: 30
@@ -15649,7 +15680,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 4032583852168460248, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 6765499}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97edce7555990b34d863962943e3e80b, type: 3}
 --- !u!1001 &1041180617
@@ -24582,7 +24616,7 @@ MonoBehaviour:
   Hp: 250
   MaxHp: 250
   hpSlider: {fileID: 902054321}
-  Player: {fileID: 0}
+  Player: {fileID: 6765499}
   model: {fileID: 1641260770}
   firePoint: {fileID: 161104130}
   attackRange: 20
@@ -32678,6 +32712,10 @@ PrefabInstance:
       value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 6765499}
+    - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: beamWidth
       value: 0.01
       objectReference: {fileID: 0}
@@ -32705,6 +32743,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 6765499}
     - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: beamWidth
       value: 0.01
@@ -33480,6 +33522,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6235201705485938709, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 6765499}
+    - target: {fileID: 6235201705485938709, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: beamWidth
       value: 0.01
       objectReference: {fileID: 0}
@@ -33596,6 +33642,10 @@ PrefabInstance:
       value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 7039545939260409500, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 6765499}
+    - target: {fileID: 7039545939260409500, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: beamWidth
       value: 0.01
       objectReference: {fileID: 0}
@@ -33655,6 +33705,10 @@ PrefabInstance:
       propertyPath: MaxHp
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 7266468444142317545, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 6765499}
     - target: {fileID: 7266468444142317545, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: beamWidth
       value: 0.01
@@ -34811,6 +34865,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2289065153786549582, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 6765499}
+    - target: {fileID: 2289065153786549582, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: beamWidth
       value: 0.01
       objectReference: {fileID: 0}
@@ -34914,6 +34972,10 @@ PrefabInstance:
       propertyPath: MaxHp
       value: 250
       objectReference: {fileID: 0}
+    - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 6765499}
     - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: beamWidth
       value: 0.01
@@ -35200,6 +35262,10 @@ PrefabInstance:
       value: 250
       objectReference: {fileID: 0}
     - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 6765499}
+    - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: beamWidth
       value: 0.01
       objectReference: {fileID: 0}
@@ -35247,6 +35313,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7178640097879311891, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: Player
+      value: 
+      objectReference: {fileID: 6765499}
     - target: {fileID: 7178640097879311891, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: beamWidth
       value: 0.01
