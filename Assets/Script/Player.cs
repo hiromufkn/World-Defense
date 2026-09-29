@@ -62,7 +62,7 @@ public class Player : MonoBehaviour
     private bool isLanding = false;
 
     [SerializeField] private GameObject isGroundUI;
-
+    [SerializeField] private GameObject gameOverUI;
 
     [SerializeField] private float fallGravity = 2.5f;
 
@@ -162,7 +162,14 @@ public class Player : MonoBehaviour
 
         if (playerHp <= 0)
         {
+            playerHp = 0;
             Debug.Log("Ž€–S");
+
+
+            if (gameOverUI!=null)
+            {
+                gameOverUI.SetActive(true);
+            }
         }
     }
 
