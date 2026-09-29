@@ -14871,6 +14871,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2014733093}
     - target: {fileID: 3673731368470252357, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      propertyPath: playerPos
+      value: 
+      objectReference: {fileID: 1262627598}
+    - target: {fileID: 3673731368470252357, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: cornerCheckDistance
       value: 3
       objectReference: {fileID: 0}
