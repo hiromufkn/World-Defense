@@ -89,13 +89,13 @@ public class Enemy : MonoBehaviour
         enemyColliders = GetComponentsInChildren<Collider>();
         playerColliders = Player.GetComponentsInChildren<Collider>();
 
-        foreach (Collider enemyCollider in enemyColliders)
-        {
-            foreach (Collider playerCollider in playerColliders)
-            {
-                Physics.IgnoreCollision(enemyCollider, playerCollider, true);
-            }
-        }
+        //foreach (Collider enemyCollider in enemyColliders)
+        //{
+        //    foreach (Collider playerCollider in playerColliders)
+        //    {
+        //        Physics.IgnoreCollision(enemyCollider, playerCollider, true);
+        //    }
+        //}
     }
 
     //void OnTriggerEnter(Collider other)
@@ -330,6 +330,8 @@ public class Enemy : MonoBehaviour
 
 
         gameObject.layer = LayerMask.NameToLayer("Default");
+
+        IgnorePlayerCollision(false);
 
         isInvincible = false;
     }
