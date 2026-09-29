@@ -15455,6 +15455,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1262627598}
     - target: {fileID: 3673731368470252357, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      propertyPath: cameraController
+      value: 
+      objectReference: {fileID: 2029475463}
+    - target: {fileID: 3673731368470252357, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: cornerCheckDistance
       value: 3
       objectReference: {fileID: 0}
@@ -31127,6 +31131,17 @@ Camera:
   m_CorrespondingSourceObject: {fileID: 5092323220775928116, guid: 85ce8845980018c4e883bd830a7f5416, type: 3}
   m_PrefabInstance: {fileID: 998789053}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &2029475463 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6518850586902676667, guid: 85ce8845980018c4e883bd830a7f5416, type: 3}
+  m_PrefabInstance: {fileID: 998789053}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc0137dda0c7ebc4783788d85cc5ce87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
 --- !u!4 &2034273361 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5316609513351239561, guid: 4db940c31d61ac149801c850fc645d68, type: 3}
