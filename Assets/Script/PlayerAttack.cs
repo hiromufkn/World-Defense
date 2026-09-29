@@ -91,6 +91,9 @@ public class PlayerAttack : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("Collisionî≠ê∂ÅF" + collision.gameObject.name);
+
+
         if (player.status == Player.PlayerStatus.Slide)
         {
             if (collision.gameObject.CompareTag("Enemy"))
