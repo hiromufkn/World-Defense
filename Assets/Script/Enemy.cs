@@ -58,8 +58,11 @@ public class Enemy : MonoBehaviour
         StartPos = transform.position;
 
         Hp = MaxHp;
-        hpSlider.maxValue = MaxHp;
-        hpSlider.value = Hp;
+        if (hpSlider != null)
+        { 
+            hpSlider.maxValue = MaxHp;
+            hpSlider.value = Hp;
+        }
 
         //spawner = FindFirstObjectByType<EnemySpawner>();
         //direction = 1;
@@ -284,7 +287,11 @@ public class Enemy : MonoBehaviour
         {
             if (hit.transform.CompareTag("Player"))
             {
-                hit.transform.GetComponent<Player>().TakeDamage(5f * Time.deltaTime);
+                Player player = hit.transform.GetComponent<Player>();
+                if(player!=null)
+                {
+                    player.TakeDamage(5f * Time.deltaTime);
+                }
             }
         }
     }
