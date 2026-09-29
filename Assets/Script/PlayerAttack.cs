@@ -17,7 +17,10 @@ public class PlayerAttack : MonoBehaviour
 
     public void OnSlide()
     {
-        Slide();
+        if (CanSlide())
+        {
+            Slide();
+        }
     }
 
     public void Punch()
@@ -80,6 +83,11 @@ public class PlayerAttack : MonoBehaviour
         Debug.Log(
             "èÛë‘ïœçX : Slide Å® RUN"
         );
+    }
+
+    private bool CanSlide()
+    {
+        return !player.IsLowSpeed();
     }
     private void OnCollisionEnter(Collision collision)
     {

@@ -167,6 +167,10 @@ public class Player : MonoBehaviour
     }
 
     // スピードの現在の段階
+    public bool IsLowSpeed()
+    {
+        return speed <= lowSpeed;
+    }
     public bool IsMidSpeed()
     {
         return speed >= midSpeed;

@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -6,6 +7,9 @@ public class PlayerMove : MonoBehaviour
     //==============================
     // プレイヤー情報
     //==============================
+
+    // Playerの座標
+    public Transform playerPos;
 
     // Playerスクリプト取得用
     private Player player;
@@ -41,6 +45,9 @@ public class PlayerMove : MonoBehaviour
 
     private float wallRunCooldown = 0f;
 
+    // 壁走りをするために必要な高さの最低値
+    private float wallMinY = 5f;
+
     // L字などで別の壁に近づいたときの検出距離
     [SerializeField]
     private float cornerCheckDistance = 0.5f;
@@ -54,8 +61,6 @@ public class PlayerMove : MonoBehaviour
     // ノックバックに使う
     private float knockBackTime = 1.7f;
     private float knockBackTimer = 0f;
-    private bool AttachWall=false;
-    private bool AttachGround=false;
 
     // playerのアニメーション
     private Animator animator;
@@ -475,6 +480,7 @@ public class PlayerMove : MonoBehaviour
         return
             wallRunCooldown <= 0f &&
             player.IsMidSpeed() &&
+            playerPos.position.y >= wallMinY &&
             player.status != Player.PlayerStatus.Slide;
     }
 
@@ -503,6 +509,8 @@ public class PlayerMove : MonoBehaviour
         // 少し上に飛ばす
         player.rb.linearVelocity +=
             Vector3.up * 7f;
+
+        player.speed = 0f;
     }
 
     //==============================
