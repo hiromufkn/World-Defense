@@ -3575,7 +3575,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -4978,7 +4978,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -24595,7 +24595,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -32706,6 +32706,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5042495741661624348, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5345271603730782510, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -32757,6 +32761,10 @@ PrefabInstance:
     - target: {fileID: 7876885829038420031, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8922407075446896293, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: Player
@@ -33320,6 +33328,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4348859389284536910, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4429017286486799212, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: m_Layer
       value: 0
@@ -33514,6 +33526,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6026145901452042872, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6026145901452042872, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6040511881432405881, guid: e35f877e0039f344580647708c3d4073, type: 3}
@@ -33838,6 +33854,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8696502379455036275, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8696502379455036275, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8730821443971683315, guid: e35f877e0039f344580647708c3d4073, type: 3}
@@ -34927,6 +34947,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3041374139626521520, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3103335875559838043, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -34934,6 +34958,10 @@ PrefabInstance:
     - target: {fileID: 4199416075119069045, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: m_Name
       value: EnemySet2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4206751481206272809, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4331744679643779845, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: m_LocalPosition.x
@@ -35320,6 +35348,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4936128767963553828, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5646067096711992324, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25
@@ -35355,6 +35387,10 @@ PrefabInstance:
     - target: {fileID: 7731085465120123524, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8090009221281826106, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8815204227654401728, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: m_AnchorMax.y
