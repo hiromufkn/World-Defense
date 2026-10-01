@@ -89,13 +89,6 @@ public class Enemy : MonoBehaviour
         enemyColliders = GetComponentsInChildren<Collider>();
         playerColliders = Player.GetComponentsInChildren<Collider>();
 
-        //foreach (Collider enemyCollider in enemyColliders)
-        //{
-        //    foreach (Collider playerCollider in playerColliders)
-        //    {
-        //        Physics.IgnoreCollision(enemyCollider, playerCollider, true);
-        //    }
-        //}
     }
 
     //void OnTriggerEnter(Collider other)
@@ -116,9 +109,7 @@ public class Enemy : MonoBehaviour
     //}
     void Update()
     {
-
-
-        if (Player != null)
+ 
         {
 
             float distance = Vector3.Distance(transform.position, Player.position);

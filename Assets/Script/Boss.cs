@@ -73,7 +73,9 @@ public class Boss : MonoBehaviour
         enemyColliders = GetComponentsInChildren<Collider>();
         playerColliders = Player.GetComponentsInChildren<Collider>();
 
-}
+        //IgnorePlayerCollision(true);
+
+    }
 
     //void OnTriggerEnter(Collider other)
     //{
