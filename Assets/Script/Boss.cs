@@ -281,6 +281,9 @@ public class Boss : MonoBehaviour
         }
 
         gameObject.layer = LayerMask.NameToLayer("Default");
+
+        IgnorePlayerCollision(false);
+
         isInvincible = false;
     }
 
@@ -300,7 +303,7 @@ public class Boss : MonoBehaviour
                 }
             }
         }
-    }
+     }
   }
 
     
