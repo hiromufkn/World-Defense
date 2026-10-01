@@ -1,10 +1,4 @@
-using System.IO;
 using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Controls;
-using UnityEditor.Experimental.GraphView;
-using Unity.VisualScripting.Antlr3.Runtime;
 
 public class Beam : MonoBehaviour
 {
