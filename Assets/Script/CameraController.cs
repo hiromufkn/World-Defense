@@ -14,9 +14,6 @@ public class CameraController : MonoBehaviour
     [SerializeField] private float cameraRadius = 1.0f;
     [SerializeField] private float minCameraDistance = 1.0f;
     [SerializeField] private float cameraSmoothTime = 0.08f;
-    [SerializeField] private float sideCheckDistance = 1.5f;
-    // ‰æ–Ê’[‚Ì•Ç‚ð”ð‚¯‚é‚½‚ß‚Ì’Ç‰Á—]”’
-    [SerializeField] private float sideCameraOffset = 0.15f;
 
     private float pitch = 20f;
     private float yaw = 0f;
