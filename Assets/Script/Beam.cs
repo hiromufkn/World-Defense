@@ -24,9 +24,7 @@ public class Beam : MonoBehaviour
     private Vector3 StartPos;
     private Vector3 targetPosition;
     private bool isFiring = false;
-    private float timer;
     private float laserTimer;
-    private bool isInvincible = false;
     private Renderer[] renderers;
 
 
@@ -103,7 +101,6 @@ public class Beam : MonoBehaviour
     {
         isFiring = true;
         laserTimer = laserTime;
-        timer = 0f;
 
         beamEffect.Play(true);
     }
