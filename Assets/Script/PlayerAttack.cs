@@ -50,7 +50,7 @@ public class PlayerAttack : MonoBehaviour
 
         player.rb.linearVelocity = new Vector3(
             transform.forward.x * player.speed,
-            player.rb.linearVelocity.y,
+            /*player.rb.linearVelocity.y*/0f,
             transform.forward.z * player.speed
         );
 
@@ -89,34 +89,31 @@ public class PlayerAttack : MonoBehaviour
     {
         return !player.IsLowSpeed();
     }
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider other)
     {
-        Debug.Log("Collisionî≠ê∂ÅF" + collision.gameObject.name);
+        Debug.Log("Collisionî≠ê∂ÅF" + other.gameObject.name);
 
 
-        if (player.status == Player.PlayerStatus.Slide)
-        {
-            if (collision.gameObject.CompareTag("Enemy"))
-            {
-                Enemy enemy =
-                    collision.gameObject.GetComponent<Enemy>();
+        if (player.status != Player.PlayerStatus.Slide)
+        
+            return;
+        
+            Enemy enemy = other.gameObject.GetComponentInParent<Enemy>();
 
                 if (enemy != null)
                 {
                     Debug.Log("Enemyê⁄êG");
                     enemy.TakeDamage(slideDamage);
+                    return;
                 }
-            }
+            
 
-            if (collision.gameObject.CompareTag("Boss"))
-            {
-                Boss boss = collision.gameObject.GetComponent<Boss>();
+                Boss boss = other.gameObject.GetComponentInParent<Boss>();
 
                 if(boss!=null)
                 {
+                    Debug.Log("Bossê⁄êG");
                     boss.TakeDamage(slideDamage);
                 }
             }
-        }
     }
-}
