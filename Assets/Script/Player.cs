@@ -65,6 +65,7 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject gameOverUI;
 
     [SerializeField] private float fallGravity = 2.5f;
+    private Vector3 StartPos;
 
     private void Awake()
     {
@@ -84,6 +85,8 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+       StartPos=new Vector3(50f, 0f, 8f);
+
         playerHp = maxHp;
         attackPower = baseAttack;
 
@@ -101,6 +104,8 @@ public class Player : MonoBehaviour
         isGroundUI.SetActive(isGrounded);
 
         attackPower = baseAttack + speed * attackRate;
+
+        Fall();
     }
 
     public void ChangeStatus(PlayerStatus newStatus)
@@ -290,5 +295,15 @@ public class Player : MonoBehaviour
 
         // Idle‚Ö–ß‚é
         ChangeStatus(PlayerStatus.Idle);
+    }
+
+    private void Fall()
+    {
+        if (transform.position.y < -10f)
+        {
+            transform.position = StartPos;
+
+            rb.linearVelocity = Vector3.zero;
+        }
     }
 }
