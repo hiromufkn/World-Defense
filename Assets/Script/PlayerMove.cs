@@ -46,7 +46,7 @@ public class PlayerMove : MonoBehaviour
     private float wallRunCooldown = 0f;
 
     // 壁走りをするために必要な高さの最低値
-    private float wallMinY = 5f;
+    private float wallMinY = 3f;
 
     // L字などで別の壁に近づいたときの検出距離
     [SerializeField]

@@ -349,6 +349,13 @@ public class Enemy : MonoBehaviour
                         playerCollider,
                         ignore
                     );
+
+                    Debug.Log(
+                    "Collision Ignore: " +
+                    enemyCollider.name + " / " +
+                    playerCollider.name +
+                    " = " + ignore
+                );
                 }
             }
         }
