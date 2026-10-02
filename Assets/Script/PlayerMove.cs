@@ -69,6 +69,8 @@ public class PlayerMove : MonoBehaviour
     private void Update()
     {
         isWallUI.SetActive(isWallRunning);
+
+        CheckGround();
     }
 
     //==============================
@@ -85,7 +87,6 @@ public class PlayerMove : MonoBehaviour
 
         defaultModelRotation = model.localRotation;
     }
-
     //==============================
     // 毎フレーム物理更新
     //==============================
@@ -157,7 +158,10 @@ public class PlayerMove : MonoBehaviour
 
     public void OnJump()
     {
-        Jump();
+        if (player.status != Player.PlayerStatus.Fall)
+        {
+            Jump();
+        }
     }
 
     //==============================
@@ -260,7 +264,7 @@ public class PlayerMove : MonoBehaviour
             if (player.speed <= 0)
             {
                 player.speed = 0;
-                if (player.isGrounded)
+                if (player.isGrounded && player.status != Player.PlayerStatus.Fall)
                 {
                     player.ChangeStatus(
                     Player.PlayerStatus.Idle
@@ -511,6 +515,18 @@ public class PlayerMove : MonoBehaviour
             Vector3.up * 7f;
 
         player.speed = 0f;
+    }
+
+    // 地面設置条件
+    private void CheckGround()
+    {
+        if (playerPos.position.y <= 0.1f)
+        {
+            if (player.status == Player.PlayerStatus.Fall)
+            {
+                player.Land();
+            }
+        }
     }
 
     //==============================
