@@ -10,9 +10,14 @@ public class PlayerAttack : MonoBehaviour
 
     public float slideDamage;
 
+    [SerializeField] private Collider bodyCollider;
+    [SerializeField] private Collider attackCollider;
+
     void Start()
     {
         player = GetComponent<Player>();
+
+        //playerColliders = GetComponentsInChildren<Collider>();
     }
 
     public void OnSlide()
@@ -46,6 +51,8 @@ public class PlayerAttack : MonoBehaviour
 
         player.ChangeStatus(Player.PlayerStatus.Slide);
 
+        SetEnemyCollision(true);
+
         player.speed *= 0.8f;
 
         player.rb.linearVelocity = new Vector3(
@@ -78,6 +85,8 @@ public class PlayerAttack : MonoBehaviour
             transform.eulerAngles.y,
             0
         );
+
+        SetEnemyCollision(false);
 
         player.ChangeStatus(Player.PlayerStatus.Run);
         Debug.Log(
@@ -116,4 +125,39 @@ public class PlayerAttack : MonoBehaviour
                     boss.TakeDamage(slideDamage);
                 }
             }
+    private void SetEnemyCollision(bool ignore)
+    {
+        Enemy[] enemies = FindObjectsByType<Enemy>();
+
+        foreach (Enemy enemy in enemies)
+        {
+            Collider[] enemyColliders = enemy.GetComponentsInChildren<Collider>();
+
+            
+                foreach (Collider enemyCollider in enemyColliders)
+                {
+                    Physics.IgnoreCollision(
+                        bodyCollider,
+                        enemyCollider,
+                        ignore
+                );
+            }
+        }
+
+        Boss[] bosses = FindObjectsByType<Boss>();
+
+        foreach (Boss boss in bosses)
+        {
+            Collider[] bossColliders = boss.GetComponentsInChildren<Collider>();
+
+                foreach (Collider bossCollider in bossColliders)
+                {
+                    Physics.IgnoreCollision(
+                        bodyCollider,
+                        bossCollider,
+                        ignore
+                 );
+             }
+        }
     }
+}
