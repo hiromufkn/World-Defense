@@ -510,8 +510,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (playerPos.position.y <= 0.1f)
         {
-            if (player.status == Player.PlayerStatus.Fall ||
-                player.status == Player.PlayerStatus.KnockBack)
+            if (player.status == Player.PlayerStatus.Fall)
             {
                 player.Land();
             }
