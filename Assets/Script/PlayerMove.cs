@@ -98,18 +98,9 @@ public class PlayerMove : MonoBehaviour
             wallRunCooldown -= Time.fixedDeltaTime;
         }
 
-        // ノックバック中
+        // ノックバック中Runに行かせない
         if (player.status == Player.PlayerStatus.KnockBack)
         {
-            knockBackTimer -= Time.fixedDeltaTime;
-
-            if (knockBackTimer <= 0f)
-            {
-                player.ChangeStatus(
-                    Player.PlayerStatus.Run
-                );
-            }
-
             return;
         }
 
@@ -522,7 +513,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (playerPos.position.y <= 0.1f)
         {
-            if (player.status == Player.PlayerStatus.Fall)
+            if (player.status == Player.PlayerStatus.Fall ||
+                player.status == Player.PlayerStatus.KnockBack)
             {
                 player.Land();
             }
@@ -547,7 +539,8 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             if (player.status == Player.PlayerStatus.Jump ||
-                player.status == Player.PlayerStatus.Fall)
+                player.status == Player.PlayerStatus.Fall ||
+                player.status == Player.PlayerStatus.KnockBack)
             {
                 // JumpEndを再生
                 player.Land();

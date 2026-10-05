@@ -145,6 +145,7 @@ public class Player : MonoBehaviour
         // ノックバック中は通常状態に変更しない
         if (status == PlayerStatus.KnockBack &&
             newStatus != PlayerStatus.Run &&
+            newStatus != PlayerStatus.Idle &&
             newStatus != PlayerStatus.Dead)
             return;
 
@@ -253,9 +254,10 @@ public class Player : MonoBehaviour
         if (isLanding)
             return;
 
-        // Jump / Fall以外での通常の接触なら何もしない
+        // Jump / Fall / KnockBack以外での通常の接触なら何もしない
         if (status != PlayerStatus.Jump &&
-            status != PlayerStatus.Fall)
+            status != PlayerStatus.Fall &&
+            status != PlayerStatus.KnockBack)
             return;
 
         isGrounded = true;
