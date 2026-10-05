@@ -9478,7 +9478,7 @@ GameObject:
   - component: {fileID: 675180649}
   - component: {fileID: 675180648}
   m_Layer: 5
-  m_Name: Canvas
+  m_Name: Arrow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9543,7 +9543,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
   m_UseReflectionProbes: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
@@ -16477,14 +16477,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d73fd4661ce21b459117a3e66d7e11d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EnemyPositionIndicator
-  enemies:
+  enemySets:
   - {fileID: 565338460}
   - {fileID: 3007756207636470020}
   - {fileID: 756990911}
   - {fileID: 204721836}
-  Player: {fileID: 1262627598}
-  screenMargin: 100
-  height: 2.5
+  indicators:
+  - {fileID: 1083308902}
+  - {fileID: 1083308902}
+  - {fileID: 1083308902}
+  - {fileID: 1083308902}
+  height: 20
 --- !u!114 &1083308900
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16505,7 +16508,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 48424aab76f8b954083395216caef10c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 193a132f6d24da243bbb09e12adc63cb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -35520,6 +35523,6 @@ SceneRoots:
   - {fileID: 869824084}
   - {fileID: 1175579712}
   - {fileID: 323988269}
-  - {fileID: 395266580}
   - {fileID: 675180651}
   - {fileID: 751355577}
+  - {fileID: 395266580}

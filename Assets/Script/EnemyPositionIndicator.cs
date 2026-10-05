@@ -2,21 +2,22 @@ using UnityEngine;
 
 public class EnemyPositionIndicator : MonoBehaviour
 {
-    public Transform[] enemies;
-    public Transform Player;
+    // EnemySetを複数設定
+    public Transform[] enemySets;
 
-    public float screenMargin = 100f;
+    // EnemySetごとの「！」を設定
+    public RectTransform[] indicators;
+
+    // 敵の中心から上に何m離すか
     public float height = 2.5f;
 
-    private RectTransform rect;
     private RectTransform canvasRect;
     private Camera cam;
 
     void Start()
     {
-        rect = GetComponent<RectTransform>();
-
         Canvas canvas = GetComponentInParent<Canvas>();
+
         canvasRect = canvas.GetComponent<RectTransform>();
 
         cam = Camera.main;
@@ -24,107 +25,104 @@ public class EnemyPositionIndicator : MonoBehaviour
 
     void Update()
     {
-        if (Player == null || enemies.Length == 0 || cam == null)
+        if (enemySets == null ||indicators == null || cam == null)
         {
             return;
         }
 
-        // 一番近い敵を探す
-        Transform nearestEnemy = null;
-        float nearestDistance = Mathf.Infinity;
-
-        foreach (Transform enemySet in enemies)
+        // EnemySetを1つずつ処理
+        for (int i = 0; i < enemySets.Length; i++)
         {
+            Transform enemySet = enemySets[i];
+
             if (enemySet == null)
             {
                 continue;
             }
 
-            Enemy[] enemyList = enemySet.GetComponentsInChildren<Enemy>();
-
-            foreach (Enemy enemyScript in enemyList)
+            // 対応する「！」がない
+            if (i >= indicators.Length ||indicators[i] == null)
             {
-                if (enemyScript == null)
+                continue;
+            }
+
+            RectTransform indicator = indicators[i];
+
+            // EnemySet内のEnemyを取得
+            Enemy[] enemyList =
+                enemySet.GetComponentsInChildren<Enemy>();
+
+            // 敵がいない
+            if (enemyList.Length == 0)
+            {
+                //indicator.gameObject.SetActive(false);
+                indicator.GetComponent<UnityEngine.UI.Image>().enabled = true;
+                continue;
+            }
+
+            // ========================================
+            // 敵3体の中心を計算
+            // ========================================
+
+            Vector3 enemyCenter = Vector3.zero;
+            int enemyCount = 0;
+
+            foreach (Enemy enemy in enemyList)
+            {
+                if (enemy == null)
                 {
                     continue;
                 }
 
-                Transform enemy = enemyScript.transform;
-
-
-                float distance = Vector3.Distance(
-                    Player.position,
-                    enemy.position
-                );
-
-                if (distance < nearestDistance)
-                {
-                    nearestDistance = distance;
-                    nearestEnemy = enemy;
-                }
+                enemyCenter += enemy.transform.position;
+                enemyCount++;
             }
-        }
 
-        if (nearestEnemy == null)
-        {
-            rect.gameObject.SetActive(false);
-            return;
-        }
+            if (enemyCount == 0)
+            {
+                indicator.gameObject.SetActive(false);
+                continue;
+            }
 
-        //敵が残っている場合矢印表示
-        rect.gameObject.SetActive(true);
+            enemyCenter /= enemyCount;
 
-        // 一番近い敵の位置を取得
-        Vector3 enemyPosition =
-            nearestEnemy.position + Vector3.up * height;
+            // ========================================
+            // 敵の中心より上
+            // ========================================
 
-        Vector3 screenPos =
-            cam.WorldToScreenPoint(enemyPosition);
+            Vector3 enemyPosition =enemyCenter + Vector3.up * height;
 
-        // 敵がカメラの後ろにいる場合
-        if (screenPos.z < 0)
-        {
-            screenPos.x = Screen.width - screenPos.x;
-            screenPos.y = Screen.height - screenPos.y;
-        }
+            // ========================================
+            // ワールド座標 → スクリーン座標
+            // ========================================
 
-        Vector2 canvasPos;
+            Vector3 screenPos =cam.WorldToScreenPoint(enemyPosition);
 
-        RectTransformUtility.ScreenPointToLocalPointInRectangle(
-            canvasRect,
-            screenPos,
-            null,
-            out canvasPos
-        );
+            // カメラの後ろなら非表示
+            if (screenPos.z < 0)
+            { 
+                continue;
+            }
 
-        float halfWidth = canvasRect.rect.width / 2f;
-        float halfHeight = canvasRect.rect.height / 2f;
+            // ========================================
+            // 表示
+            // ========================================
 
-        canvasPos.x = Mathf.Clamp(
-            canvasPos.x,
-            -halfWidth + screenMargin,
-            halfWidth - screenMargin
-        );
+            indicator.gameObject.SetActive(true);
 
-        canvasPos.y = Mathf.Clamp(
-            canvasPos.y,
-            -halfHeight + screenMargin,
-            halfHeight - screenMargin
-        );
+            // ========================================
+            // スクリーン座標 → Canvas座標
+            // ========================================
 
-        rect.anchoredPosition = canvasPos;
+            Vector2 canvasPos;
 
-        // 敵の方向へ矢印を向ける
-        Vector2 direction = canvasPos;
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(canvasRect,screenPos,null,out canvasPos);
 
-        if (direction.sqrMagnitude > 0.01f)
-        {
-            float angle =
-                Mathf.Atan2(direction.y, direction.x)
-                * Mathf.Rad2Deg;
+            // ========================================
+            // 「！」を移動
+            // ========================================
 
-            rect.localRotation =
-                Quaternion.Euler(0f, 0f, angle - 90f);
+            indicator.anchoredPosition = canvasPos;
         }
     }
 }
