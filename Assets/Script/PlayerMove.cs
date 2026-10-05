@@ -58,10 +58,6 @@ public class PlayerMove : MonoBehaviour
 
     private Quaternion defaultModelRotation;
 
-    // ノックバックに使う
-    private float knockBackTime = 1.7f;
-    private float knockBackTimer = 0f;
-
     // playerのアニメーション
     private Animator animator;
 
@@ -100,6 +96,10 @@ public class PlayerMove : MonoBehaviour
 
         // ノックバック中Runに行かせない
         if (player.status == Player.PlayerStatus.KnockBack)
+        {
+            return;
+        }
+        if (player.IsLanding)
         {
             return;
         }
@@ -484,9 +484,6 @@ public class PlayerMove : MonoBehaviour
     {
         // ノックバック中
         player.ChangeStatus(Player.PlayerStatus.KnockBack);
-
-        // タイマー開始
-        knockBackTimer = knockBackTime;
 
         // 障害物からプレイヤーに向かう方向
         Vector3 knockBackDirection =

@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
 
     // ’…’nˆ—’†‚©
     private bool isLanding = false;
+    public bool IsLanding => isLanding;
 
     [SerializeField] private GameObject isGroundUI;
     [SerializeField] private GameObject gameOverUI;
