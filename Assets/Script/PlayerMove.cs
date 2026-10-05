@@ -58,10 +58,6 @@ public class PlayerMove : MonoBehaviour
 
     private Quaternion defaultModelRotation;
 
-    // ノックバックに使う
-    private float knockBackTime = 1.7f;
-    private float knockBackTimer = 0f;
-
     // playerのアニメーション
     private Animator animator;
 
@@ -98,18 +94,13 @@ public class PlayerMove : MonoBehaviour
             wallRunCooldown -= Time.fixedDeltaTime;
         }
 
-        // ノックバック中
+        // ノックバック中Runに行かせない
         if (player.status == Player.PlayerStatus.KnockBack)
         {
-            knockBackTimer -= Time.fixedDeltaTime;
-
-            if (knockBackTimer <= 0f)
-            {
-                player.ChangeStatus(
-                    Player.PlayerStatus.Run
-                );
-            }
-
+            return;
+        }
+        if (player.IsLanding)
+        {
             return;
         }
 
@@ -494,9 +485,6 @@ public class PlayerMove : MonoBehaviour
         // ノックバック中
         player.ChangeStatus(Player.PlayerStatus.KnockBack);
 
-        // タイマー開始
-        knockBackTimer = knockBackTime;
-
         // 障害物からプレイヤーに向かう方向
         Vector3 knockBackDirection =
             transform.position - objectPos.position;
@@ -522,7 +510,8 @@ public class PlayerMove : MonoBehaviour
     {
         if (playerPos.position.y <= 0.1f)
         {
-            if (player.status == Player.PlayerStatus.Fall)
+            if (player.status == Player.PlayerStatus.Fall ||
+                player.status == Player.PlayerStatus.KnockBack)
             {
                 player.Land();
             }
@@ -547,7 +536,8 @@ public class PlayerMove : MonoBehaviour
         if (collision.gameObject.CompareTag("Ground"))
         {
             if (player.status == Player.PlayerStatus.Jump ||
-                player.status == Player.PlayerStatus.Fall)
+                player.status == Player.PlayerStatus.Fall ||
+                player.status == Player.PlayerStatus.KnockBack)
             {
                 // JumpEndを再生
                 player.Land();
