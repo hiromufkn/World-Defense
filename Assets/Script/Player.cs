@@ -65,6 +65,9 @@ public class Player : MonoBehaviour
     [SerializeField] private GameObject isGroundUI;
     [SerializeField] private GameObject gameOverUI;
 
+    // 死亡エフェクト
+    [SerializeField] private GameObject deathEffect;
+
     [SerializeField] private float fallGravity = 2.5f;
     private Vector3 StartPos;
 
@@ -165,6 +168,10 @@ public class Player : MonoBehaviour
 
     public void TakeDamage(float damage = 1f)
     {
+        // すでに死亡していたら何もしない
+        if (status == PlayerStatus.Dead)
+            return;
+
         playerHp -= damage;
 
         if (playerHp <= 0)
@@ -172,6 +179,17 @@ public class Player : MonoBehaviour
             playerHp = 0;
             Debug.Log("死亡");
 
+            // 死亡エフェクト
+            if (deathEffect != null)
+            {
+                Instantiate(
+                    deathEffect,
+                    transform.position,
+                    Quaternion.identity
+                );
+            }
+
+            ChangeStatus(PlayerStatus.Dead);
 
             if (gameOverUI!=null)
             {
@@ -241,6 +259,7 @@ public class Player : MonoBehaviour
 
             case PlayerStatus.Dead:
                 animator.Play("dead");
+
                 break;
         }
     }
