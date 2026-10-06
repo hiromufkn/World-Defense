@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using static Enemy;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class Boss : MonoBehaviour
 {
@@ -226,7 +227,9 @@ public class Boss : MonoBehaviour
                 effect.Play();
                 Destroy(effect.gameObject, 2f);
             }
+
             Destroy(gameObject);
+
             return;
         }
 
@@ -305,7 +308,7 @@ public class Boss : MonoBehaviour
                 }
             }
         }
-     }
-  }
+    }
+}
 
     
