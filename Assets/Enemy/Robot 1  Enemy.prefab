@@ -3423,6 +3423,10 @@ MonoBehaviour:
   fireInterval: 2
   laserTime: 0.5
   InvincibleTime: 1
+  beamWidth: 0.1
+  beamLengthScale: 0.2
+  beamEffect: {fileID: 0}
+  deathEffect: {fileID: 0}
 --- !u!135 &79039159787342034
 SphereCollider:
   m_ObjectHideFlags: 0
