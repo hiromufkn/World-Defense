@@ -6,6 +6,8 @@ public class EnemyExplosion : MonoBehaviour
     [SerializeField] private GameObject ExplosionPrefab;
     [SerializeField] private float delay = 3.0f;
 
+    [SerializeField] private GameObject ClearUI;
+
     private void Start()
     {
         StartCoroutine(ExplodeAfterDelay());
@@ -18,6 +20,11 @@ public class EnemyExplosion : MonoBehaviour
         if(ExplosionPrefab!=null)
         {
             Instantiate(ExplosionPrefab, transform.position, Quaternion.identity);
+        }
+
+        if(ClearUI!=null)
+        {
+            ClearUI.SetActive(true);
         }
 
         Destroy(gameObject);
