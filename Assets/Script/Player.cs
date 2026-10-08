@@ -57,6 +57,7 @@ public class Player : MonoBehaviour
     public Rigidbody rb;
 
     public Animator animator;
+    private PlayerMove playerMove;
 
     // 着地処理中か
     private bool isLanding = false;
@@ -101,6 +102,8 @@ public class Player : MonoBehaviour
         {
             animator = GetComponentInChildren<Animator>();
         }
+        // playermoveのスクリプトの取得
+        playerMove = GetComponent<PlayerMove>();
     }
 
     void Update()
@@ -282,6 +285,12 @@ public class Player : MonoBehaviour
 
         isGrounded = true;
         isLanding = true;
+
+        // 着地時のスピード管理
+        if(playerMove != null)
+        {
+            playerMove.LandingSpeed();
+        }
 
         // 着地アニメーション
         if (animator != null)
