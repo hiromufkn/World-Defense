@@ -17,14 +17,13 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject tutorialUI;
     [SerializeField] private TextMeshProUGUI tutorialText;
 
-    [SerializeField] private Player player;
+
     [SerializeField] private PlayerMove playerMove;
 
     //触れる対象オブジェクト
     [SerializeField] private GameObject MoveGoal;
+    [SerializeField] private GameObject WallRunGoal;
     [SerializeField] private GameObject AttackGoal;
-    [SerializeField] private GameObject DethGoal;
-    [SerializeField] private GameObject ClearGoal;
 
     private bool isGoalTouched = false;
 
@@ -43,7 +42,6 @@ public class TutorialManager : MonoBehaviour
     IEnumerator MoveTutorial()
     {
         //プレイヤーは最初操作禁止
-        player.enabled = false;
         playerMove.canMove = false;
 
         //3秒待つ
@@ -59,31 +57,70 @@ public class TutorialManager : MonoBehaviour
 
         //やってみよう！を表示
         tutorialUI.SetActive(true);
-        tutorialText.text="やってみよう！";
+        tutorialText.text="やってみよう!";
 
         //3秒やってみよう!を表示
         yield return new WaitForSeconds(3);
         tutorialUI.SetActive(false);
 
         //プレイヤー操作可能
-        player.enabled = true;
         playerMove.canMove = true;
 
         //一定数移動したら次のステップへ
         yield return new WaitUntil(()=>isGoalTouched);
 
         //次のステップへ
+        currentStep = tutorialStep.WallRun;
+
+        StartCoroutine(WallRunTutorial());
+    }
+
+    IEnumerator WallRunTutorial()
+    {
+        //壁走りの説明表示
+        tutorialUI.SetActive(true);
+        tutorialText.text = "壁走り\n\n" + "壁に近づき走る\n\n";
+
+        //操作方法の説明を削除
+        yield return new WaitForSeconds(3);
+        tutorialUI.SetActive(false);
+
+        //やってみよう！を表示
+        tutorialUI.SetActive(true);
+        tutorialText.text = "やってみよう!";
+
+        //3秒やってみよう!を表示
+        yield return new WaitForSeconds(3);
+        tutorialUI.SetActive(false);
+
+        playerMove.canMove = true;
+
+        //WallRunGoalに触れるまで待つ
+        isGoalTouched = false;
+        yield return new WaitUntil(() => isGoalTouched);
+
+        playerMove.canMove = false;
+
         currentStep = tutorialStep.Attack;
 
-        Debug.Log("チュートリアル終了");
-
+        //StartCoroutine(AttackTutorial());
     }
+
     public void GoalTouched(GameObject goal)
     {
         if (goal == MoveGoal && currentStep == tutorialStep.Move)
         {
+            //プレイヤー操作無効
+            playerMove.canMove = false;
+
+            isGoalTouched = true;
+        }
+
+        if(goal==WallRunGoal && currentStep == tutorialStep.WallRun)
+        {
+            playerMove.canMove = false;
+
             isGoalTouched = true;
         }
     }
-
 }
