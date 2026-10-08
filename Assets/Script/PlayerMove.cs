@@ -31,6 +31,8 @@ public class PlayerMove : MonoBehaviour
     // カメラ操作スクリプト
     public CameraController cameraController;
 
+    public bool canMove = true;
+
     //==============================
     // 壁走り
     //==============================
@@ -89,6 +91,10 @@ public class PlayerMove : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (!canMove)
+            return;
+
+
         if (wallRunCooldown > 0f)
         {
             wallRunCooldown -= Time.fixedDeltaTime;
