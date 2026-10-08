@@ -173,37 +173,11 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4510274538456433033, guid: 80ec9d4b1fe521f4d92830bd743a27d5, type: 3}
---- !u!1 &6765498
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6765499}
-  m_Layer: 0
-  m_Name: BeamTarget
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6765499
+--- !u!4 &6765499 stripped
 Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 7977007360085293947, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+  m_PrefabInstance: {fileID: 1036978923}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6765498}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.5, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1262627598}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &9859615 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5092007780053248061, guid: 9b709d8b6f123fe45a0a78db46db118f, type: 3}
@@ -15355,10 +15329,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 751355573}
     - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
-      propertyPath: isGroundUI
-      value: 
-      objectReference: {fileID: 484357506}
-    - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: fallGravity
       value: 4
       objectReference: {fileID: 0}
@@ -15490,10 +15460,6 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
-    - target: {fileID: 3673731368470252357, guid: 97edce7555990b34d863962943e3e80b, type: 3}
-      propertyPath: isWallUI
-      value: 
-      objectReference: {fileID: 2014733093}
     - target: {fileID: 3673731368470252357, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: playerPos
       value: 
@@ -15736,13 +15702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects:
-    - targetCorrespondingSourceObject: {fileID: 4032583852168460248, guid: 97edce7555990b34d863962943e3e80b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 6765499}
-    - targetCorrespondingSourceObject: {fileID: 4032583852168460248, guid: 97edce7555990b34d863962943e3e80b, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1503930101}
+    m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 97edce7555990b34d863962943e3e80b, type: 3}
 --- !u!1001 &1041180617
@@ -22431,59 +22391,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 5611945506556686983, guid: 9b709d8b6f123fe45a0a78db46db118f, type: 3}
   m_PrefabInstance: {fileID: 1502480285}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1503930100
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1503930101}
-  - component: {fileID: 1503930102}
-  m_Layer: 6
-  m_Name: SlideAttack
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1503930101
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503930100}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1262627598}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &1503930102
+--- !u!65 &1503930102 stripped
 BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 4606882689228496514, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+  m_PrefabInstance: {fileID: 1036978923}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1503930100}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 1
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1508189861
 PrefabInstance:
   m_ObjectHideFlags: 0
