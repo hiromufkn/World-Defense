@@ -63,7 +63,6 @@ public class Player : MonoBehaviour
     private bool isLanding = false;
     public bool IsLanding => isLanding;
 
-    [SerializeField] private GameObject isGroundUI;
     [SerializeField] private GameObject gameOverUI;
 
     // 死亡エフェクト
@@ -108,8 +107,6 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        isGroundUI.SetActive(isGrounded);
-
         attackPower = baseAttack + speed * attackRate;
 
         Fall();
