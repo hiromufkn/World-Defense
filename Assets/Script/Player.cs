@@ -198,6 +198,18 @@ public class Player : MonoBehaviour
         }
     }
 
+    // 回復処理
+    public void Heal(float heal)
+    {
+        playerHp += heal;
+        Debug.Log("回復");
+        if (playerHp >= 100)
+        {
+            playerHp = 100;
+            Debug.Log("FullHP");
+        }
+    }
+
     // スピードの現在の段階
     public bool IsLowSpeed()
     {

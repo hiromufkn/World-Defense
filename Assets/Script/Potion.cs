@@ -25,4 +25,20 @@ public class Potion : MonoBehaviour
         transform.rotation =
             Quaternion.Euler(20f, Time.time * rotateSpeed, 0f);
     }
+
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (!other.CompareTag("Player"))
+            return;
+
+        Player player = other.GetComponent<Player>();
+
+        if (player == null)
+            return;
+
+        player.Heal(30f);
+
+        Destroy(gameObject);
+    }
 }
