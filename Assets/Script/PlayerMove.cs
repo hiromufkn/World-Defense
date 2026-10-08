@@ -1,5 +1,6 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
@@ -16,6 +17,9 @@ public class PlayerMove : MonoBehaviour
 
     // 入力された移動方向(WASD)
     private Vector2 moveInput;
+
+    // プレイヤーの移動方向
+    private Vector3 moveDirection;
 
     //==============================
     // カメラ
@@ -181,7 +185,7 @@ public class PlayerMove : MonoBehaviour
         cameraForward.Normalize();
         cameraRight.Normalize();
 
-        Vector3 moveDirection =
+        moveDirection =
             cameraForward * moveInput.y +
             cameraRight * moveInput.x;
 
@@ -318,6 +322,21 @@ public class PlayerMove : MonoBehaviour
             velocity;
 
         player.isGrounded = false;
+    }
+
+    // ジャンプ後などの着地時のスピードの処理
+    public void LandingSpeed()
+    {
+        // 入力があればスピード減らすだけ
+        if (moveDirection.sqrMagnitude > 0.01f)
+        {
+            player.speed *= 0.5f;
+        }
+        // なければ0に
+        else
+        {
+            player.speed = 0f;
+        }
     }
 
     private void StartWallRun()
