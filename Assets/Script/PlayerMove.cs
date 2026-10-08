@@ -332,7 +332,7 @@ public class PlayerMove : MonoBehaviour
         // 入力があればスピード減らすだけ
         if (moveDirection.sqrMagnitude > 0.01f)
         {
-            player.speed *= 0.5f;
+            player.speed *= 0.8f;
         }
         // なければ0に
         else
