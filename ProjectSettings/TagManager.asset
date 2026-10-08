@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Object
   - Boss
+  - Potion
   layers:
   - Default
   - TransparentFX
