@@ -19,6 +19,7 @@ public class TutorialManager : MonoBehaviour
 
 
     [SerializeField] private PlayerMove playerMove;
+    //[SerializeField] private Player player;
 
     //触れる対象オブジェクト
     [SerializeField] private GameObject MoveGoal;
@@ -81,6 +82,7 @@ public class TutorialManager : MonoBehaviour
         //壁走りの説明表示
         tutorialUI.SetActive(true);
         tutorialText.text = "壁走り\n\n" + "壁に近づき走る\n\n";
+        //player.speed = 0;
 
         //操作方法の説明を削除
         yield return new WaitForSeconds(3);
@@ -112,6 +114,7 @@ public class TutorialManager : MonoBehaviour
         //敵への攻撃説明
         tutorialUI.SetActive(true);
         tutorialText.text = "攻撃方法\n\n" + "CTRLまたはマウスクリック\n\n";
+        //player.speed = 0;
 
         //説明削除
         yield return new WaitForSeconds(3);
