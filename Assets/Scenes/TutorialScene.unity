@@ -350,8 +350,8 @@ Transform:
   m_GameObject: {fileID: 468344324}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 527.84, y: 22.5, z: -42.2}
-  m_LocalScale: {x: 90, y: 47, z: 1}
+  m_LocalPosition: {x: 527.84, y: 22.5, z: -41.59}
+  m_LocalScale: {x: 93, y: 47, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 517228658}
@@ -894,6 +894,83 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TutorialTrigger
   tutorialManager: {fileID: 2144688254}
+--- !u!1001 &812395974
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1677411628180443649, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: Hp
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 1677411628180443649, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: MaxHp
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066471997038087000, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_Name
+      value: Robot 1 Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 3066471997038087000, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3917053352064097460, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 511
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -40
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.69379157
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7201759
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 92.138
+      objectReference: {fileID: 0}
+    - target: {fileID: 6461242144715796726, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8042728142937501450, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f628e6b6f635eed4f8f7a5965b68e2b8, type: 3}
 --- !u!114 &879341594 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3673731368470252357, guid: 97edce7555990b34d863962943e3e80b, type: 3}
@@ -1198,6 +1275,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8204636333548793142, guid: a0bfff4f1e7f50046a221f6307dd9ee9, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3383633f0fadd8748b5761f8dcf431da, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 6447391602067232601, guid: a0bfff4f1e7f50046a221f6307dd9ee9, type: 3}
@@ -2478,7 +2559,7 @@ MonoBehaviour:
   tutorialText: {fileID: 1325227348}
   playerMove: {fileID: 879341594}
   MoveGoal: {fileID: 739744491}
-  WallRunGoal: {fileID: 0}
+  WallRunGoal: {fileID: 1054894039}
   AttackGoal: {fileID: 1005893497}
 --- !u!4 &2144688255
 Transform:
@@ -2511,3 +2592,4 @@ SceneRoots:
   - {fileID: 1005893498}
   - {fileID: 1441676486}
   - {fileID: 517228658}
+  - {fileID: 812395974}

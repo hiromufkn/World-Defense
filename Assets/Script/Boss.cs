@@ -208,6 +208,17 @@ public class Boss : MonoBehaviour
 
     }
 
+    void NotifyTutorialEnemyDefeated()
+    {
+        TutorialManager tutorialManager =
+            FindFirstObjectByType<TutorialManager>();
+
+        if (tutorialManager != null)
+        {
+            tutorialManager.EnemyDefeated();
+        }
+    }
+
     public void TakeDamage(float damage = 1f)
     {
         if (isInvincible)
@@ -221,6 +232,8 @@ public class Boss : MonoBehaviour
 
         if (Hp <= 0)
         {
+            NotifyTutorialEnemyDefeated();
+
             if (deathEffect != null)
             {
                 ParticleSystem effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
