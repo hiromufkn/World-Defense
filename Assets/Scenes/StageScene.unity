@@ -15470,6 +15470,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 751355573}
     - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
+      propertyPath: deathEffect
+      value: 
+      objectReference: {fileID: 100004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
+    - target: {fileID: 856635890331894686, guid: 97edce7555990b34d863962943e3e80b, type: 3}
       propertyPath: fallGravity
       value: 4
       objectReference: {fileID: 0}

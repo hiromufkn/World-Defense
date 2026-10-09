@@ -489,6 +489,28 @@
                     "path": "<Keyboard>/leftCtrl",
                     "interactions": "",
                     "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "028255cd-ed92-4203-a289-9f0d0667daf6",
+                    "path": "<Mouse>/leftButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Slide",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "872e8403-56f3-4f0a-9d46-ec19d4e81811",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
                     "groups": "",
                     "action": "Slide",
                     "isComposite": false,
