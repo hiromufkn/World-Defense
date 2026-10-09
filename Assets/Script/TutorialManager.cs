@@ -26,6 +26,7 @@ public class TutorialManager : MonoBehaviour
     [SerializeField] private GameObject AttackGoal;
 
     private bool isGoalTouched = false;
+    private bool isEnemyDefeated = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -89,7 +90,7 @@ public class TutorialManager : MonoBehaviour
         tutorialUI.SetActive(true);
         tutorialText.text = "やってみよう!";
 
-        //3秒やってみよう!を表示
+        //3秒後やってみよう!を削除
         yield return new WaitForSeconds(3);
         tutorialUI.SetActive(false);
 
@@ -103,7 +104,45 @@ public class TutorialManager : MonoBehaviour
 
         currentStep = tutorialStep.Attack;
 
-        //StartCoroutine(AttackTutorial());
+        StartCoroutine(AttackTutorial());
+    }
+
+    IEnumerator AttackTutorial()
+    {
+        //敵への攻撃説明
+        tutorialUI.SetActive(true);
+        tutorialText.text = "攻撃方法\n\n" + "CTRLまたはマウスクリック\n\n";
+
+        //説明削除
+        yield return new WaitForSeconds(3);
+        tutorialUI.SetActive(false);
+
+        //やってみよう!表示
+        tutorialUI.SetActive(true);
+        tutorialText.text = "やってみよう!";
+
+        //3秒後やってみよう!削除
+        yield return new WaitForSeconds(3);
+        tutorialUI.SetActive(false);
+
+        playerMove.canMove = true;
+
+        //敵を倒すまで待つ
+        yield return new WaitUntil(() => isEnemyDefeated);
+
+        playerMove.canMove = false;
+
+        //チュートリアル終了メッセージ
+        tutorialUI.SetActive(true);
+        tutorialText.text = "チュートリアル終了!";
+
+        //3秒待ち削除
+        yield return new WaitForSeconds(3);
+
+        tutorialUI.SetActive(false);
+
+        //ゲームシーンへ移動
+        UnityEngine.SceneManagement.SceneManager.LoadScene("StageScene");
     }
 
     public void GoalTouched(GameObject goal)
@@ -121,6 +160,14 @@ public class TutorialManager : MonoBehaviour
             playerMove.canMove = false;
 
             isGoalTouched = true;
+        }
+    }
+
+    public void EnemyDefeated()
+    {
+        if(currentStep==tutorialStep.Attack)
+        {
+            isEnemyDefeated = true;
         }
     }
 }
