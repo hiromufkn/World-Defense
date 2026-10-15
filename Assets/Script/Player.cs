@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
     public enum PlayerStatus
     {
         Idle,
+        Walk,
         Run,
         WallRun,
         Jump,
