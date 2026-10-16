@@ -75,15 +75,23 @@ public class PlayerMove : MonoBehaviour
     // 初期化
     //==============================
 
-    private void Start()
+    private void Awake()
     {
         player = GetComponent<Player>();
 
-        cameraTransform = Camera.main.transform;
-        cameraController =
-            Camera.main.GetComponent<CameraController>();
-
-        defaultModelRotation = model.localRotation;
+        if(Camera.main!=null)
+        {
+            cameraTransform = Camera.main.transform;
+            cameraController =
+                Camera.main.GetComponent<CameraController>();
+        }
+    }
+    private void Start()
+    {
+       if(model!=null)
+        {
+            defaultModelRotation = model.localRotation;
+        }
     }
     //==============================
     // 毎フレーム物理更新
