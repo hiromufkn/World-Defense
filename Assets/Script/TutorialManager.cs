@@ -59,7 +59,7 @@ public class TutorialManager : MonoBehaviour
 
         //やってみよう！を表示
         tutorialUI.SetActive(true);
-        tutorialText.text="やってみよう！";
+        tutorialText.text="やってみよう!";
 
         //3秒やってみよう!を表示
         yield return new WaitForSeconds(3);
@@ -91,7 +91,7 @@ public class TutorialManager : MonoBehaviour
 
         //やってみよう！を表示
         tutorialUI.SetActive(true);
-        tutorialText.text = "やってみよう！";
+        tutorialText.text = "やってみよう!";
 
         //3秒後やってみよう!を削除
         yield return new WaitForSeconds(3);
@@ -124,7 +124,7 @@ public class TutorialManager : MonoBehaviour
 
         //やってみよう!表示
         tutorialUI.SetActive(true);
-        tutorialText.text = "やってみよう！";
+        tutorialText.text = "やってみよう!";
 
         //3秒後やってみよう!削除
         yield return new WaitForSeconds(3);
@@ -140,7 +140,7 @@ public class TutorialManager : MonoBehaviour
 
         //チュートリアル終了メッセージ
         tutorialUI.SetActive(true);
-        tutorialText.text = "チュートリアル終了！";
+        tutorialText.text = "チュートリアル終了!";
 
         //3秒待ち削除
         yield return new WaitForSeconds(3);
