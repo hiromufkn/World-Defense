@@ -245,6 +245,10 @@ public class Player : MonoBehaviour
                 animator.Play("run");
                 break;
 
+            case PlayerStatus.Walk:
+                animator.Play("Walk");
+                break;
+
             case PlayerStatus.WallRun:
                 animator.Play("run");
                 break;

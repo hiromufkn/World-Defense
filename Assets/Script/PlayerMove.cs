@@ -200,10 +200,18 @@ public class PlayerMove : MonoBehaviour
             // Œü‚«•ÏX
             moveDirection.Normalize();
 
-            player.ChangeStatus(
-                    Player.PlayerStatus.Run
-                );
-
+            if (player.IsLowSpeed())
+            {
+                player.ChangeStatus(
+                    Player.PlayerStatus.Walk
+                    );
+            }
+            else
+            {
+                player.ChangeStatus(
+                        Player.PlayerStatus.Run
+                    );
+            }
             // æ‚ÉŠp“x‚ğæ“¾
             float angle =
     Vector3.Angle(
