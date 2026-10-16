@@ -51,7 +51,7 @@ public class TutorialManager : MonoBehaviour
 
         //操作方法の説明表示
         tutorialUI.SetActive(true);
-        tutorialText.text = "操作方法\n\n" + "WASD\n\n" + "ジャンプ\n\n" + "Space\n\n";
+        tutorialText.text = "操作方法\n" + "ＷＡＳＤ\n\n" + "ジャンプ\n" + "Ｓｐａｃｅ\n\n";
 
         //操作方法の説明を削除
         yield return new WaitForSeconds(3);
@@ -59,7 +59,7 @@ public class TutorialManager : MonoBehaviour
 
         //やってみよう！を表示
         tutorialUI.SetActive(true);
-        tutorialText.text="やってみよう!";
+        tutorialText.text="やってみよう！";
 
         //3秒やってみよう!を表示
         yield return new WaitForSeconds(3);
@@ -82,7 +82,7 @@ public class TutorialManager : MonoBehaviour
     {
         //壁走りの説明表示
         tutorialUI.SetActive(true);
-        tutorialText.text = "壁走り\n\n" + "スピードを上げ、壁に近づき走る\n\n";
+        tutorialText.text = "壁走り\n" + "スピードを上げ、壁に近づき走る\n";
         //player.speed = 0;
 
         //操作方法の説明を削除
@@ -91,7 +91,7 @@ public class TutorialManager : MonoBehaviour
 
         //やってみよう！を表示
         tutorialUI.SetActive(true);
-        tutorialText.text = "やってみよう!";
+        tutorialText.text = "やってみよう！";
 
         //3秒後やってみよう!を削除
         yield return new WaitForSeconds(3);
@@ -115,7 +115,7 @@ public class TutorialManager : MonoBehaviour
     {
         //敵への攻撃説明
         tutorialUI.SetActive(true);
-        tutorialText.text = "攻撃方法\n\n" + "CTRLまたはマウスクリック\n\n";
+        tutorialText.text = "攻撃方法\n" + "ＣＴＲＬまたはマウスクリック\n";
         //player.speed = 0;
 
         //説明削除
@@ -124,7 +124,7 @@ public class TutorialManager : MonoBehaviour
 
         //やってみよう!表示
         tutorialUI.SetActive(true);
-        tutorialText.text = "やってみよう!";
+        tutorialText.text = "やってみよう！";
 
         //3秒後やってみよう!削除
         yield return new WaitForSeconds(3);
@@ -140,7 +140,7 @@ public class TutorialManager : MonoBehaviour
 
         //チュートリアル終了メッセージ
         tutorialUI.SetActive(true);
-        tutorialText.text = "チュートリアル終了!";
+        tutorialText.text = "チュートリアル終了！";
 
         //3秒待ち削除
         yield return new WaitForSeconds(3);
