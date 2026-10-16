@@ -211,7 +211,7 @@ public class Boss : MonoBehaviour
     void NotifyTutorialEnemyDefeated()
     {
         TutorialManager tutorialManager =
-            FindFirstObjectByType<TutorialManager>();
+            FindAnyObjectByType<TutorialManager>();
 
         if (tutorialManager != null)
         {

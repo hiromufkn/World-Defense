@@ -19,7 +19,7 @@ public class TutorialManager : MonoBehaviour
 
 
     [SerializeField] private PlayerMove playerMove;
-    //[SerializeField] private Player player;
+    [SerializeField] private Player player;
 
     //触れる対象オブジェクト
     [SerializeField] private GameObject MoveGoal;
@@ -65,6 +65,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         tutorialUI.SetActive(false);
 
+        ResetPlayerSpeed();
         //プレイヤー操作可能
         playerMove.canMove = true;
 
@@ -96,6 +97,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         tutorialUI.SetActive(false);
 
+        ResetPlayerSpeed();
         playerMove.canMove = true;
 
         //WallRunGoalに触れるまで待つ
@@ -128,6 +130,7 @@ public class TutorialManager : MonoBehaviour
         yield return new WaitForSeconds(3);
         tutorialUI.SetActive(false);
 
+        ResetPlayerSpeed();
         playerMove.canMove = true;
 
         //敵を倒すまで待つ
@@ -171,6 +174,21 @@ public class TutorialManager : MonoBehaviour
         if(currentStep==tutorialStep.Attack)
         {
             isEnemyDefeated = true;
+        }
+    }
+
+    private void ResetPlayerSpeed()
+    {
+        if(player!=null)
+        {
+            player.speed = 0f;
+
+            player.moveSpeed = 0f;
+
+            if(player.rb!=null)
+            {
+                player.rb.linearVelocity = new Vector3(0f, player.rb.linearVelocity.y, 0f);
+            }
         }
     }
 }

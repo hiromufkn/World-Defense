@@ -15,7 +15,7 @@ public class ClearChangeScene : MonoBehaviour
             return;
         }
 
-        Boss boss = FindFirstObjectByType<Boss>();
+        Boss boss = FindAnyObjectByType<Boss>();
 
         if(boss!=null)
         {

@@ -2558,6 +2558,7 @@ MonoBehaviour:
   tutorialUI: {fileID: 213579258}
   tutorialText: {fileID: 1325227348}
   playerMove: {fileID: 879341594}
+  player: {fileID: 879341596}
   MoveGoal: {fileID: 739744491}
   WallRunGoal: {fileID: 1054894039}
   AttackGoal: {fileID: 1005893497}
