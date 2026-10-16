@@ -81,7 +81,7 @@ public class TutorialManager : MonoBehaviour
     {
         //壁走りの説明表示
         tutorialUI.SetActive(true);
-        tutorialText.text = "壁走り\n\n" + "壁に近づき走る\n\n";
+        tutorialText.text = "壁走り\n\n" + "スピードを上げ、壁に近づき走る\n\n";
         //player.speed = 0;
 
         //操作方法の説明を削除
