@@ -152,6 +152,16 @@ public class PlayerMove : MonoBehaviour
 
     public void OnLook(InputValue value)
     {
+        if(cameraController==null)
+        {
+            Camera maincamera = Camera.main;
+
+            if(maincamera!=null)
+            {
+                cameraController = maincamera.GetComponent<CameraController>();
+            }
+        }
+
         cameraController.SetLookInput(
             value.Get<Vector2>()
         );
