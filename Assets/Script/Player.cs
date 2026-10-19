@@ -275,7 +275,7 @@ public class Player : MonoBehaviour
                 break;
 
             case PlayerStatus.Dead:
-                animator.Play("dead");
+                animator.Play("Death");
 
                 break;
         }
