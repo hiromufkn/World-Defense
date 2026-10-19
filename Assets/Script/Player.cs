@@ -136,7 +136,8 @@ public class Player : MonoBehaviour
         // Jump / Fall’†‚ÍRun‹ÖŽ~
         if ((status == PlayerStatus.Jump ||
              status == PlayerStatus.Fall) &&
-             newStatus == PlayerStatus.Run)
+             (newStatus == PlayerStatus.Run ||
+             newStatus == PlayerStatus.Walk))
             return;
 
         // Slide’†‚ÍJumpˆÈŠO‹ÖŽ~
