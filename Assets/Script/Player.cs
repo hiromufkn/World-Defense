@@ -54,6 +54,9 @@ public class Player : MonoBehaviour
     public float maxHp = 100f;
     public float playerHp;
 
+    // €‚ñ‚Å‚é‚©¶‚«‚Ä‚é‚©
+    public bool isDeath = false;
+
     [HideInInspector]
     public Rigidbody rb;
 
@@ -277,7 +280,7 @@ public class Player : MonoBehaviour
 
             case PlayerStatus.Dead:
                 animator.Play("Death");
-
+                isDeath = true;
                 break;
         }
     }

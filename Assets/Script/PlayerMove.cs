@@ -326,6 +326,9 @@ public class PlayerMove : MonoBehaviour
 
     private void Jump()
     {
+        // Ž€‚ñ‚Å‚½‚çƒWƒƒƒ“ƒv‹ÖŽ~
+        if (player.isDeath)
+            return;
         if (isWallRunning)
         {
             WallJump();
@@ -474,7 +477,8 @@ public class PlayerMove : MonoBehaviour
     private bool CanMove()
     {
         return player.status != Player.PlayerStatus.Slide &&
-               player.status != Player.PlayerStatus.WallRun;
+               player.status != Player.PlayerStatus.WallRun &&
+               player.status != Player.PlayerStatus.Dead;
     }
 
     
