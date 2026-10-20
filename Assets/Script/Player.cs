@@ -54,6 +54,15 @@ public class Player : MonoBehaviour
     public float maxHp = 100f;
     public float playerHp;
 
+    [Header("Audio")]
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip runSE;
+    [SerializeField] private AudioClip walkSE;
+    [SerializeField] private AudioClip jumpSE;
+    [SerializeField] private AudioClip jumpEndSE;
+    [SerializeField] private AudioClip attackSE;
+    [SerializeField] private AudioClip knockBackSE;
+
     // 死んでるか生きてるか
     public bool isDeath = false;
 
@@ -230,10 +239,7 @@ public class Player : MonoBehaviour
         return speed >= highSpeed;
     }
 
-    //========================================
     // アニメーション
-    //========================================
-
     private void UpdateAnimation()
     {
         if (animator == null)
@@ -243,31 +249,39 @@ public class Player : MonoBehaviour
         {
             case PlayerStatus.Idle:
                 animator.Play("idle");
+                StopLoopSE();
                 break;
 
             case PlayerStatus.Run:
                 animator.Play("run");
+                PlayerLoopSE(runSE);
                 break;
 
             case PlayerStatus.Walk:
                 animator.Play("Walk");
+                PlayerLoopSE(walkSE);
                 break;
 
             case PlayerStatus.WallRun:
                 animator.Play("run");
+                PlayerLoopSE(runSE);
                 break;
 
             case PlayerStatus.Jump:
                 // ジャンプ開始
                 animator.Play("JumpStart");
+                PlayerLoopSE(jumpSE);
                 break;
 
             case PlayerStatus.Fall:
                 animator.Play("Fall");
+                StopLoopSE();
                 break;
 
             case PlayerStatus.Slide:
                 animator.Play("slide");
+                PlayerSE(attackSE);
+                StopLoopSE();
                 break;
 
             case PlayerStatus.Damage:
@@ -276,19 +290,19 @@ public class Player : MonoBehaviour
 
             case PlayerStatus.KnockBack:
                 animator.Play("knockBack");
+                PlayerSE(knockBackSE);
+                StopLoopSE();
                 break;
 
             case PlayerStatus.Dead:
                 animator.Play("Death");
                 isDeath = true;
+                StopLoopSE();
                 break;
         }
     }
 
-    //========================================
     // 着地
-    //========================================
-
     public void Land()
     {
         // すでに着地処理中なら何もしない
@@ -315,6 +329,8 @@ public class Player : MonoBehaviour
         {
             animator.Play("JumpEnd");
         }
+        // 接地のSE
+        PlayerSE(jumpEndSE);
 
         StartCoroutine(LandAnimationCoroutine());
     }
@@ -354,5 +370,40 @@ public class Player : MonoBehaviour
 
             rb.linearVelocity = Vector3.zero;
         }
+    }
+
+    // Playerの一度しか再生しないSEの再生
+    public void PlayerSE(AudioClip clip)
+    {
+        if (audioSource == null || clip == null)
+            return;
+
+        audioSource.PlayOneShot(clip);
+    }
+
+    // Playerのループさせて使うSE
+    public void PlayerLoopSE(AudioClip clip)
+    {
+        if (audioSource == null || clip == null)
+            return;
+
+        // 同じSEが再生中なら何もしない
+        if (audioSource.isPlaying && audioSource.clip == clip)
+            return;
+
+        audioSource.Stop();
+        audioSource.clip = clip;
+        audioSource.loop = true;
+        audioSource.Play();
+    }
+    // ループSEを止める
+    public void StopLoopSE()
+    {
+        if (audioSource == null)
+            return;
+
+        audioSource.Stop();
+        audioSource.loop = false;
+        audioSource.clip = null;
     }
 }
