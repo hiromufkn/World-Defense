@@ -5065,7 +5065,7 @@ MonoBehaviour:
   beamLengthScale: 0.05
   beamEffect: {fileID: 465036311}
   damage: 5
-  attackDistance: 45
+  attackDistance: 50
 --- !u!4 &323988269
 Transform:
   m_ObjectHideFlags: 0
