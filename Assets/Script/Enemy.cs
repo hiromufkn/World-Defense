@@ -375,10 +375,20 @@ public class Enemy : MonoBehaviour
 
     void PlaydeathSound()
     {
-        if (deathsound != null)
+        if (deathsound == null)
         {
-            AudioSource.PlayClipAtPoint(deathsound, transform.position);
+            return;
         }
+
+        GameObject soundObject = new GameObject("DeathSound");
+        AudioSource source = soundObject.AddComponent<AudioSource>();
+
+        source.clip = deathsound;
+        source.volume = 1.0f;
+        source.spatialBlend = 0f;
+        source.Play();
+
+        Destroy(soundObject, deathsound.length + 1.0f);
     }
 }
 
