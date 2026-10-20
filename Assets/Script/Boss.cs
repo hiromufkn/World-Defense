@@ -345,10 +345,20 @@ public class Boss : MonoBehaviour
 
     void PlaydeathSound()
     {
-        if (deathSound != null)
+        if (deathSound == null)
         {
-            AudioSource.PlayClipAtPoint(deathSound, transform.position);
+            return;
         }
+
+        GameObject soundObject = new GameObject("DeathSound");
+        AudioSource source = soundObject.AddComponent<AudioSource>();
+
+        source.clip = deathSound;
+        source.volume = 1.0f;
+        source.spatialBlend = 0f;
+        source.Play();
+
+        Destroy(soundObject,deathSound.length + 1.0f);
     }
 }
 
