@@ -159,6 +159,7 @@ MonoBehaviour:
   jumpEndSE: {fileID: 8300000, guid: eb3f8cd4a7d071f47b66f9120d0c4122, type: 3}
   attackSE: {fileID: 8300000, guid: 94c7e74f76984dd42bc93ad978be6275, type: 3}
   knockBackSE: {fileID: 8300000, guid: 476584fa192e6f34ab56f9686864b092, type: 3}
+  healSE: {fileID: 8300000, guid: 6e52f7b8b1275c6489544365600af11f, type: 3}
   isDeath: 0
   rb: {fileID: 0}
   animator: {fileID: 0}
