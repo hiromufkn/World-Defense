@@ -44,6 +44,7 @@ public class Boss : MonoBehaviour
     private Collider[] playerColliders;
     [SerializeField] private AudioClip beamSound;
     [SerializeField] private AudioClip deathSound;
+    [SerializeField] private AudioClip damageSound;
     private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -239,6 +240,11 @@ public class Boss : MonoBehaviour
         }
 
         Hp -= damage;
+
+        if(audioSource!=null||damageSound!=null)
+        {
+            audioSource.PlayOneShot(damageSound);
+        }
 
         hpSlider.value = Hp;
 

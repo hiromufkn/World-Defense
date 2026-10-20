@@ -1368,6 +1368,7 @@ MonoBehaviour:
   beamLengthScale: 0.05
   beamSound: {fileID: 8300000, guid: 47580976c39bf484ea5bb3dfe2cdbf08, type: 3}
   deathSound: {fileID: 8300000, guid: 39ff2330785887544b64b21da6e3bec2, type: 3}
+  damageSound: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
 --- !u!82 &8634899368673585160
 AudioSource:
   m_ObjectHideFlags: 0
