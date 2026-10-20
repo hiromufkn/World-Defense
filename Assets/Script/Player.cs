@@ -270,7 +270,8 @@ public class Player : MonoBehaviour
             case PlayerStatus.Jump:
                 // ジャンプ開始
                 animator.Play("JumpStart");
-                PlayerLoopSE(jumpSE);
+                StopLoopSE();
+                PlayerSE(jumpSE);
                 break;
 
             case PlayerStatus.Fall:
@@ -280,8 +281,8 @@ public class Player : MonoBehaviour
 
             case PlayerStatus.Slide:
                 animator.Play("slide");
-                PlayerSE(attackSE);
                 StopLoopSE();
+                PlayerSE(attackSE);
                 break;
 
             case PlayerStatus.Damage:
@@ -290,8 +291,8 @@ public class Player : MonoBehaviour
 
             case PlayerStatus.KnockBack:
                 animator.Play("knockBack");
-                PlayerSE(knockBackSE);
                 StopLoopSE();
+                PlayerSE(knockBackSE);
                 break;
 
             case PlayerStatus.Dead:
