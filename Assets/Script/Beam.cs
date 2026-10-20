@@ -26,13 +26,13 @@ public class Beam : MonoBehaviour
     private bool isFiring = false;
     private float laserTimer;
     private Renderer[] renderers;
-
-
+    [SerializeField] private AudioClip beamSound;
+    private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+        audioSource = GetComponent<AudioSource>();
         //spawner = FindFirstObjectByType<EnemySpawner>();
         //direction = 1;
 
@@ -103,6 +103,11 @@ public class Beam : MonoBehaviour
         laserTimer = laserTime;
 
         beamEffect.Play(true);
+
+        if(audioSource!=null||beamSound!=null)
+        {
+            audioSource.PlayOneShot(beamSound);
+        }
     }
 
     void StopBeam()
