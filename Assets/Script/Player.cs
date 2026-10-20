@@ -62,6 +62,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioClip jumpEndSE;
     [SerializeField] private AudioClip attackSE;
     [SerializeField] private AudioClip knockBackSE;
+    [SerializeField] private AudioClip healSE;
 
     // Ž€‚ñ‚Å‚é‚©¶‚«‚Ä‚é‚©
     public bool isDeath = false;
@@ -215,6 +216,7 @@ public class Player : MonoBehaviour
     // ‰ñ•œˆ—
     public void Heal(float heal)
     {
+        PlayerSE(healSE);
         playerHp += heal;
         Debug.Log("‰ñ•œ");
         if (playerHp >= 100)
