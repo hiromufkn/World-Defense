@@ -42,10 +42,15 @@ public class Boss : MonoBehaviour
     private Slider hpSlider;
     private Collider[] enemyColliders;
     private Collider[] playerColliders;
+    [SerializeField] private AudioClip beamSound;
+    [SerializeField] private AudioClip deathSound;
+    private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
+
         Hp = MaxHp;
 
         hpSlider = GetComponentInChildren<Slider>();
@@ -123,6 +128,11 @@ public class Boss : MonoBehaviour
                 isFiring = true;
                 laserTimer = laserTime;
                 targetPosition = Player.position;
+
+                if(audioSource!=null||beamSound!=null)
+                {
+                    audioSource.PlayOneShot(beamSound);
+                }
                 //line.enabled = true;
                 //FeirLaser();
                 if (beamEffect != null)
@@ -187,6 +197,8 @@ public class Boss : MonoBehaviour
                 Destroy(effect.gameObject, 2f);
             }
 
+            PlaydeathSound();
+
             Destroy(gameObject);
 
             //spawner.SpawnEnemy();
@@ -240,6 +252,8 @@ public class Boss : MonoBehaviour
                 effect.Play();
                 Destroy(effect.gameObject, 2f);
             }
+
+            PlaydeathSound();
 
             Destroy(gameObject);
 
@@ -320,6 +334,14 @@ public class Boss : MonoBehaviour
                     );
                 }
             }
+        }
+    }
+
+    void PlaydeathSound()
+    {
+        if (deathSound != null)
+        {
+            AudioSource.PlayClipAtPoint(deathSound, transform.position);
         }
     }
 }
