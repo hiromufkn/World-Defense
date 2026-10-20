@@ -3779,6 +3779,7 @@ MonoBehaviour:
   deathEffect: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
   beamsound: {fileID: 8300000, guid: 47580976c39bf484ea5bb3dfe2cdbf08, type: 3}
   deathsound: {fileID: 8300000, guid: 39ff2330785887544b64b21da6e3bec2, type: 3}
+  damageSound: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
 --- !u!82 &239646932
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5281,6 +5282,7 @@ MonoBehaviour:
   deathEffect: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
   beamsound: {fileID: 8300000, guid: 47580976c39bf484ea5bb3dfe2cdbf08, type: 3}
   deathsound: {fileID: 8300000, guid: 39ff2330785887544b64b21da6e3bec2, type: 3}
+  damageSound: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
 --- !u!82 &327754574
 AudioSource:
   m_ObjectHideFlags: 0
@@ -25802,6 +25804,7 @@ MonoBehaviour:
   deathEffect: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
   beamsound: {fileID: 8300000, guid: 47580976c39bf484ea5bb3dfe2cdbf08, type: 3}
   deathsound: {fileID: 8300000, guid: 39ff2330785887544b64b21da6e3bec2, type: 3}
+  damageSound: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
 --- !u!82 &1641260777
 AudioSource:
   m_ObjectHideFlags: 0
@@ -34202,6 +34205,10 @@ PrefabInstance:
       value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
+    - target: {fileID: 7709742533793161876, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: deathEffect
       value: 
       objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
@@ -34245,6 +34252,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
     - target: {fileID: 9063774033700214135, guid: 76bc964cde351df40a133456b376e3f0, type: 3}
       propertyPath: deathEffect
       value: 
@@ -35107,6 +35118,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 6235201705485938709, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
+    - target: {fileID: 6235201705485938709, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: deathEffect
       value: 
       objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
@@ -35231,6 +35246,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 7039545939260409500, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
+    - target: {fileID: 7039545939260409500, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: deathEffect
       value: 
       objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
@@ -35302,6 +35321,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7266468444142317545, guid: e35f877e0039f344580647708c3d4073, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
     - target: {fileID: 7266468444142317545, guid: e35f877e0039f344580647708c3d4073, type: 3}
       propertyPath: deathEffect
       value: 
@@ -36483,6 +36506,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2289065153786549582, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
+    - target: {fileID: 2289065153786549582, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: deathEffect
       value: 
       objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
@@ -36606,6 +36633,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
     - target: {fileID: 6817853224202509604, guid: a622349c5c2d3cd49b9f95bf9362c661, type: 3}
       propertyPath: deathEffect
       value: 
@@ -36910,6 +36941,10 @@ PrefabInstance:
       value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
+    - target: {fileID: 2605840716165771184, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: deathEffect
       value: 
       objectReference: {fileID: 19800004, guid: 40956557a285559488a2c9ff1ac6e7f6, type: 3}
@@ -36973,6 +37008,10 @@ PrefabInstance:
       propertyPath: attackRange
       value: 30
       objectReference: {fileID: 0}
+    - target: {fileID: 7178640097879311891, guid: bfea550be497d034c9de92b07599514f, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 95e7a68015da40b4c8f77666fee14d1a, type: 3}
     - target: {fileID: 7178640097879311891, guid: bfea550be497d034c9de92b07599514f, type: 3}
       propertyPath: deathEffect
       value: 

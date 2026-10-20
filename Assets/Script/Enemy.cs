@@ -49,6 +49,7 @@ public class Enemy : MonoBehaviour
     private Collider[] playerColliders;
     [SerializeField]private  AudioClip beamsound;
     [SerializeField] private AudioClip deathsound;
+    [SerializeField] private AudioClip damageSound;
     private AudioSource audioSource;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -247,6 +248,11 @@ public class Enemy : MonoBehaviour
         }
 
         Hp -= damage;
+
+        if (audioSource!=null||damageSound!=null)
+        {
+            audioSource.PlayOneShot(damageSound); 
+        }
 
         hpSlider.value = Hp;
 
