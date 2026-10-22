@@ -23735,6 +23735,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Tree 6
       objectReference: {fileID: 0}
+    - target: {fileID: 2929640999623336303, guid: c686361b29330d148be408237abee5e2, type: 3}
+      propertyPath: m_TagString
+      value: Object
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
