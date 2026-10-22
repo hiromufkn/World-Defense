@@ -7,6 +7,7 @@ public class CameraController : MonoBehaviour
     [SerializeField] private Transform player;
     [SerializeField] private float distance = 7f;
     [SerializeField] private float mouseSensitivity = 3f;
+    [SerializeField] private float controllerSensitivity = 150;
     [SerializeField] private float cameraOffset = 1.0f;
     [SerializeField] private LayerMask cameraCollisionLayer;
     [SerializeField] private LayerMask SideCollisionLayer;
@@ -20,17 +21,23 @@ public class CameraController : MonoBehaviour
     private float currentCameraDistance;
     private float cameraDistanceVelocity;
 
+    // コントローラー入力かどうか
+    private bool isControllerInput = false;
+
     private Vector2 lookInput;
 
-    public void SetLookInput(Vector2 input)
+    public void SetLookInput(Vector2 input, bool isController)
     {
         lookInput = input;
+        isControllerInput = isController;
     }
 
     private void LateUpdate()
     {
-        yaw += lookInput.x * mouseSensitivity * Time.deltaTime;
-        pitch -= lookInput.y * mouseSensitivity * Time.deltaTime;
+        float sensitivity = isControllerInput ? controllerSensitivity : mouseSensitivity;
+        float deltaTime = isControllerInput ? Time.deltaTime : 0.5f;
+        yaw += lookInput.x * sensitivity * deltaTime;
+        pitch -= lookInput.y * sensitivity * deltaTime;
 
         pitch = Mathf.Clamp(pitch, 0f, 60f);
 

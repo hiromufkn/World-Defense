@@ -508,10 +508,10 @@
                 {
                     "name": "",
                     "id": "872e8403-56f3-4f0a-9d46-ec19d4e81811",
-                    "path": "",
+                    "path": "<Gamepad>/rightTrigger",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Gamepad",
                     "action": "Slide",
                     "isComposite": false,
                     "isPartOfComposite": false
