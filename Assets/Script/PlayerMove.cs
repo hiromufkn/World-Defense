@@ -162,9 +162,14 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
+        bool isController =
+        Gamepad.current != null &&
+        Gamepad.current.rightStick.IsActuated();
+
         cameraController.SetLookInput(
-            value.Get<Vector2>()
-        );
+            value.Get<Vector2>(),
+            isController
+            );
     }
 
     //==============================
