@@ -27160,8 +27160,16 @@ PrefabInstance:
       value: Grass 1
       objectReference: {fileID: 0}
     - target: {fileID: 1997442676426876155, guid: 4db940c31d61ac149801c850fc645d68, type: 3}
+      propertyPath: m_TagString
+      value: Grass
+      objectReference: {fileID: 0}
+    - target: {fileID: 1997442676426876155, guid: 4db940c31d61ac149801c850fc645d68, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 2206093761840168630, guid: 4db940c31d61ac149801c850fc645d68, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2555488013108832497, guid: 4db940c31d61ac149801c850fc645d68, type: 3}
       propertyPath: m_StaticEditorFlags
@@ -27171,6 +27179,14 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2082d4a5281748f4bb43fa3e2843236d, type: 2}
+    - target: {fileID: 5043575921866937396, guid: 4db940c31d61ac149801c850fc645d68, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5043575921866937396, guid: 4db940c31d61ac149801c850fc645d68, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5316609513351239561, guid: 4db940c31d61ac149801c850fc645d68, type: 3}
       propertyPath: m_LocalScale.x
       value: 12

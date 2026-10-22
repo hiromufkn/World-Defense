@@ -57,15 +57,15 @@ public class Player : MonoBehaviour
     [Header("Audio")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip runSE;
+    [SerializeField] private AudioClip grassRunSE;
     [SerializeField] private AudioClip walkSE;
+    [SerializeField] private AudioClip grassWalkSE;
     [SerializeField] private AudioClip jumpSE;
     [SerializeField] private AudioClip jumpEndSE;
     [SerializeField] private AudioClip attackSE;
     [SerializeField] private AudioClip knockBackSE;
     [SerializeField] private AudioClip healSE;
 
-    // 死んでるか生きてるか
-    public bool isDeath = false;
 
     [HideInInspector]
     public Rigidbody rb;
@@ -73,9 +73,15 @@ public class Player : MonoBehaviour
     public Animator animator;
     private PlayerMove playerMove;
 
+    // 死んでるか生きてるか
+    public bool isDeath = false;
+
     // 着地処理中か
     private bool isLanding = false;
     public bool IsLanding => isLanding;
+
+    // 草むらの中かどうか
+    private bool isGrass = false;
 
     [SerializeField] private GameObject gameOverUI;
 
@@ -256,12 +262,29 @@ public class Player : MonoBehaviour
 
             case PlayerStatus.Run:
                 animator.Play("run");
-                PlayerLoopSE(runSE);
+                // 草むらを走っている場合
+                if (isGrass)
+                {
+                    PlayerLoopSE(grassRunSE);
+                }
+                else if (!isGrass)
+                {
+                    PlayerLoopSE(runSE);
+                }
                 break;
 
             case PlayerStatus.Walk:
                 animator.Play("Walk");
-                PlayerLoopSE(walkSE);
+                // 草むらを歩いたら
+                if (isGrass)
+                {
+                    PlayerLoopSE(grassWalkSE);
+                }
+                // 草むら以外
+                else if (!isGrass)
+                {
+                    PlayerLoopSE(walkSE);
+                }
                 break;
 
             case PlayerStatus.WallRun:
@@ -408,5 +431,39 @@ public class Player : MonoBehaviour
         audioSource.Stop();
         audioSource.loop = false;
         audioSource.clip = null;
+    }
+
+    private void UpdateSE()
+    {
+        switch (status)
+        {
+            case PlayerStatus.Run:
+                PlayerLoopSE(isGrass ? grassRunSE : runSE); // trueなら左のSE、falseなら右のSE
+                break;
+
+            case PlayerStatus.Walk:
+                PlayerLoopSE(isGrass ? grassWalkSE : walkSE);
+                break;
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        // 草むらの中にいる間の処理
+        if (other.gameObject.CompareTag("Grass"))
+        {
+            isGrass = true;
+            UpdateSE();
+        }
+    }
+    
+    private void OnTriggerExit(Collider other)
+    {
+        // 草むらから離れた処理
+        if (other.gameObject.CompareTag("Grass"))
+        {
+            isGrass = false;
+            UpdateSE();
+        }
     }
 }
