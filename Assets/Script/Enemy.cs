@@ -197,32 +197,32 @@ public class Enemy : MonoBehaviour
         }
 
 
-        if (Keyboard.current.kKey.wasPressedThisFrame)
+        //if (Keyboard.current.kKey.wasPressedThisFrame)
 
-        {
-            state = EnemyState.dead;
-            bossManager.EnemyDied();
-            Debug.Log("KÉLÅ[Ç≈ìGéÄñS:");
+        //{
+        //    state = EnemyState.dead;
+        //    bossManager.EnemyDied();
+        //    Debug.Log("KÉLÅ[Ç≈ìGéÄñS:");
 
-            if (deathEffect != null)
-            {
-                ParticleSystem effect = Instantiate(
-                    deathEffect,
-                    transform.position,
-                    Quaternion.identity
-                );
+        //    if (deathEffect != null)
+        //    {
+        //        ParticleSystem effect = Instantiate(
+        //            deathEffect,
+        //            transform.position,
+        //            Quaternion.identity
+        //        );
 
-                effect.Play();
+        //        effect.Play();
 
-                Destroy(effect.gameObject, 2f);
-            }
+        //        Destroy(effect.gameObject, 2f);
+        //    }
 
-            PlaydeathSound();
+        //    PlaydeathSound();
 
-            Destroy(gameObject);
+        //    Destroy(gameObject);
 
-            //spawner.SpawnEnemy();
-        }
+        //    //spawner.SpawnEnemy();
+        //}
 
 
 

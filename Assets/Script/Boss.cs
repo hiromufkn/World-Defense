@@ -187,23 +187,23 @@ public class Boss : MonoBehaviour
         }
 
 
-        if (Keyboard.current.kKey.wasPressedThisFrame)
+        //if (Keyboard.current.kKey.wasPressedThisFrame)
 
-        {
-            Debug.Log("KÉLÅ[Ç≈ìGéÄñS:");
-            if (deathEffect != null)
-            {
-                ParticleSystem effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
-                effect.Play();
-                Destroy(effect.gameObject, 2f);
-            }
+        //{
+        //    Debug.Log("KÉLÅ[Ç≈ìGéÄñS:");
+        //    if (deathEffect != null)
+        //    {
+        //        ParticleSystem effect = Instantiate(deathEffect, transform.position, Quaternion.identity);
+        //        effect.Play();
+        //        Destroy(effect.gameObject, 2f);
+        //    }
 
-            PlaydeathSound();
+        //    PlaydeathSound();
 
-            Destroy(gameObject);
+        //    Destroy(gameObject);
 
-            //spawner.SpawnEnemy();
-        }
+        //    //spawner.SpawnEnemy();
+        //}
 
 
 
